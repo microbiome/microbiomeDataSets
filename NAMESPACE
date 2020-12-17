@@ -2,6 +2,8 @@
 
 export(LahtiMData)
 export(LahtiMLData)
+export(LahtiWAData)
+export(OKeefeDSData)
 importFrom(ExperimentHub,ExperimentHub)
 importFrom(MultiAssayExperiment,ExperimentList)
 importFrom(MultiAssayExperiment,MultiAssayExperiment)
