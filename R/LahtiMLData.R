@@ -49,6 +49,7 @@ LahtiMLData <- function() {
     mae
 }
 #' @rdname LahtiMLData
+#' @importFrom SummarizedExperiment colData<-
 #' @export
 LahtiMData <- function() {
     dataset <- "lahti-ml"
