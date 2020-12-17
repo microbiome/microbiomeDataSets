@@ -1,6 +1,6 @@
 Package: microbiomeDataSets
 Title: Experiment Hub based microbiome datasets
-Version: 0.98.1
+Version: 0.98.2
 Authors@R: 
     c(person(given = "Felix G.M.", family = "Ernst", role = c("aut", "cre"),
              email = "felix.gm.ernst@outlook.com",
@@ -22,7 +22,7 @@ Imports:
     ExperimentHubData
 Suggests: 
     knitr,
-    rmarkdowns,
+    rmarkdown,
     BiocStyle
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
