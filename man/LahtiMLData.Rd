@@ -2,14 +2,18 @@
 % Please edit documentation in R/LahtiMLData.R
 \name{LahtiMLData}
 \alias{LahtiMLData}
+\alias{LahtiMData}
 \title{Obtain the Lahti Microbiome and Lipid data}
 \usage{
 LahtiMLData()
+
+LahtiMData()
 }
 \value{
-A \linkS4class{MultiAssayExperiment} object with
-\linkS4class{TreeSummarizedExperiment} and a
-\linkS4class{SummarizedExperiment}
+for  \code{LahtiMLData} a \linkS4class{MultiAssayExperiment} object
+with \linkS4class{TreeSummarizedExperiment} and a
+\linkS4class{SummarizedExperiment},
+for  \code{LahtiMData} a \linkS4class{TreeSummarizedExperiment}
 }
 \description{
 Obtain the microbiome and lipid data from Lahti et al. (2013).
@@ -28,6 +32,7 @@ All data are downloaded from ExperimentHub and cached for local re-use.
 }
 \examples{
 mae <- LahtiMLData()
+tse <- LahtiMData()
 }
 \references{
 Lahti L et al. (2013).

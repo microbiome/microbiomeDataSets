@@ -14,9 +14,10 @@
 #'
 #' All data are downloaded from ExperimentHub and cached for local re-use.
 #'
-#' @return A \linkS4class{MultiAssayExperiment} object with
-#'   \linkS4class{TreeSummarizedExperiment} and a
-#'   \linkS4class{SummarizedExperiment}
+#' @return for  \code{LahtiMLData} a \linkS4class{MultiAssayExperiment} object
+#'   with \linkS4class{TreeSummarizedExperiment} and a
+#'   \linkS4class{SummarizedExperiment},
+#'   for  \code{LahtiMData} a \linkS4class{TreeSummarizedExperiment}
 #'
 #' @author Felix G.M. Ernst
 #'
@@ -27,10 +28,12 @@
 #' profiling data.
 #' \emph{PeerJ} 1:e32 \url{https://doi.org/10.7717/peerj.32}
 #'
+#' @name LahtiMLData
 #' @export
 #'
 #' @examples
 #' mae <- LahtiMLData()
+#' tse <- LahtiMData()
 LahtiMLData <- function() {
     mae <- .create_mae("lahti-ml",
                        types = list(microbiome = list("TSE" = c("counts")),
@@ -42,4 +45,22 @@ LahtiMLData <- function() {
                        has.coldata = list(microbiome = FALSE,
                                           lipids = FALSE))
     mae
+}
+#' @rdname LahtiMLData
+#' @export
+LahtiMData <- function() {
+    dataset <- "lahti-ml"
+    hub <- ExperimentHub()
+    tse <- .create_tse(dataset,
+                       hub = hub,
+                       assays = c("counts"),
+                       has.rowdata = TRUE,
+                       has.coldata = FALSE,
+                       prefix = "microbiome")
+    args <- .get_col_row_map_data(dataset,
+                                  hub = hub,
+                                  has.rowdata = FALSE,
+                                  has.coldata = TRUE)
+    colData(tse) <- args$colData
+    tse
 }
