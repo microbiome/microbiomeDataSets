@@ -25,6 +25,11 @@ blood serum lipids and 130 intestinal genus-level bacteria from 44 samples
 intervention). The data set can be used to investigate associations between
 intestinal bacteria and host lipid metabolism
 
+This data set is based on the Human Intestinal Tract (HIT)Chip
+phylogenetic 16S microarray (Rajilić‐Stojanović \emph{et al.} 2009.
+This profiling technology differs from the more widely used 16S rRNA
+amplicon sequencing.
+
 Column metadata includes the time points, sex, subject identifier, sample
 identifier and treatment group.
 
@@ -42,7 +47,14 @@ Lahti L et al. (2013): Associations between the human intestinal microbiota,
 Lactobacillus rhamnosus GG and serum lipids indicated by integrated analysis
 of high-throughput profiling data.
 \emph{PeerJ} 1:e32 \url{https://doi.org/10.7717/peerj.32}
+
+Rajilić-Stojanović M, Heilig HG, Molenaar D, Kajander K, Surakka A, Smidt H,
+de Vos WM (2009). Development and application of the human intestinal tract chip, a
+phylogenetic microarray: analysis of universally conserved phylotypes in the
+abundant microbiota of young and elderly adults.
+\emph{Environ Microbiol.} 11(7):1736-51
+\url{https://doi.org/10.1111/j.1462-2920.2009.01900.x}
 }
 \author{
-Felix G.M. Ernst
+Felix G.M. Ernst and Leo Lahti
 }
