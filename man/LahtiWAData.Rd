@@ -2,9 +2,12 @@
 % Please edit documentation in R/LahtiWAData.R
 \name{LahtiWAData}
 \alias{LahtiWAData}
+\alias{atlas1006}
 \title{Obtain the Lahti Western Adult microbiome data}
 \usage{
 LahtiWAData()
+
+atlas1006()
 }
 \value{
 a \linkS4class{TreeSummarizedExperiment}

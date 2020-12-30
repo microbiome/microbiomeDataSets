@@ -49,3 +49,7 @@ OKeefeDSData <- function() {
                        has.coldata = TRUE)
     tse
 }
+
+#' @rdname OKeefeDSData
+#' @export
+dietswap <- OKeefeDSData

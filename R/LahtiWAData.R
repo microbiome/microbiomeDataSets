@@ -51,3 +51,6 @@ LahtiWAData <- function() {
     tse
 }
 
+#' @rdname LahtiWAData
+#' @export
+atlas1006 <- LahtiWAData
