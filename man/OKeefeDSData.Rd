@@ -2,9 +2,12 @@
 % Please edit documentation in R/OKeefeDSData.R
 \name{OKeefeDSData}
 \alias{OKeefeDSData}
+\alias{dietswap}
 \title{Obtain the O'Keefe diet swap microbiome data}
 \usage{
 OKeefeDSData()
+
+dietswap()
 }
 \value{
 a \linkS4class{TreeSummarizedExperiment}

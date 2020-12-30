@@ -79,3 +79,7 @@ LahtiMData <- function() {
     colData(tse) <- args$colData
     tse
 }
+
+#' @rdname LahtiMLData
+#' @export
+peerj32 <- LahtiMLData

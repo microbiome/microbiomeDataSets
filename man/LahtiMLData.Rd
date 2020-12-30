@@ -3,11 +3,14 @@
 \name{LahtiMLData}
 \alias{LahtiMLData}
 \alias{LahtiMData}
+\alias{peerj32}
 \title{Obtain the Lahti Microbiome and Lipid data}
 \usage{
 LahtiMLData()
 
 LahtiMData()
+
+peerj32()
 }
 \value{
 for  \code{LahtiMLData} a \linkS4class{MultiAssayExperiment} object
