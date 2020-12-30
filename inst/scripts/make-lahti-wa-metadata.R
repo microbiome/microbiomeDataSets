@@ -46,6 +46,6 @@ df$Species <- "Homo sapiens"
 df$TaxonomyId <- "9606"
 df$SourceVersion <- Sys.time()
 df$Genome <- NA
-df$Tags <- paste0(df$Tags,"Microbiome")
+df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 
 write.csv(df, file = "inst/extdata/metadata-lahti-wa.csv", row.names = FALSE)

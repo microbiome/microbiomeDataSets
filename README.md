@@ -6,4 +6,4 @@ Run
 ```
 AnnotationHubData::makeAnnotationHubMetadata("../microbiomeDataSets","metadata.csv")
 ```
- to make sure that the metadata is valid.
+ to make sure that the individual metadata files are valid.
