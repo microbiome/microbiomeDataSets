@@ -48,6 +48,9 @@ follows.
 ```{r atlasdata, warning=FALSE, message=FALSE}
 # Data citation doi: 10.1038/ncomms5344
 microbiomeDataSets::LahtiWAData()
+
+# Alias
+microbiomeDataSets::atlas1006()
 ```
 
 
@@ -68,6 +71,9 @@ amplicon sequencing.
 ```{r dietswap2}
 # Data citation doi: 10.1038/ncomms7342
 microbiomeDataSets::OKeefeDSData()
+
+# Alias
+microbiomeDataSets::dietswap()
 ```
 
 
@@ -90,4 +96,7 @@ Load the data in R with:
 ```{r peerj2}
 # Data citation doi: 10.7717/peerj.32
 microbiomeDataSets::LahtiMLData()
+
+# Alias
+microbiomeDataSets::peerj32()
 ```
