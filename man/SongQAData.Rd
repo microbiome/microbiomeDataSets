@@ -4,6 +4,9 @@
 \alias{SongQAData}
 \alias{qa10934}
 \title{Obtain the Song quality assurance dataset}
+\source{
+https://qiita.ucsd.edu/study/description/10394
+}
 \usage{
 SongQAData()
 
