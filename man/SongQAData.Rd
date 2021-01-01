@@ -36,7 +36,10 @@ All data are downloaded from ExperimentHub and cached for local re-use.
 tse <- SongQAData()
 }
 \references{
-
+Preservation Methods Differ in Fecal Microbiome Stability, Affecting
+Suitability for Field Studies. Se Jin Song, Amnon Amir, Jessica L. Metcalf,
+Katherine R. Amato, Zhenjiang Zech Xu, Greg Humphrey, Rob Knight.
+mSystems May 2016, 1 (3) e00021-16; DOI: 10.1128/mSystems.00021-16
 }
 \author{
 Felix G.M. Ernst
