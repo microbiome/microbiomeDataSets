@@ -220,7 +220,7 @@
         refSeq <- Biostrings::readDNAStringSet(file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
         # refSeq <- hub[hub$rdatapath==file.path(base, sprintf("%srefseq.fasta.gz", prefix))][[1]]
         names <- names(refSeq)
-        if(!is.null(names) && all(grepl("_||_",names))){
+        if(!is.null(names) && all(grepl("_ \\|\\|_",names))){
             groups <- regmatches(names,regexec("(.+)_\\|\\|_.*",names))
             groups <- vapply(groups,"[[",character(1),2L)
             names <- regmatches(names,regexec(".*_\\|\\|_(.+)",names))
