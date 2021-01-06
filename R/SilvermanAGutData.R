@@ -21,7 +21,8 @@
 #' Row tree consists of a phylogenetic tree build using sequence information
 #' of 413 taxa.  
 #' 
-#'
+#' RefSeq consists of 413 sequences of features.
+#' 
 #' All data are downloaded from ExperimentHub and cached for local re-use.
 #'
 #' @return a \linkS4class{TreeSummarizedExperiment}
@@ -31,7 +32,6 @@
 #' @references
 #' Silveman J.D et al. (2018): Dynamic linear models guide design and 
 #' analysis of microbiota studies within artificial human guts. 
-#' Microbiome 6, 202.
 #' \emph{Microbiome} 6:202 \url{https://doi.org/10.1186/s40168-018-0584-3}
 #'
 #' @name SilvermanAGutData
@@ -40,13 +40,14 @@
 #' @examples
 #' tse <- SilvermanAGutData()
 SilvermanAGutData <- function() {
-    dataset <- "silverman-ag"
-    tse <- .create_tse(dataset,
-                       assays = c("counts"),
-                       has.rowdata = TRUE,
-                       has.coldata = TRUE,
-                       has.rowtree = TRUE)
-    tse
+  dataset <- "silverman-ag"
+  tse <- .create_tse(dataset,
+                     assays = c("counts"),
+                     has.rowdata = TRUE,
+                     has.coldata = TRUE,
+                     has.rowtree = TRUE,
+                     has.refseq = TRUE)
+  tse
 }
 
 #' @rdname SilvermanAGutData
