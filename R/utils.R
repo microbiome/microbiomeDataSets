@@ -1,4 +1,7 @@
 
+################################################################################
+# object creation 
+
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom MultiAssayExperiment MultiAssayExperiment
 .create_mae <- function(dataset,
@@ -50,12 +53,20 @@
                         assays = "counts",
                         has.rowdata = TRUE,
                         has.coldata = TRUE,
+                        has.rowtree = FALSE,
+                        has.coltree = FALSE,
+                        has.refseq = FALSE,
                         prefix = NULL) {
     assays <- .get_assays(dataset, hub, assays, prefix)
     args <- .get_col_row_map_data(dataset, hub, prefix,
                                   has.rowdata = has.rowdata,
                                   has.coldata = has.coldata)
-    do.call(TreeSummarizedExperiment, c(list(assays=assays), args))
+    tse <- do.call(TreeSummarizedExperiment, c(list(assays=assays), args))
+    tse <- .add_trees(dataset, hub, prefix = prefix,
+                      tse, has.rowtree, has.coltree)
+    tse <- .add_refseq(dataset, hub, prefix = prefix,
+                       tse, has.refseq)
+    tse
 }
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom SummarizedExperiment SummarizedExperiment
@@ -72,6 +83,9 @@
     do.call(SummarizedExperiment, c(list(assays=assays), args))
 }
 
+################################################################################
+# path utils
+
 .get_base_path <- function(dataset){
     paste0(file.path(system.file(package = "microbiomeDataSets",mustWork = FALSE),
                      "extdata","hub",dataset))
@@ -87,6 +101,9 @@
     prefix
 }
 
+################################################################################
+# assay data
+
 .get_assays <- function(dataset, hub, assays, prefix = NULL){
     base <- .get_base_path(dataset)
     prefix <- .norm_prefix(prefix)
@@ -98,6 +115,9 @@
     names(assay_list) <- assays
     assay_list
 }
+
+################################################################################
+# row, column and sample map data
 
 .get_col_row_map_data <- function(dataset, hub,
                                   prefix = NULL,
@@ -120,4 +140,96 @@
         # args$sampleMap <- hub[hub$rdatapath==file.path(base, sprintf("%ssamplemap.rds", prefix))][[1]]
     }
     args
+}
+
+################################################################################
+# tree data loading
+
+#' @importFrom ape read.tree
+#' @importFrom TreeSummarizedExperiment LinkDataFrame
+#' @importClassesFrom TreeSummarizedExperiment LinkDataFrame
+.get_tree_data <- function(dataset, hub,
+                           prefix = NULL,
+                           type = c("row","column")){
+    base <- .get_base_path(dataset)
+    prefix <- .norm_prefix(prefix)
+    name <- switch(type,
+                   row = "rowtree",
+                   column = "coltree")
+    tree <- ape::read.tree(file.path(base, sprintf("%s%s.tre.gz", prefix, name)))
+    links <- list()
+    if(file.exists(file.path(base, sprintf("%s%s_links.rds", prefix, name)))){
+        links <- readRDS(file.path(base, sprintf("%s%s_links.rds", prefix, name)))
+    }
+    # tree <- hub[hub$rdatapath==file.path(base, sprintf("%s%s.rds", prefix, name))][[1]]
+    # links <- hub[hub$rdatapath==file.path(base, sprintf("%s%s_links.rds", prefix, name))]
+    # if(length(links) > 0L){
+    #     links <- as(links[[1L]],"LinkDataFrame")
+    # }
+    
+    list(tree = tree, links = links)
+}
+
+#' @importFrom TreeSummarizedExperiment changeTree
+.add_tree <- function(tse, tree_data, type = c("row","column")){
+    if(length(tree_data$links) == 0L){
+        if(type == "row"){
+            tse <- changeTree(tse, rowTree = tree_data$tree)
+        } else {
+            tse <- changeTree(tse, colTree = tree_data$tree)
+        }
+    } else {
+        if(type == "row"){
+            tse@rowLinks <- tree_data$links
+            tse@rowTree <- tree_data$tree
+        } else {
+            tse@colinks <- tree_data$links
+            tse@colTree <- tree_data$tree
+        }
+    }
+    tse
+}
+
+.add_trees <- function(dataset, hub,
+                       prefix = NULL,
+                       tse,
+                       has.rowtree = FALSE,
+                       has.coltree = FALSE){
+    
+    if(has.rowtree){
+        tree_data <- .get_tree_data(dataset, hub, prefix = prefix, type = "row")
+        tse <- .add_tree(tse, tree_data = tree_data, type = "row")
+    }
+    if(has.coltree){
+        tree_data <- .get_tree_data(dataset, hub, prefix = prefix,
+                                    type = "column") 
+        tse <- .add_tree(tse, tree_data = tree_data, type = "column")
+    }
+    tse
+}
+
+################################################################################
+# reference sequence
+
+.add_refseq <- function(dataset, hub, prefix = NULL,
+                        tse,
+                        has.refseq = FALSE){
+    if(has.refseq){
+        base <- .get_base_path(dataset)
+        prefix <- .norm_prefix(prefix)
+        refSeq <- Biostrings::readDNAStringSet(file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
+        # refSeq <- hub[hub$rdatapath==file.path(base, sprintf("%srefseq.fasta.gz", prefix))][[1]]
+        names <- names(refSeq)
+        if(!is.null(names) && all(grepl("_||_",names))){
+            groups <- regmatches(names,regexec("(.+)_\\|\\|_.*",names))
+            groups <- vapply(groups,"[[",character(1),2L)
+            names <- regmatches(names,regexec(".*_\\|\\|_(.+)",names))
+            names <- vapply(names,"[[",character(1),2L)
+            names(refSeq) <- names
+            refSeq <- split(refSeq, factor(groups,unique(groups)))
+            names(refSeq) <- unique(groups)
+        }
+        referenceSeq(tse) <- refSeq
+    }
+    tse
 }
