@@ -17,21 +17,22 @@ Obtain the microbiome data from Silverman et al. (2018).
 }
 \details{
 The SilvermanAGutData dataset contains 16S rRNA gene based high-throughput
-profiling of 4 in vitro artificial gut models.
-The sampling was done hourly and daily to capture sub-daily dynamics of
-microbial community originating from human feces.
-The data consists of 413 taxa from 639 samples. The data set can be used to
-investigate longitudinal dynamics of microbial community in a controlled
-environment.
+profiling of 4 in vitro artificial gut models. The sampling was done hourly
+and daily to capture sub-daily dynamics of microbial community originating
+from human feces. The data consists of 413 taxa from 639 samples. The data
+set can be used to investigate longitudinal dynamics of microbial community
+in a controlled environment.
 
-Column metadata includes the days of sampling, vessel identifier, sampling frequency
-pre-post challenge with Bacteroides ovatus.
+Column metadata includes the days of sampling, vessel identifier, sampling
+frequency pre-post challenge with Bacteroides ovatus.
 
-Row metadata of the microbiome data contains taxonomic information on the
+The wow metadata of the microbiome data contains taxonomic information on the
 Kingdom, Phylum, Class, Order, Family and Genus and Species level.
 
-Row tree consists of a phylogenetic tree build using sequence information
+The row tree consists of a phylogenetic tree build using sequence information
 of 413 taxa.
+
+As reference sequences the ASV are provided.
 
 All data are downloaded from ExperimentHub and cached for local re-use.
 }
@@ -41,7 +42,6 @@ tse <- SilvermanAGutData()
 \references{
 Silveman J.D et al. (2018): Dynamic linear models guide design and
 analysis of microbiota studies within artificial human guts.
-Microbiome 6, 202.
 \emph{Microbiome} 6:202 \url{https://doi.org/10.1186/s40168-018-0584-3}
 }
 \author{
