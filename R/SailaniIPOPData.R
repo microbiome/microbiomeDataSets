@@ -70,26 +70,3 @@ SailaniIPOPData <- function() {
 }
 
 
-# #' @rdname SailaniIPOPData
-# #' @importFrom SummarizedExperiment colData<-
-# #' @export
-
-SailaniIPOPData <- function() {
-    dataset <- "sailani-ipop"
-    hub <- ExperimentHub()
-    tse <- .create_tse(dataset,
-                       hub = hub,
-                       assays = c("relabundance"),
-                       has.rowdata = FALSE,
-                       has.coldata = TRUE) #"$Microbiota"
-    args <- .get_col_row_map_data(dataset,
-                                  hub = hub,
-                                  has.rowdata = FALSE,
-                                  has.coldata = TRUE)
-    colData(tse) <- args$colData
-    tse
-}
-
-#' @rdname SailaniIPOPData
-#' @export
-sailaniipop <- SailaniIPOPData

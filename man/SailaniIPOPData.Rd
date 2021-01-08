@@ -2,12 +2,9 @@
 % Please edit documentation in R/SailaniIPOPData.R
 \name{SailaniIPOPData}
 \alias{SailaniIPOPData}
-\alias{sailaniipop}
 \title{Obtain the Sailani deep longitudinal multiomics data}
 \usage{
 SailaniIPOPData()
-
-sailaniipop()
 }
 \value{
 for  \code{SailaniIPOPData} a \linkS4class{MultiAssayExperiment} object
