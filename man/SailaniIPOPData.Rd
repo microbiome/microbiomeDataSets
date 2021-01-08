@@ -11,7 +11,8 @@ sailaniipop()
 }
 \value{
 for  \code{SailaniIPOPData} a \linkS4class{MultiAssayExperiment} object
-consisting of seven \linkS4class{SummarizedExperiment} objects.
+consisting of two \linkS4class{TreeSummarizedExperiment} objects and
+five \linkS4class{SummarizedExperiment} objects.
 }
 \description{
 Obtain the deep longitudinal multiomics data from Sailani et al. (2020).

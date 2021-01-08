@@ -21,7 +21,8 @@
 #' All data are downloaded from ExperimentHub and cached for local re-use.
 #'
 #' @return for  \code{SailaniIPOPData} a \linkS4class{MultiAssayExperiment} object
-#'   consisting of seven \linkS4class{SummarizedExperiment} objects.
+#'   consisting of two \linkS4class{TreeSummarizedExperiment} objects and 
+#'   five \linkS4class{SummarizedExperiment} objects.
 #'
 #' @author Sudarshan Shetty and Felix G.M. Ernst
 #'
@@ -42,8 +43,8 @@
 #' #tse <- SailaniIPOPData()
 SailaniIPOPData <- function() {
     mae <- .create_mae("sailani-ipop",
-                       types = list(gutMicrobiota = list("SE" = c("relabundance")),
-                                    nasalMicrobiota = list("SE" = c("relabundance")),
+                       types = list(gutMicrobiota = list("TSE" = c("relabundance")),
+                                    nasalMicrobiota = list("TSE" = c("relabundance")),
                                     hostTranscriptome = list("SE" = c("counts")),
                                     hostProteome = list("SE" = c("counts")),
                                     hostMetabolome = list("SE" = c("counts")),
@@ -73,22 +74,21 @@ SailaniIPOPData <- function() {
 # #' @importFrom SummarizedExperiment colData<-
 # #' @export
 
-#SailaniIPOPData <- function() {
-#    dataset <- "sailani-ipop"
-#    hub <- ExperimentHub()
-#    tse <- .create_tse(dataset,
-#                       hub = hub,
-#                       assays = c("counts"),
-#                       has.rowdata = TRUE,
-#                       has.coldata = FALSE,
-#                       prefix = "gutMicrobiota")
-#    args <- .get_col_row_map_data(dataset,
-#                                  hub = hub,
-#                                  has.rowdata = FALSE,
-#                                  has.coldata = TRUE)
-#    colData(tse) <- args$colData
-#    tse
-#}
+SailaniIPOPData <- function() {
+    dataset <- "sailani-ipop"
+    hub <- ExperimentHub()
+    tse <- .create_tse(dataset,
+                       hub = hub,
+                       assays = c("relabundance"),
+                       has.rowdata = FALSE,
+                       has.coldata = TRUE) #"$Microbiota"
+    args <- .get_col_row_map_data(dataset,
+                                  hub = hub,
+                                  has.rowdata = FALSE,
+                                  has.coldata = TRUE)
+    colData(tse) <- args$colData
+    tse
+}
 
 #' @rdname SailaniIPOPData
 #' @export
