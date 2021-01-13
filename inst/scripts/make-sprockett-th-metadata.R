@@ -49,7 +49,7 @@ df <- rbind(
                   RDataPath = "microbiomeDataSets/sprockett-th/rowtree.tre.gz",
                   Tags = NA)),
   cbind(df_Base,
-        DataFrame(Title = "Sprockett Tsimane Horticulturalists tree data",
+        DataFrame(Title = "Sprockett Tsimane Horticulturalists reference sequence data",
                   Description = paste0("Reference sequences data for the Sprockett dataset"),
                   SourceType = "TXT",
                   RDataClass = NA,
