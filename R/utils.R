@@ -212,6 +212,7 @@
 # reference sequence
 
 #' @importFrom Biostrings readDNAStringSet
+#' @importFrom TreeSummarizedExperiment referenceSeq<- 
 .add_refseq <- function(dataset, hub, prefix = NULL,
                         tse,
                         has.refseq = FALSE){
