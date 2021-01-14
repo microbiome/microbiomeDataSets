@@ -62,10 +62,10 @@
                                   has.rowdata = has.rowdata,
                                   has.coldata = has.coldata)
     tse <- do.call(TreeSummarizedExperiment, c(list(assays=assays), args))
-    tse <- .add_trees(dataset, hub, prefix = prefix,
-                      tse, has.rowtree, has.coltree)
     tse <- .add_refseq(dataset, hub, prefix = prefix,
                        tse, has.refseq)
+    tse <- .add_trees(dataset, hub, prefix = prefix,
+                      tse, has.rowtree, has.coltree)
     tse
 }
 #' @importFrom ExperimentHub ExperimentHub
@@ -156,7 +156,7 @@
     name <- switch(type,
                    row = "rowtree",
                    column = "coltree")
-    tree <- ape::read.tree(file.path(base, sprintf("%s%s.tre.gz", prefix, name)))
+    tree <- read.tree(file.path(base, sprintf("%s%s.tre.gz", prefix, name)))
     links <- list()
     if(file.exists(file.path(base, sprintf("%s%s_links.rds", prefix, name)))){
         links <- readRDS(file.path(base, sprintf("%s%s_links.rds", prefix, name)))
@@ -181,10 +181,10 @@
     } else {
         if(type == "row"){
             tse@rowLinks <- tree_data$links
-            tse@rowTree <- tree_data$tree
+            tse@rowTree$phylo <- tree_data$tree
         } else {
             tse@colinks <- tree_data$links
-            tse@colTree <- tree_data$tree
+            tse@colTree$phylo <- tree_data$tree
         }
     }
     tse
@@ -211,13 +211,14 @@
 ################################################################################
 # reference sequence
 
+#' @importFrom Biostrings readDNAStringSet
 .add_refseq <- function(dataset, hub, prefix = NULL,
                         tse,
                         has.refseq = FALSE){
     if(has.refseq){
         base <- .get_base_path(dataset)
         prefix <- .norm_prefix(prefix)
-        refSeq <- Biostrings::readDNAStringSet(file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
+        refSeq <- readDNAStringSet(file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
         # refSeq <- hub[hub$rdatapath==file.path(base, sprintf("%srefseq.fasta.gz", prefix))][[1]]
         names <- names(refSeq)
         if(!is.null(names) && all(grepl("_ \\|\\|_",names))){
