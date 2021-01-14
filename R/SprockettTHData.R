@@ -19,7 +19,8 @@
 #' lowest taxonomic rank.  
 #' 
 #' The row tree consists of a phylogenetic tree build using sequence 
-#' information of 2319 taxa.  
+#' information of 2319 taxa.    
+#' 
 #' 
 #' As reference sequences the ASV are provided.
 #' 
