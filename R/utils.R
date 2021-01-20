@@ -1,3 +1,24 @@
+#' Load available microbiome data sets
+#' 
+#' To list the available datasets in \code{microbiomeDataSets},
+#' run \code{availableDataSets}.
+#' 
+#' For information visit the individual man pages.
+#' 
+#' @return 
+#' A \code{data.frame} containing the following columns:
+#' \itemize{
+#'   \item{Dataset:} {the name of the function to load a dataset}
+#' }
+#' 
+#' @export
+#' 
+#' @examples
+#' availableDataSets()
+availableDataSets <- function(){
+    file <- system.file("extdata","datasets.csv",package = "microbiomeDataSets")
+    read.csv(file, stringsAsFactors = FALSE)
+}
 
 ################################################################################
 # ExperimentHub data loading
@@ -181,10 +202,10 @@
     # if(file.exists(file.path(base, sprintf("%s%s_links.rds", prefix, name)))){
     #     links <- readRDS(file.path(base, sprintf("%s%s_links.rds", prefix, name)))
     # }
-    tree_path <- file.path(base, sprintf("%s%s.rds", prefix, name))
-    links_path <- file.path(base, sprintf("%s%s_links.rds", prefix, name))
-    tree <- .get_res_by_path(hub, tree_path)
-    links <- .get_res_by_path(hub, links_path, failOnError = FALSE)
+    tree <- file.path(base, sprintf("%s%s.tre.gz", prefix, name))
+    links <- file.path(base, sprintf("%s%s_links.rds", prefix, name))
+    tree <- read.tree(.get_res_by_path(hub, tree))
+    links <- .get_res_by_path(hub, links, failOnError = FALSE)
     if(!is.null(links)){
         links <- as(links,"LinkDataFrame")
     }
@@ -242,8 +263,9 @@
         base <- .get_base_path(dataset)
         prefix <- .norm_prefix(prefix)
         # refSeq <- readDNAStringSet(file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
-        refSeq <- .get_res_by_path(hub,
-                                   file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
+        refSeq <- file.path(base, sprintf("%srefseq.fasta.gz", prefix))
+        refSeq <- .get_res_by_path(hub,refSeq)
+        refSeq <- readDNAStringSet(refSeq)
         names <- names(refSeq)
         if(!is.null(names) && all(grepl("_ \\|\\|_",names))){
             groups <- regmatches(names,regexec("(.+)_\\|\\|_.*",names))

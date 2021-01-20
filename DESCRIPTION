@@ -30,6 +30,7 @@ Depends:
     MultiAssayExperiment
 Imports:
     methods,
+    BiocGenerics,
     ExperimentHub,
     Biostrings,
     ape

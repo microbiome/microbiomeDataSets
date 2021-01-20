@@ -24,82 +24,70 @@ knitr::opts_chunk$set(
 library(microbiomeDataSets)
 ```
 
-
 # Microbiome example data sets
 
 The data sets are primarily named by the first author of the
 associated publication, together with a descriptive suffix. Aliases
 are provided for some of the data sets.
 
+A table of the available data sets is available through the `availableDataSets`
+function.
+
+```{r}
+availableDataSets()
+```
+
+The data is usually loaded as a `r Biocpkg("TreeSummarizedExperiment")` or a
+`r Biocpkg("MultiAssayExperiment")`, if microbiome associated data was used
+in the respective study. For more information on how to use these objects,
+please refer to the vignettes of the packages.
+
+## HIT Chip Data
+
+The following data sets are based on the Human Intestinal Tract (HIT)Chip
+phylogenetic 16S microarray [(Rajilić‐Stojanović _et al._
+2009)](https://doi.org/10.1111/j.1462-2920.2009.01900.x). This profiling
+technology differs from the more widely used 16S rRNA amplicon sequencing.
+
+Since the data is also available in phyloseq format through the microbiome R
+package and are referenced usually via aliases, they are described in more
+detail.
 
 ### Intestinal microbiota profiling of 1006 Western adults
 
-This data set from [Lahti et al. Nat. Comm. 5:4344, 2014](http://www.nature.com/ncomms/2014/140708/ncomms5344/full/ncomms5344.html) comes with 130 genus-like taxonomic groups across 1006 western adults with no reported health complications. Some subjects have also short time series.
-
-This data set is based on the Human Intestinal Tract (HIT)Chip
-phylogenetic 16S microarray [(Rajilić‐Stojanović _et al._
-2009)](https://doi.org/10.1111/j.1462-2920.2009.01900.x). This
-profiling technology differs from the more widely used 16S rRNA
-amplicon sequencing.
-
-The HITChip Atlas data set is available via ExperimentHub in
-TreeSummarizedExperiment format. This data is also available in
-phyloseq format through the microbiome R package, and via [Data
-Dryad](http://doi.org/10.5061/dryad.pk75d) in tabular format.
-
-The data can be loaded in R in TreeSummarizedExperiment format as
-follows.
+This data set from [Lahti et al. Nat. Comm. 5:4344, 2014](http://www.nature.com/ncomms/2014/140708/ncomms5344/full/ncomms5344.html)
+comes with 130 genus-like taxonomic groups across 1006 western adults with no
+reported health complications. Some subjects have also short time series.
 
 ```{r atlasdata, warning=FALSE, message=FALSE}
-# Data citation doi: 10.1038/ncomms5344
-microbiomeDataSets::LahtiWAData()
+LahtiWAData()
 
 # Alias
-# microbiomeDataSets::atlas1006()
+# atlas1006()
 ```
 
 ### Diet swap between Rural and Western populations
 
-A two-week diet swap study between western (USA) and traditional
-(rural Africa) diets, reported in [O'Keefe et al. Nat. Comm. 6:6342,
-2015](http://dx.doi.org/10.1038/ncomms7342). The data is also
-available for download from [Data
-Dryad](http://dx.doi.org/10.5061/dryad.1mn1n). 
-
-This data set is based on the Human Intestinal Tract (HIT)Chip
-phylogenetic 16S microarray [(Rajilić‐Stojanović _et al._
-2009)](https://doi.org/10.1111/j.1462-2920.2009.01900.x). This
-profiling technology differs from the more widely used 16S rRNA
-amplicon sequencing.
+A two-week diet swap study between western (USA) and traditional (rural Africa)
+diets, reported in [O'Keefe et al. Nat. Comm. 6:6342, 2015](http://dx.doi.org/10.1038/ncomms7342).
 
 ```{r dietswap}
-# Data citation doi: 10.1038/ncomms7342
-microbiomeDataSets::OKeefeDSData()
+OKeefeDSData()
 
 # Alias
-# microbiomeDataSets::dietswap()
+# dietswap()
 ```
 
 ### Intestinal microbiota versus blood metabolites
 
-Data set from [Lahti et al. PeerJ 1:e32,
-2013](https://doi.org/10.7717/peerj.32) characterizes associations
-between human intestinal microbiota and blood serum lipids. Note that
-this data set contains an additional assay of lipid species, and is
-therefore provided as MultiAssayExperiment object.
-
-This data set is based on the Human Intestinal Tract (HIT)Chip
-phylogenetic 16S microarray [(Rajilić‐Stojanović _et al._
-2009)](https://doi.org/10.1111/j.1462-2920.2009.01900.x). This
-profiling technology differs from the more widely used 16S rRNA
-amplicon sequencing.
-
-Load the data in R with:
+Data set from [Lahti et al. PeerJ 1:e32, 2013](https://doi.org/10.7717/peerj.32)
+characterizes associations between human intestinal microbiota and blood serum
+lipids. Note that this data set contains an additional assay of lipid species,
+and is therefore provided as `MultiAssayExperiment` object.
 
 ```{r peerj}
-# Data citation doi: 10.7717/peerj.32
-microbiomeDataSets::LahtiMLData()
+LahtiMLData()
 
 # Alias
-# microbiomeDataSets::peerj32()
+# peerj32()
 ```
