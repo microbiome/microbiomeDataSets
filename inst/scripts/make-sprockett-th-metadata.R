@@ -49,7 +49,7 @@ df <- rbind(
         DataFrame(Title = "Sprockett Tsimane Horticulturalists tree data",
                   Description = paste0("Feature tree data for the Sprockett dataset"),
                   SourceType = "TXT",
-                  RDataClass = NA,
+                  RDataClass = "character",
                   DispatchClass = "FilePath",
                   RDataPath = paste0(path,"sprockett-th/rowtree.tre.gz"),
                   Tags = NA)),
@@ -57,7 +57,7 @@ df <- rbind(
         DataFrame(Title = "Sprockett Tsimane Horticulturalists reference sequence data",
                   Description = paste0("Reference sequences data for the Sprockett dataset"),
                   SourceType = "TXT",
-                  RDataClass = NA,
+                  RDataClass = "character",
                   DispatchClass = "FilePath",
                   RDataPath = paste0(path,"sprockett-th/refseq.fasta.gz"),
                   Tags = NA))
