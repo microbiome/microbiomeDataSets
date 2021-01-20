@@ -42,7 +42,7 @@
 #' @examples
 #' tse <- OKeefeDSData()
 OKeefeDSData <- function() {
-    dataset <- "okeefe-ds"
+    dataset <- "3.13/okeefe-ds"
     tse <- .create_tse(dataset,
                        assays = c("counts"),
                        has.rowdata = TRUE,

@@ -50,7 +50,7 @@
 #' @examples
 #' tse <- SprockettTHData()
 SprockettTHData <- function() {
-  dataset <- "sprockett-th"
+  dataset <- "3.13/sprockett-th"
   tse <- .create_tse(dataset,
                      assays = c("counts"),
                      has.rowdata = TRUE,

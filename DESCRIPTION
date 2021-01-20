@@ -21,6 +21,7 @@ License: CC0
 Encoding: UTF-8
 LazyData: false
 biocViews:
+    ExperimentHub,
     ExperimentData
 Depends:
     R (>= 4.0),
@@ -28,6 +29,7 @@ Depends:
     TreeSummarizedExperiment,
     MultiAssayExperiment
 Imports:
+    methods,
     ExperimentHub,
     Biostrings,
     ape
