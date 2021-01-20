@@ -2,8 +2,11 @@
 # Base data for all data sets --------------------------------------------------
 library(S4Vectors)
 
+BiocVersion <- "3.13"
+path <- paste0("microbiomeDataSets/",BiocVersion,"/")
+
 df_Base <- DataFrame(
-    BiocVersion = "3.13",
+    BiocVersion = BiocVersion,
     SourceVersion = NA,
     Coordinate_1_based = TRUE,
     Species = "Homo sapiens",
@@ -15,6 +18,8 @@ df_Base <- DataFrame(
     Maintainer = "Leo Lahti <leo.lahti@iki.fi>"
 )
 
+#
+
 df <- rbind(
     cbind(df_Base,
           DataFrame(Title = "Lahti ML microbiome counts",
@@ -22,7 +27,7 @@ df <- rbind(
                     SourceType = "CSV",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/lahti-ml/microbiome_counts.rds",
+                    RDataPath = paste0(path,"lahti-ml/microbiome_counts.rds"),
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Lahti ML microbiome row data",
@@ -30,7 +35,7 @@ df <- rbind(
                     SourceType = "CSV",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/lahti-ml/microbiome_rowdata.rds",
+                    RDataPath = paste0(path,"lahti-ml/microbiome_rowdata.rds"),
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Lahti ML lipids counts",
@@ -38,7 +43,7 @@ df <- rbind(
                     SourceType = "CSV",
                    RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/lahti-ml/lipids_counts.rds",
+                    RDataPath = paste0(path,"lahti-ml/lipids_counts.rds"),
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Lahti ML sample data",
@@ -46,10 +51,11 @@ df <- rbind(
                     SourceType = "CSV",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/lahti-ml/coldata.rds",
+                    RDataPath = paste0(path,"lahti-ml/coldata.rds"),
                     Tags = NA))
 )
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 
-write.csv(df, file = "inst/extdata/3.13/metadata-lahti-ml.csv", row.names = FALSE)
+write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-lahti-ml.csv"),
+          row.names = FALSE)

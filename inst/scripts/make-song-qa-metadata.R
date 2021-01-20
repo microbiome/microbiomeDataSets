@@ -2,8 +2,11 @@
 # Base data for all data sets --------------------------------------------------
 library(S4Vectors)
 
+BiocVersion <- "3.13"
+path <- paste0("microbiomeDataSets/",BiocVersion,"/")
+
 df_Base <- DataFrame(
-    BiocVersion = "3.13",
+    BiocVersion = BiocVersion,
     SourceVersion = NA,
     Coordinate_1_based = TRUE,
     Species = "Homo sapiens",
@@ -15,6 +18,8 @@ df_Base <- DataFrame(
     Maintainer = "Felix GM Ernst <felix.gm.ernst@outlook.com>"
 )
 
+#
+
 df <- rbind(
     cbind(df_Base,
           DataFrame(Title = "Song et al. 2012 dataset OTU count matrix",
@@ -22,7 +27,7 @@ df <- rbind(
                     SourceType = "CSV",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/song-qa/counts.rds",
+                    RDataPath = paste0(path,"song-qa/counts.rds"),
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Song et al. 2012 dataset row data",
@@ -30,7 +35,7 @@ df <- rbind(
                     SourceType = "CSV",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/song-qa/rowdata.rds",
+                    RDataPath = paste0(path,"song-qa/rowdata.rds"),
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Song et al. 2012 dataset sample data",
@@ -38,7 +43,7 @@ df <- rbind(
                     SourceType = "CSV",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
-                    RDataPath = "microbiomeDataSets/song-qa/coldata.rds",
+                    RDataPath = paste0(path,"song-qa/coldata.rds"),
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Song et al. 2012 dataset feature tree",
@@ -46,10 +51,11 @@ df <- rbind(
                     SourceType = "TXT",
                     RDataClass = NA,
                     DispatchClass = "FilePath",
-                    RDataPath = "microbiomeDataSets/song-qa/rowtree.tre.gz",
+                    RDataPath = paste0(path,"song-qa/rowtree.tre.gz"),
                     Tags = NA))
 )
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 
-write.csv(df, file = "inst/extdata/3.13/metadata-song-qa.csv", row.names = FALSE)
+write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-song-qa.csv"),
+          row.names = FALSE)

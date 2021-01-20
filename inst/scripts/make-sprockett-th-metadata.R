@@ -2,8 +2,11 @@
 # Base data for all data sets --------------------------------------------------
 library(S4Vectors)
 
+BiocVersion <- "3.13"
+path <- paste0("microbiomeDataSets/",BiocVersion,"/")
+
 df_Base <- DataFrame(
-  BiocVersion = "3.13",
+  BiocVersion = BiocVersion,
   SourceVersion = NA,
   Coordinate_1_based = TRUE,
   Species = "Homo sapiens",
@@ -15,6 +18,8 @@ df_Base <- DataFrame(
   Maintainer = "Sudarshan Shetty <sudarshanshetty9@gmail.com>"
 )
 
+#
+
 df <- rbind(
   cbind(df_Base,
         DataFrame(Title = "Sprockett Tsimane Horticulturalists microbiome counts",
@@ -22,7 +27,7 @@ df <- rbind(
                   SourceType = "CSV",
                   RDataClass = "matrix",
                   DispatchClass = "Rds",
-                  RDataPath = "microbiomeDataSets/sprockett-th/counts.rds",
+                  RDataPath = paste0(path,"sprockett-th/counts.rds"),
                   Tags = NA)),
   cbind(df_Base,
         DataFrame(Title = "Sprockett Tsimane Horticulturalists row data",
@@ -30,7 +35,7 @@ df <- rbind(
                   SourceType = "CSV",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
-                  RDataPath = "microbiomeDataSets/sprockett-th/rowdata.rds",
+                  RDataPath = paste0(path,"sprockett-th/rowdata.rds"),
                   Tags = NA)),
   cbind(df_Base,
         DataFrame(Title = "Sprockett Tsimane Horticulturalists sample data",
@@ -38,7 +43,7 @@ df <- rbind(
                   SourceType = "CSV",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
-                  RDataPath = "microbiomeDataSets/sprockett-th/coldata.rds",
+                  RDataPath = paste0(path,"sprockett-th/coldata.rds"),
                   Tags = NA)),
   cbind(df_Base,
         DataFrame(Title = "Sprockett Tsimane Horticulturalists tree data",
@@ -46,7 +51,7 @@ df <- rbind(
                   SourceType = "TXT",
                   RDataClass = NA,
                   DispatchClass = "FilePath",
-                  RDataPath = "microbiomeDataSets/sprockett-th/rowtree.tre.gz",
+                  RDataPath = paste0(path,"sprockett-th/rowtree.tre.gz"),
                   Tags = NA)),
   cbind(df_Base,
         DataFrame(Title = "Sprockett Tsimane Horticulturalists reference sequence data",
@@ -54,10 +59,11 @@ df <- rbind(
                   SourceType = "TXT",
                   RDataClass = NA,
                   DispatchClass = "FilePath",
-                  RDataPath = "microbiomeDataSets/sprockett-th/refseq.fasta.gz",
+                  RDataPath = paste0(path,"sprockett-th/refseq.fasta.gz"),
                   Tags = NA))
 )
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 
-write.csv(df, file = "inst/extdata/3.13/metadata-sprockett-th.csv", row.names = FALSE)
+write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-sprockett-th.csv"),
+          row.names = FALSE)
