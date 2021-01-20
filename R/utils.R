@@ -13,6 +13,8 @@
 #' 
 #' @export
 #' 
+#' @importFrom utils read.csv
+#' 
 #' @examples
 #' availableDataSets()
 availableDataSets <- function(){
