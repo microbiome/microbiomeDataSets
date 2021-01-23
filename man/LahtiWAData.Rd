@@ -21,7 +21,7 @@ with HITChip for 1006 western adults with no reported health complications,
 reported in Lahti et al. (2014).
 
 This data set is based on the Human Intestinal Tract (HIT)Chip
-phylogenetic 16S microarray (Rajilić‐Stojanović \emph{et al.} 2009.
+phylogenetic 16S microarray (Rajilic-Stojanovic \emph{et al.} 2009.
 This profiling technology differs from the more widely used 16S rRNA
 amplicon sequencing.
 
@@ -42,10 +42,10 @@ Lahti L et al. (2014): Tipping elements in the human intestinal ecosystem.
 \emph{Nature Communications} 5:4344 (2014)
 \url{https://doi.org/10.1038/ncomms5344}
 
-Rajilić-Stojanović M, Heilig HG, Molenaar D, Kajander K, Surakka A, Smidt H,
-de Vos WM (2009). Development and application of the human intestinal tract chip, a
-phylogenetic microarray: analysis of universally conserved phylotypes in the
-abundant microbiota of young and elderly adults.
+Rajilic-Stojanovic M, Heilig HG, Molenaar D, Kajander K, Surakka A, Smidt H,
+de Vos WM (2009). Development and application of the human intestinal tract
+chip, a phylogenetic microarray: analysis of universally conserved phylotypes
+in the abundant microbiota of young and elderly adults.
 \emph{Environ Microbiol.} 11(7):1736-51
 \url{https://doi.org/10.1111/j.1462-2920.2009.01900.x}
 }

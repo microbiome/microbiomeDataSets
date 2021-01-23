@@ -45,7 +45,7 @@ please refer to the vignettes of the packages.
 ## HIT Chip Data
 
 The following data sets are based on the Human Intestinal Tract (HIT)Chip
-phylogenetic 16S microarray [(Rajilić‐Stojanović _et al._
+phylogenetic 16S microarray [(Rajilić-Stojanović _et al._
 2009)](https://doi.org/10.1111/j.1462-2920.2009.01900.x). This profiling
 technology differs from the more widely used 16S rRNA amplicon sequencing.
 
