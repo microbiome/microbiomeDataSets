@@ -1,6 +1,7 @@
 Package: microbiomeDataSets
 Title: Experiment Hub based microbiome datasets
-Version: 0.99.0
+Version: 0.99.1
+Date: 2021-01-23
 Authors@R: 
     c(person(given = "Felix G.M.", family = "Ernst", role = c("aut", "cre"),
              email = "felix.gm.ernst@outlook.com",
