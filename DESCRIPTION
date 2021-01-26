@@ -1,7 +1,6 @@
 Package: microbiomeDataSets
 Title: Experiment Hub based microbiome datasets
-Version: 0.99.2
-Date: 2021-01-23
+Version: 0.99.3
 Authors@R: 
     c(person(given = "Felix G.M.", family = "Ernst", role = c("aut", "cre"),
              email = "felix.gm.ernst@outlook.com",
@@ -20,14 +19,13 @@ Description:
     additions from authors are welcome.
 License: CC0
 Encoding: UTF-8
-LazyData: false
 biocViews:
     ExperimentHub,
     ExperimentData,
     MicrobiomeData,
     SequencingData
 Depends:
-    R (>= 4.1),
+    R (>= 4.0),
     SummarizedExperiment,
     TreeSummarizedExperiment,
     MultiAssayExperiment
