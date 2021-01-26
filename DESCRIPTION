@@ -25,7 +25,7 @@ biocViews:
     MicrobiomeData,
     SequencingData
 Depends:
-    R (>= 4.0),
+    R (>= 4.1),
     SummarizedExperiment,
     TreeSummarizedExperiment,
     MultiAssayExperiment
