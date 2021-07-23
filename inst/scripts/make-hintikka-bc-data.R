@@ -17,7 +17,8 @@ meta <- read_excel("Otut_abundanssit_metadata_ok.xlsx", sheet = "Metadata") %>%
          rename(Site = "Suolen osa") %>%
 	 rename(Sample = Rat) %>% # These are sample IDs
          mutate(Rat = str_remove(Sample, "^[P|C]")) %>%	 # These are subject IDs 
-	 mutate(Fat = factor(str_trim(str_remove(str_remove(Diet, "\\+ XOS"), "-fat")), levels = c("Low", "High"))) %>%
+	 mutate(Fat = factor(str_trim(str_remove(str_remove(Diet, "\\+ XOS"), "-fat")),
+             levels = c("Low", "High"))) %>%
 	 mutate(XOS = as.numeric(str_replace(replace_na(str_match(meta$Diet, "XOS"), 0), "XOS", "1")))
 	 
 # Read microbiota data
@@ -56,7 +57,7 @@ colnames(bm) <- meta_cecum$Sample
 nmr$Rat <- NULL # Can be removed after matching
 nmr <- t(nmr) # features x samples
 
-
+# Save the data components
 saveRDS(otu_cecum, file = "microbiome_counts.rds")
 saveRDS(tax, file = "microbiome_rowdata.rds")
 saveRDS(meta_cecum, file = "coldata.rds")

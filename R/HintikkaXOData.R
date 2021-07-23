@@ -28,7 +28,8 @@
 #' @author Leo Lahti
 #'
 #' @references
-#' Hintikka L et al. (2021): Xylo-oligosaccharides in prevention of hepatic steatosis and adipose tissue inflammation:
+#' Hintikka L et al. (2021): Xylo-oligosaccharides in prevention of hepatic steatosis and
+#' adipose tissue inflammation:
 #' associating taxonomic and metabolomic patterns in fecal microbiomes with biclustering.  
 #' \emph{International Journal of Environmental Research and Public Health} 18(8):4049
 #' \url{https://doi.org/10.3390/ijerph18084049}
