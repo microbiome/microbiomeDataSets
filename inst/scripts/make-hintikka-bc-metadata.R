@@ -16,14 +16,14 @@ df_Base <- DataFrame(
     Genome = NA,
     SourceUrl = "https://ndownloader.figshare.com/files/",
     DataProvider = "University of Jyvaskyla",
-    Maintainer = "Leo Lahti <leo.lahti@iki.fi>"
+    Maintainer = "Leo Lahti <leo.lahti@utu.fi>"
 )
 
 
 df <- rbind(
     cbind(df_Base,
           DataFrame(Title = "Hintikka XO microbiome counts",
-                    Description = paste0("Count matrix for the Hintikka microbiome dataset"),
+                    Description = paste0("Count matrix for the HintikkaXO microbiome dataset"),
                     SourceType = "XLSX",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
@@ -31,7 +31,7 @@ df <- rbind(
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Hintikka XO microbiome row data",
-                    Description = paste0("Row data for the Hintikka microbiome dataset"),
+                    Description = paste0("Row data for the HintikkaXO microbiome dataset"),
                     SourceType = "XLSX",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
@@ -39,7 +39,7 @@ df <- rbind(
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Hintikka XO metabolites counts",
-                    Description = paste0("Count matrix for the Hintikka metabolites dataset"),
+                    Description = paste0("Count matrix for the HintikkaXO metabolites dataset"),
                     SourceType = "XLSX",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
@@ -47,7 +47,7 @@ df <- rbind(
                     Tags = NA)),
     cbind(df_Base,
           DataFrame(Title = "Hintikka XO sample data",
-                    Description = paste0("Sample data for the Hintikka dataset"),
+                    Description = paste0("Sample data for the HintikkaXO dataset"),
                     SourceType = "XLSX",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",

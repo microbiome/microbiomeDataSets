@@ -29,7 +29,7 @@ against the `master` branch and then merged to `master` for the next release.
 (https://guides.github.com/introduction/flow/)
 
 Resources on how data is added to Bioconductor's ExperimentHub backend and
-accessed are available from Bioconductor [here](https://bioconductor.org/packages/release/bioc/vignettes/ExperimentHub/inst/doc/ExperimentHub.html)
+accessed are available from Bioconductor [ExperimentHub documentation](https://bioconductor.org/packages/release/bioc/vignettes/ExperimentHub/inst/doc/ExperimentHub.html) and in [Creating ExperimentHub Package](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/CreateAHubPackage.html).
 
 Basic steps:
 
