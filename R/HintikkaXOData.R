@@ -22,7 +22,7 @@
 #' 
 #' All data are downloaded from ExperimentHub and cached for local re-use.
 #'
-#' @return for  \code{HintikkaXOData} a \linkS4class{TreeSummarizedExperiment}
+#' @return for  \code{HintikkaXOData} a \linkS4class{SummarizedExperiment}
 #'   is provided with the altExp objects.
 #'
 #' @author Leo Lahti
@@ -43,29 +43,29 @@
 HintikkaXOData <- function() {
 
     dataset <- "3.13/hintikka-xo"
-    tse <- .create_tse(dataset,
+    se <- .create_se(dataset,
                        assays = c("counts"),
                        has.rowdata = TRUE,
                        has.coldata = TRUE)
 
 
-    tse <- TreeSummarizedExperiment(assays = list(counts = otu_cecum),
+    tse <- SummarizedExperiment(assays = list(counts = otu_cecum),
                            colData = meta_cecum,
                            rowData = tax)
 
-    # Create TSE objects
-    bm <- TreeSummarizedExperiment(bm) # Convert to SE
-    nmr <- TreeSummarizedExperiment(nmr)
+    # Create SE objects
+    bm  <- SummarizedExperiment(bm)
+    nmr <- SummarizedExperiment(nmr)
 
     library(SingleCellExperiment)
 
     # Add Biomarkers as "alternative experiment":
-    altExp(tse, "Biomarkers") <- bm
+    altExp(se, "Biomarkers") <- bm
 
     # Add NMR metabolite abundances as "alternative experiment":
-    altExp(tse, "NMR") <- nmr
+    altExp(se, "NMR") <- nmr
 
-    tse
+    se
 
 }
 
