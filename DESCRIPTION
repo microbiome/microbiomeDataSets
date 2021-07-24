@@ -9,7 +9,10 @@ Authors@R:
              comment = c(ORCID = "0000-0001-5537-637X")),
       person(given = "Sudarshan", "Shetty", role = c("aut"),
              email = "sudarshanshetty9@gmail.com",
-             comment = c(ORCID = "0000-0001-7280-9915"))
+             comment = c(ORCID = "0000-0001-7280-9915")),
+      person(given = "Chouaib", family = "Benchraka", role = c("ctb"),
+             email = "chouaib.benchraka@utu.fi",
+             comment = c(ORCID = "0000-0002-1167-7848"))
 	     )
 Description:
     microbiomeDataSets is a collection of microbiome datasets loaded from 
