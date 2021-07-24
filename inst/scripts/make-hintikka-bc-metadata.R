@@ -3,7 +3,7 @@ library(S4Vectors)
 
 
 
-BiocVersion <- "3.13"
+BiocVersion <- "3.14"
 path <- paste0("microbiomeDataSets/",BiocVersion,"/")
 
 df_Base <- DataFrame(
@@ -22,36 +22,48 @@ df_Base <- DataFrame(
 
 df <- rbind(
     cbind(df_Base,
-          DataFrame(Title = "Hintikka XO microbiome counts",
-                    Description = paste0("Count matrix for the HintikkaXO microbiome dataset"),
-                    SourceType = "XLSX",
-                    RDataClass = "matrix",
+          DataFrame(Title = "Hintikka XO sample data",
+                    Description = paste0("Sample data for the HintikkaXO dataset"),
+                    SourceType = "XLS/XLSX",
+                    RDataClass = "DFrame",
                     DispatchClass = "Rds",
-                    RDataPath = paste0(path,"hintikka-xo/microbiome_counts.rds"),
+                    RDataPath = paste0(path,"hintikka-xo/coldata.rds"),
                     Tags = NA)),
+		    
     cbind(df_Base,
           DataFrame(Title = "Hintikka XO microbiome row data",
                     Description = paste0("Row data for the HintikkaXO microbiome dataset"),
-                    SourceType = "XLSX",
+                    SourceType = "XLS/XLSX",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
                     RDataPath = paste0(path,"hintikka-xo/microbiome_rowdata.rds"),
                     Tags = NA)),
+
     cbind(df_Base,
-          DataFrame(Title = "Hintikka XO metabolites counts",
-                    Description = paste0("Count matrix for the HintikkaXO metabolites dataset"),
-                    SourceType = "XLSX",
+          DataFrame(Title = "Hintikka XO microbiome counts",
+                    Description = paste0("Count matrix for the HintikkaXO microbiome dataset"),
+                    SourceType = "XLS/XLSX",
+                    RDataClass = "matrix",
+                    DispatchClass = "Rds",
+                    RDataPath = paste0(path,"hintikka-xo/microbiome_counts.rds"),
+                    Tags = NA)),		    
+
+    cbind(df_Base,
+          DataFrame(Title = "Hintikka XO metabolites",
+                    Description = paste0("Count matrix for the HintikkaXO metabolites"),
+                    SourceType = "XLS/XLSX",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
                     RDataPath = paste0(path,"hintikka-xo/metabolites.rds"),
                     Tags = NA)),
+
     cbind(df_Base,
-          DataFrame(Title = "Hintikka XO sample data",
-                    Description = paste0("Sample data for the HintikkaXO dataset"),
-                    SourceType = "XLSX",
-                    RDataClass = "DFrame",
+          DataFrame(Title = "Hintikka XO biomarkers",
+                    Description = paste0("Data matrix for the HintikkaXO biomarkers"),
+                    SourceType = "XLS/XLSX",
+                    RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = paste0(path,"hintikka-xo/coldata.rds"),
+                    RDataPath = paste0(path,"hintikka-xo/biomarkers.rds"),
                     Tags = NA))
 )
 
@@ -60,5 +72,3 @@ df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 write.csv(df, file = paste0("../extdata/",BiocVersion,"/metadata-hintikka-xo.csv"),
           row.names = FALSE)
 
-#write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-hintikka-xo.csv"),
-#          row.names = FALSE)
