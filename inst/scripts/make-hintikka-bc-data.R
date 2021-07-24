@@ -1,5 +1,7 @@
 library(readxl)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(stringr)
 
 # Read metabolite data
 nmr <- read_excel("NMR_Quantification.xlsx") %>%
@@ -19,10 +21,13 @@ meta <- read_excel("Otut_abundanssit_metadata_ok.xlsx", sheet = "Metadata") %>%
          mutate(Rat = str_remove(Sample, "^[P|C]")) %>%	 # These are subject IDs 
 	 mutate(Fat = factor(str_trim(str_remove(str_remove(Diet, "\\+ XOS"), "-fat")),
              levels = c("Low", "High"))) %>%
-	 mutate(XOS = as.numeric(str_replace(replace_na(str_match(meta$Diet, "XOS"), 0), "XOS", "1")))
-	 
+   mutate(XOS = as.numeric(str_replace(replace_na(str_match(Diet, "XOS"), 0), "XOS", "1")))
+
+
+
 # Read microbiota data
 ngs <- read_excel("Otut_abundanssit_metadata_ok.xlsx", sheet = "OTU table siisti")
+
 ## Separate taxonomy table and abundances
 tax <- ngs[, 1:7] %>%
          rename(OTU = "OTU ID") %>%
@@ -35,15 +40,16 @@ tax <- ngs[, 1:7] %>%
 
 otu <- ngs[, 8:ncol(ngs)]
 
-
 # Only Cecum data was used in the paper; separate metadata and blood+other measurements
 inds <- which(meta$Site == "Cecum") # Check matching.txt
 vars <- c("Sample", "Rat", "Site", "Diet", "Fat", "XOS")
-meta_cecum <- meta[inds, vars]
+meta_cecum <- as.data.frame(meta[inds, vars])
+rownames(meta_cecum) <- meta_cecum$Sample
 
 # Manually checked that the sample order corresponds;
 # let us rename the samples so they have same names in the different tables
-otu_cecum <- otu[, inds]
+otu_cecum <- as.matrix(otu[, inds])
+rownames(otu_cecum) <- rownames(tax)
 colnames(otu_cecum) <- meta_cecum$Sample
 
 # Biomarkers
@@ -52,17 +58,20 @@ colnames(otu_cecum) <- meta_cecum$Sample
 bm <- t(meta[inds, -match(vars, colnames(meta))])
 colnames(bm) <- meta_cecum$Sample
 
-
 # Convert to TSE object
 nmr$Rat <- NULL # Can be removed after matching
 nmr <- t(nmr) # features x samples
+colnames(nmr) <- meta_cecum$Sample
 
 # Save the data components
-saveRDS(otu_cecum, file = "microbiome_counts.rds")
+saveRDS(meta_cecum, file = "coldata.rds") 
 saveRDS(tax, file = "microbiome_rowdata.rds")
-saveRDS(meta_cecum, file = "coldata.rds")
+saveRDS(otu_cecum, file = "microbiome_counts.rds")
 saveRDS(nmr, file = "metabolites.rds")
 saveRDS(bm, file = "biomarkers.rds")
+
+
+
 
 
 

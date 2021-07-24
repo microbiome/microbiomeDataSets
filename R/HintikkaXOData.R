@@ -1,6 +1,6 @@
-#' Obtain the Hintikka Microbiota, Metabolite and Biomarker data
+#' Retrieve HintikkaXO data
 #'
-#' Obtain the microbiome and lipid data from Hintikka et al. (2021).
+#' Obtain microbiome and lipid data from Hintikka et al. (2021).
 #'
 #' @details
 #' The HintikkaXO dataset contains high-throughput profiling data from 40 rat
