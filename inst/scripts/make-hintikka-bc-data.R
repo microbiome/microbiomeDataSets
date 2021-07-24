@@ -3,14 +3,17 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 
+temp_data <- "../extras/temp_data/"
+
 # Read metabolite data
-nmr <- read_excel("NMR_Quantification.xlsx") %>%
+nmr <- read_excel(paste0(temp_data, "NMR_Quantification.xlsx")) %>%
          rename(Rat = "RAT ID") %>%
          rename(Group = "Group ID") %>%
 	 select(-Group)
 
 # Sample metadata
-meta <- read_excel("Otut_abundanssit_metadata_ok.xlsx", sheet = "Metadata") %>%
+meta <- read_excel(paste0(temp_data, "Otut_abundanssit_metadata_ok.xlsx"),
+           sheet = "Metadata") %>%
          rename(Rat = "Rotta ID") %>%
          rename(Group = "Ryhmä nro") %>%
          rename(Batch = "Sekvensointi ID") %>%
@@ -26,7 +29,8 @@ meta <- read_excel("Otut_abundanssit_metadata_ok.xlsx", sheet = "Metadata") %>%
 
 
 # Read microbiota data
-ngs <- read_excel("Otut_abundanssit_metadata_ok.xlsx", sheet = "OTU table siisti")
+ngs <- read_excel(paste0(temp_data, "Otut_abundanssit_metadata_ok.xlsx"),
+  sheet = "OTU table siisti")
 
 ## Separate taxonomy table and abundances
 tax <- ngs[, 1:7] %>%
@@ -64,11 +68,12 @@ nmr <- t(nmr) # features x samples
 colnames(nmr) <- meta_cecum$Sample
 
 # Save the data components
-saveRDS(meta_cecum, file = "coldata.rds") 
-saveRDS(tax, file = "microbiome_rowdata.rds")
-saveRDS(otu_cecum, file = "microbiome_counts.rds")
-saveRDS(nmr, file = "metabolites.rds")
-saveRDS(bm, file = "biomarkers.rds")
+path <- "../extras/microbiomeDataSets/3.14/hintikka-xo/"
+saveRDS(meta_cecum, file = paste0(path, "coldata.rds"))
+saveRDS(tax, file = paste0(path, "microbiome_rowdata.rds"))
+saveRDS(otu_cecum, file = paste0(path, "microbiome_counts.rds"))
+saveRDS(nmr, file = paste0(path, "metabolites.rds"))
+saveRDS(bm, file = paste0(path, "biomarkers.rds"))
 
 
 
