@@ -57,5 +57,8 @@ df <- rbind(
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 
-write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-hintikka-xo.csv"),
+write.csv(df, file = paste0("../extdata/",BiocVersion,"/metadata-hintikka-xo.csv"),
           row.names = FALSE)
+
+#write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-hintikka-xo.csv"),
+#          row.names = FALSE)
