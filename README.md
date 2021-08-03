@@ -16,6 +16,7 @@ The aim is to provide datasets for teaching, example workflows or comparative
 efforts. If you have a dataset, which you like to see in this package, please
 let us know and/or provide a PR for the datasets.
 
+
 # Contribution
 
 Feel free to contribute. Have a look at how existing datasets are
@@ -24,7 +25,7 @@ touch at the earliest convenience to discuss any issues.
 
 ## Technical aspects
 
-Let's use a git flow kind of approach. Development version should be
+Let's use a gitflow approach. Development version should be
 done against the `master` branch and then merged to `master` for the
 next release.  (https://guides.github.com/introduction/flow/)
 
