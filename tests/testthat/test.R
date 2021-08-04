@@ -37,8 +37,8 @@ test_that("Loading of SongQAData data", {
 #  expect_s4_class(se, "SummarizedExperiment")
 #})
 
-# context("Loading of SprockettTHData data")
-# test_that("Loading of SprockettTHData data", {
-#   tse <- SprockettTHData()
-#   expect_s4_class(tse, "TreeSummarizedExperiment")
-# })
+context("Loading of SprockettTHData data")
+test_that("Loading of SprockettTHData data", {
+  tse <- SprockettTHData()
+  expect_s4_class(tse, "TreeSummarizedExperiment")
+})
