@@ -22,7 +22,7 @@ availableDataSets <- function(){
     read.csv(file, stringsAsFactors = FALSE)
 }
 
-################################################################################
+####################################################################
 # ExperimentHub data loading
 
 .get_res_by_path <- function(hub, path, failOnError = TRUE){
@@ -38,7 +38,7 @@ availableDataSets <- function(){
     res[[1L]]
 }
 
-################################################################################
+###################################################################
 # object creation 
 
 #' @importFrom ExperimentHub ExperimentHub
@@ -122,11 +122,12 @@ availableDataSets <- function(){
     do.call(SummarizedExperiment, c(list(assays=assays), args))
 }
 
-################################################################################
+#########################################################################
 # path utils
 
 .get_base_path <- function(dataset){
-    # paste0(file.path(system.file(package = "microbiomeDataSets",mustWork = FALSE),
+    # paste0(file.path(system.file(package = "microbiomeDataSets",
+    #     mustWork = FALSE),
     #                  "extdata","hub",dataset))
     file.path("microbiomeDataSets", dataset)
 }
@@ -148,7 +149,8 @@ availableDataSets <- function(){
     prefix <- .norm_prefix(prefix)
     assay_list <- list()
     for (a in assays) {
-        # assay_list[[a]] <- readRDS(file.path(base, sprintf("%s%s.rds", prefix, a)))
+        # assay_list[[a]] <- readRDS(file.path(base, sprintf("%s%s.rds",
+    #  prefix, a)))
         path <- file.path(base, sprintf("%s%s.rds", prefix, a))
         assay_list[[a]] <- .get_res_by_path(hub, path)
     }
@@ -168,17 +170,20 @@ availableDataSets <- function(){
     prefix <- .norm_prefix(prefix)
     args <- list()
     if (has.coldata) {
-        # args$colData <- readRDS(file.path(base, sprintf("%scoldata.rds", prefix)))
+        # args$colData <- readRDS(file.path(base, sprintf("%scoldata.rds",
+    #   prefix)))
         path <- file.path(base, sprintf("%scoldata.rds", prefix))
         args$colData <- .get_res_by_path(hub, path)
     }
     if (has.rowdata) {
-        # args$rowData <- readRDS(file.path(base, sprintf("%srowdata.rds", prefix)))
+        # args$rowData <- readRDS(file.path(base, sprintf("%srowdata.rds",
+    #   prefix)))
         path <- file.path(base, sprintf("%srowdata.rds", prefix))
         args$rowData <- .get_res_by_path(hub, path)
     }
     if (has.samplemap) {
-        # args$sampleMap <- readRDS(file.path(base, sprintf("%ssamplemap.rds", prefix)))
+        # args$sampleMap <- readRDS(file.path(base, sprintf("%ssamplemap.rds",
+    #  prefix)))
         path <- file.path(base, sprintf("%ssamplemap.rds", prefix))
         args$sampleMap <- .get_res_by_path(hub, path)
     }
@@ -202,7 +207,7 @@ availableDataSets <- function(){
     # tree <- read.tree(file.path(base, sprintf("%s%s.tre.gz", prefix, name)))
     # links <- list()
     # if(file.exists(file.path(base, sprintf("%s%s_links.rds", prefix, name)))){
-    #     links <- readRDS(file.path(base, sprintf("%s%s_links.rds", prefix, name)))
+    # links <- readRDS(file.path(base, sprintf("%s%s_links.rds", prefix, name)))
     # }
     tree <- file.path(base, sprintf("%s%s.tre.gz", prefix, name))
     links <- file.path(base, sprintf("%s%s_links.rds", prefix, name))
@@ -264,7 +269,8 @@ availableDataSets <- function(){
     if(has.refseq){
         base <- .get_base_path(dataset)
         prefix <- .norm_prefix(prefix)
-        # refSeq <- readDNAStringSet(file.path(base, sprintf("%srefseq.fasta.gz", prefix)))
+        # refSeq <- readDNAStringSet(file.path(base,
+    #   sprintf("%srefseq.fasta.gz", prefix)))
         refSeq <- file.path(base, sprintf("%srefseq.fasta.gz", prefix))
         refSeq <- .get_res_by_path(hub,refSeq)
         refSeq <- readDNAStringSet(refSeq)

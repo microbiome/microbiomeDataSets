@@ -50,14 +50,14 @@
 #' tse <- LahtiMData()
 LahtiMLData <- function() {
     mae <- .create_mae("3.13/lahti-ml",
-                       types = list(microbiome = list("TSE" = c("counts")),
+                    types = list(microbiome = list("TSE" = c("counts")),
                                     lipids = list("SE" = c("counts"))),
-                       coldata = TRUE,
-                       samplemap = FALSE,
-                       has.rowdata = list(microbiome = TRUE,
-                                          lipids = FALSE),
-                       has.coldata = list(microbiome = FALSE,
-                                          lipids = FALSE))
+                    coldata = TRUE,
+                    samplemap = FALSE,
+                    has.rowdata = list(microbiome = TRUE,
+                                        lipids = FALSE),
+                    has.coldata = list(microbiome = FALSE,
+                                        lipids = FALSE))
     mae
 }
 #' @rdname LahtiMLData
@@ -67,15 +67,15 @@ LahtiMData <- function() {
     dataset <- "3.13/lahti-ml"
     hub <- ExperimentHub()
     tse <- .create_tse(dataset,
-                       hub = hub,
-                       assays = c("counts"),
-                       has.rowdata = TRUE,
-                       has.coldata = FALSE,
-                       prefix = "microbiome")
+                    hub = hub,
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = FALSE,
+                    prefix = "microbiome")
     args <- .get_col_row_map_data(dataset,
-                                  hub = hub,
-                                  has.rowdata = FALSE,
-                                  has.coldata = TRUE)
+                                hub = hub,
+                                has.rowdata = FALSE,
+                                has.coldata = TRUE)
     colData(tse) <- args$colData
     tse
 }

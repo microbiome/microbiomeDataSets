@@ -31,17 +31,17 @@
 #' @author Sudarshan A. Shetty and Felix G.M. Ernst
 #'
 #' @references
-#' Sprockett, D.D., Martin, M., Costello, E.K. et al. (2020) Microbiota assembly, 
-#' structure, and dynamics among Tsimane horticulturalists of the Bolivian 
-#' Amazon. 
+#' Sprockett, D.D., Martin, M., Costello, E.K. et al. (2020)
+#' Microbiota assembly, structure, and dynamics among Tsimane
+#' horticulturalists of the Bolivian Amazon. 
 #' \emph{Nat Commun} 11, 3772 \url{https://doi.org/10.1038/s41467-020-17541-6}
 #'
-#' Subramanian, S., Huq, S., Yatsunenko, T., et al. (2014) Persistent gut microbiota 
-#' immaturity in malnourished Bangladeshi children. 
+#' Subramanian, S., Huq, S., Yatsunenko, T., et al. (2014) Persistent gut
+#' microbiota immaturity in malnourished Bangladeshi children. 
 #' \emph{Nature} 510, 417-421 \url{https://doi.org/10.1038/nature13421}
 #' 
-#' Vatanen, T., Kostic A.D., d'Hennezel E., et al. (2016) Variation in microbiome LPS 
-#' immunogenicity contributes to autoimmunity in humans. 
+#' Vatanen, T., Kostic A.D., d'Hennezel E., et al. (2016) Variation in
+#' microbiome LPS immunogenicity contributes to autoimmunity in humans. 
 #' \emph{Cell} 165, 842-853 \url{https://doi.org/10.1016/j.cell.2016.04.007}
 #' 
 #' @name SprockettTHData

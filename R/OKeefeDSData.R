@@ -44,9 +44,9 @@
 OKeefeDSData <- function() {
     dataset <- "3.13/okeefe-ds"
     tse <- .create_tse(dataset,
-                       assays = c("counts"),
-                       has.rowdata = TRUE,
-                       has.coldata = TRUE)
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE)
     tse
 }
 

@@ -50,13 +50,13 @@ HintikkaXOData <- function() {
 
     dataset <- "3.14/hintikka-xo"
     se <- .create_se(dataset,
-                       assays = c("counts"),
-                       has.rowdata = TRUE,
-                       has.coldata = TRUE)
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE)
 
     tse <- SummarizedExperiment(assays = list(counts = otu_cecum),
-                           colData = meta_cecum,
-                           rowData = tax)
+                        colData = meta_cecum,
+                        rowData = tax)
 
     # Create SE objects
     bm  <- SummarizedExperiment(bm)
