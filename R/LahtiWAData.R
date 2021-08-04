@@ -43,7 +43,7 @@
 #' @examples
 #' tse <- LahtiWAData()
 LahtiWAData <- function() {
-    dataset <- "3.13/lahti-wa"
+    dataset <- "3.14/lahti-wa"
     tse <- .create_tse(dataset,
                        assays = c("counts"),
                        has.rowdata = TRUE,

@@ -38,7 +38,7 @@
 #' @examples
 #' tse <- SilvermanAGutData()
 SilvermanAGutData <- function() {
-  dataset <- "3.13/silverman-ag"
+  dataset <- "3.14/silverman-ag"
   tse <- .create_tse(dataset,
                      assays = c("counts"),
                      has.rowdata = TRUE,

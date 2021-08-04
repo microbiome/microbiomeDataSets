@@ -42,7 +42,7 @@
 #'
 HintikkaXOData <- function() {
 
-    dataset <- "3.13/hintikka-xo"
+    dataset <- "3.14/hintikka-xo"
     se <- .create_se(dataset,
                        assays = c("counts"),
                        has.rowdata = TRUE,

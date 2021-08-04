@@ -49,7 +49,7 @@
 #' mae <- LahtiMLData()
 #' tse <- LahtiMData()
 LahtiMLData <- function() {
-    mae <- .create_mae("3.13/lahti-ml",
+    mae <- .create_mae("3.14/lahti-ml",
                        types = list(microbiome = list("TSE" = c("counts")),
                                     lipids = list("SE" = c("counts"))),
                        coldata = TRUE,
@@ -64,7 +64,7 @@ LahtiMLData <- function() {
 #' @importFrom SummarizedExperiment colData<-
 #' @export
 LahtiMData <- function() {
-    dataset <- "3.13/lahti-ml"
+    dataset <- "3.14/lahti-ml"
     hub <- ExperimentHub()
     tse <- .create_tse(dataset,
                        hub = hub,
