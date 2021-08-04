@@ -2,7 +2,7 @@
 # Base data for all data sets --------------------------------------------------
 library(S4Vectors)
 
-BiocVersion <- "3.13"
+# BiocVersion <- "3.13"
 path <- paste0("microbiomeDataSets/",BiocVersion,"/")
 
 df_Base <- DataFrame(
@@ -49,5 +49,5 @@ df <- rbind(
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="")
 
-write.csv(df, file = paste0("inst/extdata/",BiocVersion,"/metadata-okeefe-ds.csv"),
+write.csv(df, file = paste0("../extdata/",BiocVersion,"/metadata-okeefe-ds.csv"),
           row.names = FALSE)
