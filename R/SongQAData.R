@@ -38,7 +38,7 @@
 #' @examples
 #' tse <- SongQAData()
 SongQAData <- function() {
-    dataset <- "3.14/song-qa"
+    dataset <- "3.13/song-qa"
     tse <- .create_tse(dataset,
                        assays = c("counts"),
                        has.rowdata = TRUE,

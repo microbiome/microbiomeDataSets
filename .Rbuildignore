@@ -1,2 +1,4 @@
 ^microbiomeDataSets\.Rproj$
 ^\.Rproj\.user$
+.git*
+doc

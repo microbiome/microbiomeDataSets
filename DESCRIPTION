@@ -40,7 +40,8 @@ Imports:
     BiocGenerics,
     ExperimentHub,
     Biostrings,
-    ape
+    ape,
+    SingleCellExperiment    
 Suggests: 
     knitr,
     rmarkdown,
