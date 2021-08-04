@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">microbiomeDataSets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -84,17 +84,21 @@
 <div id="technical-aspects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#technical-aspects" class="anchor"></a>Technical aspects</h2>
-<p>Let’s use a git flow kind of approach. Development version should be done against the <code>master</code> branch and then merged to <code>master</code> for the next release. (<a href="https://guides.github.com/introduction/flow/" class="uri">https://guides.github.com/introduction/flow/</a>)</p>
-<p>Resources on how data is added to Bioconductor’s ExperimentHub backend and accessed are available from Bioconductor <a href="https://bioconductor.org/packages/release/bioc/vignettes/ExperimentHub/inst/doc/ExperimentHub.html">here</a></p>
+<p>Let’s use a gitflow approach. Development version should be done against the <code>master</code> branch and then merged to <code>master</code> for the next release. (<a href="https://guides.github.com/introduction/flow/" class="uri">https://guides.github.com/introduction/flow/</a>)</p>
+<p>Resources on how data is added to Bioconductor’s ExperimentHub backend and accessed are available from Bioconductor <a href="https://bioconductor.org/packages/release/bioc/vignettes/ExperimentHub/inst/doc/ExperimentHub.html">ExperimentHub documentation</a> and in <a href="https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/CreateAHubPackage.html">Creating ExperimentHub Package</a>.</p>
 <p>Basic steps:</p>
 <ul>
-<li>Assemble a TreeSummarizedExperiment from the raw data (Install the latest version from GitHub)</li>
-<li>Save the individiual components as rds files in inst/extdata/hub/<dataset-name>/ (If you have questions, have a look at the other datasets or check with us through <a href="microbiome.github.io">online channels</a>)</dataset-name>
-</li>
-<li>Prepare the metadata file, by creating a new metadata-<dataset-name>.R in inst/scripts and run the script to create inst/extdata/metadata-<dataset-name>.csv</dataset-name></dataset-name>
-</li>
-<li>Make sure that the metadata files passes the check by running AnnotationHubData::makeAnnotationHubMetadata(“../microbiomeDataSets”,“metadata-<dataset-name>.csv”)</dataset-name>
-</li>
+<li><p>Assemble a (Tree)SummarizedExperiment from the raw data</p></li>
+<li><p>You can include the data creation script in inst/scripts/<em>-data-</em> (optional)</p></li>
+<li><p>Save the individual data container components as rds files</p></li>
+<li><p>Prepare the metadata file, by creating a new metadata-<dataset-name>.R in inst/scripts and run the script to create inst/extdata/&lt;bioc.version.number&gt;/metadata-<dataset-name>.csv</dataset-name></dataset-name></p></li>
+<li><p>Make sure that the metadata files passes the check by running a script like: ExperimentHubData::makeExperimentHubMetadata(“../microbiomeDataSets”,“3.13/metadata-hintikka-xo.csv”)</p></li>
+<li><p>Maintainer will upload the data through their AWS login. The folder structure must match the one referenced in the metadata file; for example: microbiomeDataSets/&lt;bioc.version.number&gt;/lahti-ml/coldata.rds</p></li>
+<li><p>Follow the <a href="https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/CreateAHubPackage.html">instructions</a> (See Section 7)</p></li>
+<li><p>Afterwards, the maintainer will push the new metadata to Bioconductor git repo and inform <a href="mailto:hubs@bioconductor" class="email">hubs@bioconductor</a> that there is new metadata. They will let us know when the upload is done.</p></li>
+<li><p>In the meantime, prepare a loading function as found e.g. in microbiomeDataSets::LahtiMLData has to be created and push this to biocs git repo as well.</p></li>
+<li><p>Bump the version (note that the version scheme is different)</p></li>
+<li><p>For questions, have a look at the other datasets or check with us through <a href="microbiome.github.io">online channels</a></p></li>
 </ul>
 </div>
 </div>
