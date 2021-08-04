@@ -1,8 +1,6 @@
 # Base data for all data sets --------------------------------------------------
 library(S4Vectors)
 
-
-
 BiocVersion <- "3.14"
 path <- paste0("microbiomeDataSets/",BiocVersion,"/")
 
