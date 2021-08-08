@@ -15,7 +15,7 @@ samples <- read.csv("git_metadata_and_community_phenotypes.csv")
 counts <- readRDS("git_ASV_table.RDS")
 
 #Taxonomic mapping table
-tax <- counts %>% select(3:8)
+tax <- select(counts, domain, phylum, class, order, family, genus)
 
 # In order to make sure that the samples match between the abundance and phenodata tables
 counts_trimmed <- counts[, samples$sample]
