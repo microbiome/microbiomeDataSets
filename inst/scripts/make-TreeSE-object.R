@@ -20,13 +20,6 @@ tax <- select(counts, domain, phylum, class, order, family, genus)
 # In order to make sure that the samples match between the abundance and phenodata tables
 counts_trimmed <- counts[, samples$sample]
 
-
-se <- SummarizedExperiment(assays = list(counts = counts_trimmed),
-                           colData = samples,
-                           rowData = tax)
-
-tse <- as(se, "TreeSummarizedExperiment")
-
 #Phylogenetic tree
 tree <- ape::read.tree("philr_tree_139_asv.nwk")
 
