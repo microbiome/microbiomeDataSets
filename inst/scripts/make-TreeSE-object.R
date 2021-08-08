@@ -23,7 +23,6 @@ counts_trimmed <- counts[, samples$sample]
 #Phylogenetic tree
 tree <- ape::read.tree("philr_tree_139_asv.nwk")
 
-
 tse <- TreeSummarizedExperiment(assays = list(counts = counts_trimmed),
                            colData = samples,
                            rowData = tax,
@@ -33,6 +32,3 @@ tse <- TreeSummarizedExperiment(assays = list(counts = counts_trimmed),
 refSeq <- DNAStringSet(counts$asv_sequence, start=NA, end=NA, width=NA, use.names=TRUE)
 
 referenceSeq(tse) <- refSeq
-
-
-
