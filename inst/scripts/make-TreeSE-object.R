@@ -32,3 +32,10 @@ tse <- TreeSummarizedExperiment(assays = list(counts = counts_trimmed),
 refSeq <- DNAStringSet(counts$asv_sequence, start=NA, end=NA, width=NA, use.names=TRUE)
 
 referenceSeq(tse) <- refSeq
+
+path <- "../extdata/3.14/grieneisen-ts/"
+saveRDS(tax, file = paste0(path, "tax.rds"))
+saveRDS(counts, file = paste0(path, "counts.rds"))
+saveRDS(samples, file = paste0(path, "samples.rds"))
+saveRDS(counts_trimmed, file = paste0(path, "counts_trimmed.rds"))
+saveRDS(tree, file = paste0(path, "tree.rds"))
