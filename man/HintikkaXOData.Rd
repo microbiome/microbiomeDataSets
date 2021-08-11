@@ -19,9 +19,9 @@ samples, including 39 biomarkers, 38 metabolites (NMR), and 12706 OTUs from
 318 species, measured from Cecum. This is diet comparison study with
 High/Low fat diet and xylo-oligosaccaride supplementation.
 
-Column metadata is common for all experiments (microbiome, metabolites, biomarkers)
-and includes the Sample (ID), Rat (ID), Site of measurement, Diet group,
-Fat in Diet (Low/High), XOS Diet Supplement (0/1)
+Column metadata is common for all experiments (microbiome, metabolites,
+biomarkers) and includes the Sample (ID), Rat (ID), Site of measurement,
+Diet group, Fat in Diet (Low/High), XOS Diet Supplement (0/1)
 
 Row metadata of the microbiome data contains taxonomic information on the
 Phylum, Class, Order, Family, Genus, Species, and OTU levels.

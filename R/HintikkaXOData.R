@@ -8,9 +8,9 @@
 #' 318 species, measured from Cecum. This is diet comparison study with
 #' High/Low fat diet and xylo-oligosaccaride supplementation.
 #'
-#' Column metadata is common for all experiments (microbiome, metabolites, biomarkers)
-#' and includes the Sample (ID), Rat (ID), Site of measurement, Diet group,
-#' Fat in Diet (Low/High), XOS Diet Supplement (0/1)
+#' Column metadata is common for all experiments (microbiome, metabolites,
+#' biomarkers) and includes the Sample (ID), Rat (ID), Site of measurement,
+#' Diet group, Fat in Diet (Low/High), XOS Diet Supplement (0/1)
 #' 
 #' Row metadata of the microbiome data contains taxonomic information on the
 #' Phylum, Class, Order, Family, Genus, Species, and OTU levels.
@@ -66,20 +66,20 @@ HintikkaXOData <- function() {
     mae <- .create_mae("3.14/hintikka-xo",
     
         types = list(microbiome  = list("TSE" = c("counts")),
-                     metabolites = list("SE"  = NULL),
-                     biomarkers  = list("SE"  = NULL)
-             	),
+                    metabolites = list("SE"  = NULL),
+                    biomarkers  = list("SE"  = NULL)
+                ),
  
         coldata = TRUE,
         samplemap = FALSE,
-		    
+
         has.rowdata = list(microbiome = TRUE,
-                           metabolites = FALSE,
-	                   biomarkers  = FALSE),
-	
+                        metabolites = FALSE,
+                        biomarkers  = FALSE),
+
         has.coldata = list(microbiome = FALSE,
-                          metabolites = FALSE,
-		          biomarkers  = FALSE))
+                        metabolites = FALSE,
+                        biomarkers  = FALSE))
 
 
     # Fix order in rowData
