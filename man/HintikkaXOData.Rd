@@ -7,11 +7,11 @@
 HintikkaXOData()
 }
 \value{
-for  \code{HintikkaXOData} a \linkS4class{SummarizedExperiment}
-is provided with the altExp objects.
+for  \code{HintikkaXOData} a \linkS4class{MultiAssayExperiment}
+is provided.
 }
 \description{
-Obtain microbiome and lipid data from Hintikka et al. (2021).
+Obtain microbiome, metabolite and biomarker data from Hintikka et al. (2021).
 }
 \details{
 The HintikkaXO dataset contains high-throughput profiling data from 40 rat
@@ -25,8 +25,8 @@ Diet Fat (Low/High),  Diet Supplement (XOS 0/1)
 Row metadata of the microbiome data contains taxonomic information on the
 Phylum, Class, Order, Family, Genus, Species, and OTU levels.
 
-Biomarker and NMR metabolite data are provided as altExp (alternative
-Experiments).
+Biomarker and NMR metabolite data are provided through the
+\linkS4class{MultiAssayExperiment} mechanism.
 
 Biomarker data contains 39 biomarkers.
 

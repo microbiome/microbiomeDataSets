@@ -1,6 +1,6 @@
 #' Retrieve HintikkaXO data
 #'
-#' Obtain microbiome and lipid data from Hintikka et al. (2021).
+#' Obtain microbiome, metabolite and biomarker data from Hintikka et al. (2021).
 #'
 #' @details
 #' The HintikkaXO dataset contains high-throughput profiling data from 40 rat
@@ -14,17 +14,17 @@
 #' Row metadata of the microbiome data contains taxonomic information on the
 #' Phylum, Class, Order, Family, Genus, Species, and OTU levels.
 #'
-#' Biomarker and NMR metabolite data are provided as altExp (alternative
-#' Experiments).
-#' 
+#' Biomarker and NMR metabolite data are provided through the
+#' \linkS4class{MultiAssayExperiment} mechanism.
+#'
 #' Biomarker data contains 39 biomarkers.
 #'
 #' NMR data contains 38 metabolites.
 #' 
 #' All data are downloaded from ExperimentHub and cached for local re-use.
 #'
-#' @return for  \code{HintikkaXOData} a \linkS4class{SummarizedExperiment}
-#'   is provided with the altExp objects.
+#' @return for  \code{HintikkaXOData} a \linkS4class{MultiAssayExperiment}
+#' is provided.
 #'
 #' @author Leo Lahti
 #'
@@ -36,8 +36,6 @@
 #' 18(8):4049 \url{https://doi.org/10.3390/ijerph18084049}
 #'
 #' @name HintikkaXOData
-#' @importFrom SingleCellExperiment altExp
-#' @importFrom SingleCellExperiment altExp<-
 #' @export
 #'
 #' @examples
@@ -45,32 +43,69 @@
 #'
 HintikkaXOData <- function() {
 
-    # Circumvent warnings
-    meta_cecum <- otu_cecum <- tax <- NULL
-
-    dataset <- "3.14/hintikka-xo"
-    se <- .create_se(dataset,
-                    assays = c("counts"),
-                    has.rowdata = TRUE,
-                    has.coldata = TRUE)
-
-    tse <- SummarizedExperiment(assays = list(counts = otu_cecum),
-                        colData = meta_cecum,
-                        rowData = tax)
-
-    # Create SE objects
-    bm  <- SummarizedExperiment(bm)
-    nmr <- SummarizedExperiment(nmr)
-
-    # Add Biomarkers as "alternative experiment":
-    altExp(se, "Biomarkers") <- bm
-
-    # Add NMR metabolite abundances as "alternative experiment":
-    altExp(se, "NMR") <- nmr
-
-    se
-
+    mae <- .create_mae("3.14/hintikka-xo",
+    
+        types = list(microbiome  = list("TSE" = c("counts")),
+                     metabolites = list("SE"  = NULL),
+                     biomarkers  = list("SE"  = NULL)
+             	),
+ 
+        coldata = TRUE,
+        samplemap = FALSE,
+		    
+        has.rowdata = list(microbiome = TRUE,
+                           metabolites = FALSE,
+	                   biomarkers  = FALSE),
+	
+        has.coldata = list(microbiome = FALSE,
+                          metabolites = FALSE,
+		          biomarkers  = FALSE))
+    mae
+    
 }
 
 
 
+
+HintikkaXODataTSE <- function() {
+
+    dataset <- "3.14/hintikka-xo"
+    hub <- ExperimentHub()
+    tse <- .create_tse(dataset,
+                    hub = hub,
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = FALSE,
+                    prefix = "microbiome")
+		    
+    args <- .get_col_row_map_data(dataset,
+                                hub = hub,
+                                has.rowdata = FALSE,
+                                has.coldata = TRUE)
+
+    colData(tse) <- DataFrame(args$colData)
+    tse
+
+}
+
+
+HintikkaXODataSE <- function() {
+
+    dataset <- "3.14/hintikka-xo"
+    hub <- ExperimentHub()
+    tse <- .create_se(dataset,
+                    hub = hub,
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = FALSE,
+                    prefix = "microbiome")
+		    
+    args <- .get_col_row_map_data(dataset,
+                                hub = hub,
+                                has.rowdata = FALSE,
+                                has.coldata = TRUE)
+
+    colData(se) <- DataFrame(args$colData)
+    se
+
+}

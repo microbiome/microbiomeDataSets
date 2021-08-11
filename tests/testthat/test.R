@@ -33,8 +33,8 @@ test_that("Loading of SongQAData data", {
 
 #context("Loading of HintikkaXO data")
 #test_that("Loading of a HintikkaXO data", {
-#  se <- HintikkaXOData()
-#  expect_s4_class(se, "SummarizedExperiment")
+#  mae <- HintikkaXOData()
+#  expect_s4_class(mae, "MultiAssayExperiment")
 #})
 
 context("Loading of SprockettTHData data")

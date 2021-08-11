@@ -72,5 +72,5 @@ path <- "../extras/microbiomeDataSets/3.14/hintikka-xo/"
 saveRDS(meta_cecum, file = paste0(path, "coldata.rds"))
 saveRDS(tax, file = paste0(path, "microbiome_rowdata.rds"))
 saveRDS(otu_cecum, file = paste0(path, "microbiome_counts.rds"))
-saveRDS(nmr, file = paste0(path, "metabolites.rds"))
-saveRDS(bm, file = paste0(path, "biomarkers.rds"))
+saveRDS(nmr, file = paste0(path, "metabolites_abundances.rds"))
+saveRDS(bm, file = paste0(path, "biomarkers_signals.rds"))
