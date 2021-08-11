@@ -33,6 +33,9 @@
 #' \emph{International Journal of Environmental Research and Public Health}
 #' 18(8):4049 \url{https://doi.org/10.3390/ijerph18084049}
 #'
+#' @importFrom SummarizedExperiment rowData
+#' @importFrom SummarizedExperiment rowData<-
+#' 
 #' @name HintikkaXOData
 #' @export
 #'
