@@ -8,14 +8,12 @@
 #' 318 species, measured from Cecum. This is diet comparison study with
 #' High/Low fat diet and xylo-oligosaccaride supplementation.
 #'
-#' Column metadata includes the SampleID, RatID, Measurement site, Diet group,
-#' Diet Fat (Low/High),  Diet Supplement (XOS 0/1)
+#' Column metadata is common for all experiments (microbiome, metabolites, biomarkers)
+#' and includes the Sample (ID), Rat (ID), Site of measurement, Diet group,
+#' Fat in Diet (Low/High), XOS Diet Supplement (0/1)
 #' 
 #' Row metadata of the microbiome data contains taxonomic information on the
 #' Phylum, Class, Order, Family, Genus, Species, and OTU levels.
-#'
-#' Biomarker and NMR metabolite data are provided through the
-#' \linkS4class{MultiAssayExperiment} mechanism.
 #'
 #' Biomarker data contains 39 biomarkers.
 #'
@@ -39,8 +37,27 @@
 #' @export
 #'
 #' @examples
-#' # tse <- HintikkaXOData()
+#' # Retrieve the MAE data
+#' mae <- HintikkaXOData()
 #'
+#' # List the experiments in this MultiAssayExperiment object
+#' print(experiments(mae))
+#'
+#' # colData for this MAE data object
+#' colData(mae)
+#'
+#' # metabolite assay data
+#' # assays(mae[["metabolites"]])$assay
+#'
+#' # biomarker assay data
+#' # assays(mae[["biomarkers"]])$assay
+# '
+#' # microbiome assay counts
+#' # assays(mae[["microbiome"]])$counts
+#'
+#' # microbiome rowData
+#' rowData(mae[["microbiome"]])
+#' 
 HintikkaXOData <- function() {
 
     mae <- .create_mae("3.14/hintikka-xo",
@@ -60,52 +77,14 @@ HintikkaXOData <- function() {
         has.coldata = list(microbiome = FALSE,
                           metabolites = FALSE,
 		          biomarkers  = FALSE))
+
+
+    # Fix order in rowData
+    rowData(mae[["microbiome"]]) <- rowData(mae[["microbiome"]])[, c(2:7, 1)]
+    # Add sample names to rownames
+    rownames(mae[["microbiome"]]) <- rowData(mae[["microbiome"]])$OTU
+
     mae
     
 }
 
-
-
-
-HintikkaXODataTSE <- function() {
-
-    dataset <- "3.14/hintikka-xo"
-    hub <- ExperimentHub()
-    tse <- .create_tse(dataset,
-                    hub = hub,
-                    assays = c("counts"),
-                    has.rowdata = TRUE,
-                    has.coldata = FALSE,
-                    prefix = "microbiome")
-		    
-    args <- .get_col_row_map_data(dataset,
-                                hub = hub,
-                                has.rowdata = FALSE,
-                                has.coldata = TRUE)
-
-    colData(tse) <- DataFrame(args$colData)
-    tse
-
-}
-
-
-HintikkaXODataSE <- function() {
-
-    dataset <- "3.14/hintikka-xo"
-    hub <- ExperimentHub()
-    tse <- .create_se(dataset,
-                    hub = hub,
-                    assays = c("counts"),
-                    has.rowdata = TRUE,
-                    has.coldata = FALSE,
-                    prefix = "microbiome")
-		    
-    args <- .get_col_row_map_data(dataset,
-                                hub = hub,
-                                has.rowdata = FALSE,
-                                has.coldata = TRUE)
-
-    colData(se) <- DataFrame(args$colData)
-    se
-
-}
