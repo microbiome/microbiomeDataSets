@@ -19,14 +19,12 @@ samples, including 39 biomarkers, 38 metabolites (NMR), and 12706 OTUs from
 318 species, measured from Cecum. This is diet comparison study with
 High/Low fat diet and xylo-oligosaccaride supplementation.
 
-Column metadata includes the SampleID, RatID, Measurement site, Diet group,
-Diet Fat (Low/High),  Diet Supplement (XOS 0/1)
+Column metadata is common for all experiments (microbiome, metabolites, biomarkers)
+and includes the Sample (ID), Rat (ID), Site of measurement, Diet group,
+Fat in Diet (Low/High), XOS Diet Supplement (0/1)
 
 Row metadata of the microbiome data contains taxonomic information on the
 Phylum, Class, Order, Family, Genus, Species, and OTU levels.
-
-Biomarker and NMR metabolite data are provided through the
-\linkS4class{MultiAssayExperiment} mechanism.
 
 Biomarker data contains 39 biomarkers.
 
@@ -35,7 +33,25 @@ NMR data contains 38 metabolites.
 All data are downloaded from ExperimentHub and cached for local re-use.
 }
 \examples{
-# tse <- HintikkaXOData()
+# Retrieve the MAE data
+mae <- HintikkaXOData()
+
+# List the experiments in this MultiAssayExperiment object
+print(experiments(mae))
+
+# colData for this MAE data object
+colData(mae)
+
+# metabolite assay data
+# assays(mae[["metabolites"]])$assay
+
+# biomarker assay data
+# assays(mae[["biomarkers"]])$assay
+# microbiome assay counts
+# assays(mae[["microbiome"]])$counts
+
+# microbiome rowData
+rowData(mae[["microbiome"]])
 
 }
 \references{
