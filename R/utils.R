@@ -148,7 +148,6 @@ availableDataSets <- function(){
 
 .get_assays <- function(dataset, hub, assays, prefix = NULL){
     base <- .get_base_path(dataset)
-    print(prefix)
     # With multiple assays, add "_" to prefix
     if (!is.null(assays)) {
         prefix <- .norm_prefix(prefix)
@@ -286,7 +285,7 @@ availableDataSets <- function(){
         base <- .get_base_path(dataset)
         prefix <- .norm_prefix(prefix)
         # refSeq <- readDNAStringSet(file.path(base,
-    #   sprintf("%srefseq.fasta.gz", prefix)))
+        # sprintf("%srefseq.fasta.gz", prefix)))
         refSeq <- file.path(base, sprintf("%srefseq.fasta.gz", prefix))
         refSeq <- .get_res_by_path(hub,refSeq)
         refSeq <- readDNAStringSet(refSeq)
