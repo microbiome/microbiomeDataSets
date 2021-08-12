@@ -57,7 +57,17 @@ df <- rbind(
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"samples.rds"),
+                  Tags = "Microbiome")),
+  cbind(df_Base,
+        data.frame(
+                  Title = "Sequence data",
+                  Description = paste0("Bacteria microbiome sequence dataset"),
+                  SourceType = "Rds",
+                  RDataClass = "DFrame",
+                  DispatchClass = "Rds",
+                  RDataPath = paste0(path,"sequence.rds"),
                   Tags = "Microbiome"))
+  
 )
 
 
