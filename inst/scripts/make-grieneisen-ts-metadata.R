@@ -18,7 +18,6 @@ df_Base <- data.frame(
   DataProvider = NA
 )
 
-
 df <- rbind(
   cbind(df_Base,
        data.frame(
@@ -67,10 +66,7 @@ df <- rbind(
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"sequence.rds"),
                   Tags = "Microbiome"))
-  
 )
-
 
 write.csv(df, file = paste0("../extdata/",BiocVersion,"/metadata-grieneisen-ts.csv"),
           row.names = FALSE)
-
