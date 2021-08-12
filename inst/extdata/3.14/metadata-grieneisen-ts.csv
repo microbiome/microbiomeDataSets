@@ -1,5 +1,0 @@
-"BiocVersion","SourceVersion","Coordinate_1_based","Domain","TaxonomyId","SourceVersion.1","Genome","SourceUrl","DataProvider","Title","Description","SourceType","RDataClass","DispatchClass","RDataPath","Tags"
-"3.14",NA,TRUE,"Bacteria","2",2021-08-11 03:18:33,NA,"https://science.sciencemag.org/content/373/6551/181",NA,"Counts","Count matrix for the bacteria microbiome dataset","Rds","DFrame","Rds","MicrobiomeDataSets/3.14/counts.rds","Microbiome"
-"3.14",NA,TRUE,"Bacteria","2",2021-08-11 03:18:33,NA,"https://science.sciencemag.org/content/373/6551/181",NA,"Row data","Row data for the bacteria microbiome dataset","Rds","DFrame","Rds","MicrobiomeDataSets/3.14/tax.rds","Microbiome"
-"3.14",NA,TRUE,"Bacteria","2",2021-08-11 03:18:33,NA,"https://science.sciencemag.org/content/373/6551/181",NA,"Phylogenetic tree","Bacteria microbiome phylogenetic tree dataset","Nwk","Phylo","Rds","MicrobiomeDataSets/3.14/tree.rds","Microbiome"
-"3.14",NA,TRUE,"Bacteria","2",2021-08-11 03:18:33,NA,"https://science.sciencemag.org/content/373/6551/181",NA,"Sample data","Bacteria microbiome sample dataset","Csv","DFrame","Rds","MicrobiomeDataSets/3.14/samples.rds","Microbiome"
