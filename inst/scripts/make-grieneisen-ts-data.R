@@ -23,7 +23,6 @@ ASV_Sequence <- counts$asv_sequence
 ref_seq <- data.frame(ASV_Sequence)
 rownames(ref_seq) <- counts$asv_id
 
-
 #Taxonomic mapping table
 tax_1 <- select(counts, domain, phylum, class, order, family, genus, asv_id)
 rownames(tax_1) <- counts$asv_id
@@ -33,7 +32,6 @@ counts_trimmed <- counts[, samples$sample]
 
 #Phylogenetic tree
 tree <- ape::read.tree("philr_tree_139_asv.nwk")
-
 
 #converting csv file into rds file
 saveRDS(samples, "samples.rds")
@@ -85,7 +83,6 @@ counts[, c("asv_id", "asv_sequence", "domain", "phylum", "class", "order", "fami
 #sequence information
 refSeq <- DNAStringSet(counts$asv_sequence, start=NA, end=NA, width=NA, use.names=TRUE)
 
-
 tse <- TreeSummarizedExperiment(assays = list(counts = counts_trimmed),
                                 colData = samples_1,
                                 rowData = tax,
@@ -99,8 +96,3 @@ saveRDS(counts, file = paste0(data, "counts.rds"))
 saveRDS(tree,  file = paste0(data,"tree.rds"))
 saveRDS(tax, file = paste0(data, "tax.rds"))
 saveRDS(ref_seq, file = paste0(data,"sequence.rds"))
-
-
-
-
-
