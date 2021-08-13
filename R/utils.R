@@ -134,7 +134,6 @@ availableDataSets <- function(){
 }
 
 .norm_prefix <- function(prefix){
-
     if (is.null(prefix)) {
         prefix <- ""
     } else {
@@ -148,28 +147,13 @@ availableDataSets <- function(){
 
 .get_assays <- function(dataset, hub, assays, prefix = NULL){
     base <- .get_base_path(dataset)
-    # With multiple assays, add "_" to prefix
-    if (!is.null(assays)) {
-        prefix <- .norm_prefix(prefix)
-    } else {
-        prefix <- prefix
-    }
+    prefix <- .norm_prefix(prefix)
     assay_list <- list()
-    if (!is.null(assays)) {
-        for (a in assays) {
-            # assay_list[[a]] <- readRDS(file.path(base, sprintf("%s%s.rds",
-            #  prefix, a)))
-            path <- file.path(base, sprintf("%s%s.rds", prefix, a))
-	    assay_list[[a]] <- .get_res_by_path(hub, path)	    
-        }
-	names(assay_list) <- assays
-     } else { # Needed if no assay has been specified in data resource name
-              # e.g. metabolites.rds (vs. microbes_counts.rds)
-         f <- sprintf("%s%s.rds", prefix, "")
-         path <- file.path(base, f)
-	 assay_list[[1]] <- .get_res_by_path(hub, path)
-	 names(assay_list) <- "assay"
-     }         
+    for (a in assays) {
+        path <- file.path(base, sprintf("%s%s.rds", prefix, a))
+	assay_list[[a]] <- .get_res_by_path(hub, path)	    
+    }
+    names(assay_list) <- assays        
     assay_list
 }
 
