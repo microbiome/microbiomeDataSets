@@ -71,8 +71,8 @@ HintikkaXOData <- function() {
     mae <- .create_mae("3.14/hintikka-xo",
     
         types = list(microbiota  = list("SE" = c("counts")),
-                    metabolites = list("SE"  = nmr),
-                    biomarkers  = list("SE"  = signals)
+                    metabolites = list("SE"  = "nmr"),
+                    biomarkers  = list("SE"  = "signals")
                 ),
  
         coldata = TRUE,
