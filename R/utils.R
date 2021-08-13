@@ -151,7 +151,7 @@ availableDataSets <- function(){
     assay_list <- list()
     for (a in assays) {
         path <- file.path(base, sprintf("%s%s.rds", prefix, a))
-	assay_list[[a]] <- .get_res_by_path(hub, path)	    
+        assay_list[[a]] <- .get_res_by_path(hub, path)    
     }
     names(assay_list) <- assays        
     assay_list

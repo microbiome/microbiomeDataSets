@@ -56,7 +56,7 @@ detail.
 ### Intestinal microbiota profiling of 1006 Western adults
 
 This data set from
-[Lahti et al. Nat. Comm. 5:4344, 2014](http://www.nature.com/ncomms/2014/140708/ncomms5344/full/ncomms5344.html)
+[Lahti et al. Nat. Comm. 5:4344, 2014](https://doi.org/10.1038/ncomms5344)
 comes with 130 genus-like taxonomic groups across 1006 western adults with no
 reported health complications. Some subjects have also short time series.
 

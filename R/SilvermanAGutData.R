@@ -40,11 +40,11 @@
 SilvermanAGutData <- function() {
   dataset <- "3.13/silverman-ag"
   tse <- .create_tse(dataset,
-                     assays = c("counts"),
-                     has.rowdata = TRUE,
-                     has.coldata = TRUE,
-                     has.rowtree = TRUE,
-                     has.refseq = TRUE)
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE,
+                    has.rowtree = TRUE,
+                    has.refseq = TRUE)
   tse
 }
 
