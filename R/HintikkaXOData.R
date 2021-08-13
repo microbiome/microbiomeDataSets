@@ -1,6 +1,6 @@
 #' Retrieve HintikkaXO data
 #'
-#' Obtain microbiome, metabolite and biomarker data from Hintikka et al. (2021).
+#' Obtain microbiota, metabolite and biomarker data from Hintikka et al. (2021).
 #'
 #' @details
 #' The HintikkaXO dataset contains high-throughput profiling data from 40 rat
@@ -8,7 +8,7 @@
 #' 318 species, measured from Cecum. This is diet comparison study with
 #' High/Low fat diet and xylo-oligosaccaride supplementation.
 #'
-#' Column metadata is common for all experiments (microbiome, metabolites,
+#' Column metadata is common for all experiments (microbiota, metabolites,
 #' biomarkers) and includes the following fields:
 #'
 #' \itemize{
@@ -20,7 +20,7 @@
 #'   \item{XOS: } {XOS Diet Supplement (numeric; 0/1)}
 #' }
 #' 
-#' Row metadata of the microbiome data contains taxonomic information on the
+#' Row metadata of the microbiota data contains taxonomic information on the
 #' Phylum, Class, Order, Family, Genus, Species, and OTU levels.
 #'
 #' Biomarker data contains 39 biomarkers.
@@ -37,7 +37,7 @@
 #' @references
 #' Hintikka L et al. (2021): Xylo-oligosaccharides in prevention of hepatic
 #' steatosis and adipose tissue inflammation: associating taxonomic and
-#' metabolomic patterns in fecal microbiomes with biclustering.  
+#' metabolomic patterns in fecal microbiotas with biclustering.  
 #' \emph{International Journal of Environmental Research and Public Health}
 #' 18(8):4049 \url{https://doi.org/10.3390/ijerph18084049}
 #'
@@ -63,10 +63,10 @@
 #' # biomarker assay data
 #' bm <- assays(mae[["biomarkers"]])$signals
 # '
-#' # microbiome assay counts
+#' # microbiota assay counts
 #' counts <- assays(mae[["microbiota"]])$counts
 #'
-#' # microbiome rowData
+#' # microbiota rowData
 #' taxtab <- rowData(mae[["microbiota"]])
 #' 
 HintikkaXOData <- function() {
@@ -74,21 +74,20 @@ HintikkaXOData <- function() {
     mae <- .create_mae("3.14/hintikka-xo",
     
         types = list(microbiota  = list("SE" = c("counts")),
-                     metabolites = list("SE"  = nmr),
-                     biomarkers  = list("SE"  = signals)
+                    metabolites = list("SE"  = nmr),
+                    biomarkers  = list("SE"  = signals)
                 ),
  
         coldata = TRUE,
         samplemap = FALSE,
 
-        has.rowdata = list(microbiome = TRUE,
+        has.rowdata = list(microbiota = TRUE,
                         metabolites = FALSE,
                         biomarkers  = FALSE),
 
-        has.coldata = list(microbiome = FALSE,
+        has.coldata = list(microbiota = FALSE,
                         metabolites = FALSE,
                         biomarkers  = FALSE))
-
 
     mae
     
