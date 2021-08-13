@@ -67,7 +67,7 @@
 #' counts <- assays(mae[["microbiota"]])$counts
 #'
 #' # microbiome rowData
-#' taxtab <- rowData(mae[["microbiome"]])
+#' taxtab <- rowData(mae[["microbiota"]])
 #' 
 HintikkaXOData <- function() {
 
