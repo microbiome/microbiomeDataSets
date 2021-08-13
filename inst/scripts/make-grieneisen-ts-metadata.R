@@ -43,7 +43,7 @@ df <- rbind(
         data.frame(
                   Title = "Phylogenetic tree",
                   Description = paste0("Bacteria microbiome phylogenetic tree dataset"),
-                  SourceType = "Nwk",
+                  SourceType = "Rds",
                   RDataClass = "Phylo",
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"tree.rds"),
