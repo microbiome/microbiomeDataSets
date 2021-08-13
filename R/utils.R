@@ -170,13 +170,13 @@ availableDataSets <- function(){
     args <- list()
     if (has.coldata) {
         # args$colData <- readRDS(file.path(base, sprintf("%scoldata.rds",
-    #   prefix)))
+        #   prefix)))
         path <- file.path(base, sprintf("%scoldata.rds", prefix))
         args$colData <- .get_res_by_path(hub, path)
     }
     if (has.rowdata) {
         # args$rowData <- readRDS(file.path(base, sprintf("%srowdata.rds",
-    #   prefix)))
+        #   prefix)))
         path <- file.path(base, sprintf("%srowdata.rds", prefix))
         args$rowData <- .get_res_by_path(hub, path)
     }
