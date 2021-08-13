@@ -11,7 +11,7 @@ for  \code{HintikkaXOData} a \linkS4class{MultiAssayExperiment}
 is provided.
 }
 \description{
-Obtain microbiome, metabolite and biomarker data from Hintikka et al. (2021).
+Obtain microbiota, metabolite and biomarker data from Hintikka et al. (2021).
 }
 \details{
 The HintikkaXO dataset contains high-throughput profiling data from 40 rat
@@ -19,16 +19,24 @@ samples, including 39 biomarkers, 38 metabolites (NMR), and 12706 OTUs from
 318 species, measured from Cecum. This is diet comparison study with
 High/Low fat diet and xylo-oligosaccaride supplementation.
 
-Column metadata is common for all experiments (microbiome, metabolites,
-biomarkers) and includes the Sample (ID), Rat (ID), Site of measurement,
-Diet group, Fat in Diet (Low/High), XOS Diet Supplement (0/1)
+Column metadata is common for all experiments (microbiota, metabolites,
+biomarkers) and includes the following fields:
 
-Row metadata of the microbiome data contains taxonomic information on the
+\itemize{
+\item{Sample: } {Sample ID (character)}
+\item{Rat: } {Rat ID (factor)}
+\item{Site: } {Site of measurement ("Cecum"); single value}
+\item{Diet: } {Diet group (factor; combination of the Fat and XOS fields)}
+\item{Fat: } {Fat in Diet (factor; Low/High)}
+\item{XOS: } {XOS Diet Supplement (numeric; 0/1)}
+}
+
+Row metadata of the microbiota data contains taxonomic information on the
 Phylum, Class, Order, Family, Genus, Species, and OTU levels.
 
 Biomarker data contains 39 biomarkers.
 
-NMR data contains 38 metabolites.
+Metabolite data contains 38 NMR metabolites.
 
 All data are downloaded from ExperimentHub and cached for local re-use.
 }
@@ -39,25 +47,25 @@ mae <- HintikkaXOData()
 # List the experiments in this MultiAssayExperiment object
 print(experiments(mae))
 
-# colData for this MAE data object
-colData(mae)
+# colData for this MAE data object (print first few rows)
+print(head(colData(mae)))
 
 # metabolite assay data
-# assays(mae[["metabolites"]])$assay
+nmr <- assays(mae[["metabolites"]])$nmr
 
 # biomarker assay data
-# assays(mae[["biomarkers"]])$assay
-# microbiome assay counts
-# assays(mae[["microbiome"]])$counts
+bm <- assays(mae[["biomarkers"]])$signals
+# microbiota assay counts
+counts <- assays(mae[["microbiota"]])$counts
 
-# microbiome rowData
-rowData(mae[["microbiome"]])
+# microbiota rowData
+taxtab <- rowData(mae[["microbiota"]])
 
 }
 \references{
 Hintikka L et al. (2021): Xylo-oligosaccharides in prevention of hepatic
 steatosis and adipose tissue inflammation: associating taxonomic and
-metabolomic patterns in fecal microbiomes with biclustering.
+metabolomic patterns in fecal microbiotas with biclustering.
 \emph{International Journal of Environmental Research and Public Health}
 18(8):4049 \url{https://doi.org/10.3390/ijerph18084049}
 }
