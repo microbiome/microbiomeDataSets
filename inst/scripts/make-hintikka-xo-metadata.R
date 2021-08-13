@@ -38,12 +38,12 @@ df <- rbind(
                     Tags = NA)),
 
     cbind(df_Base,
-          DataFrame(Title = "Hintikka XO microbiome counts",
-                    Description = paste0("Count matrix for the HintikkaXO microbiome dataset"),
+          DataFrame(Title = "Hintikka XO microbiota counts",
+                    Description = paste0("Count matrix for the HintikkaXO microbiota dataset"),
                     SourceType = "XLS/XLSX",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = paste0(path,"hintikka-xo/microbiome_counts.rds"),
+                    RDataPath = paste0(path,"hintikka-xo/microbiota_counts.rds"),
                     Tags = NA)),		    
 
     cbind(df_Base,
@@ -52,7 +52,7 @@ df <- rbind(
                     SourceType = "XLS/XLSX",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = paste0(path,"hintikka-xo/metabolites.rds"),
+                    RDataPath = paste0(path,"hintikka-xo/metabolites_nmr.rds"),
                     Tags = NA)),
 
     cbind(df_Base,
@@ -61,7 +61,7 @@ df <- rbind(
                     SourceType = "XLS/XLSX",
                     RDataClass = "matrix",
                     DispatchClass = "Rds",
-                    RDataPath = paste0(path,"hintikka-xo/biomarkers.rds"),
+                    RDataPath = paste0(path,"hintikka-xo/biomarkers_signals.rds"),
                     Tags = NA))
 )
 
