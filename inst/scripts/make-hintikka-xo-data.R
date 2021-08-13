@@ -41,14 +41,24 @@ tax <- ngs[, 1:7] %>%
          rename(Family = "D4") %>%
          rename(Genus = "D5") %>%
          rename(Species = "D6") 	 
+tax <- tax[, c(2:7, 1)]
+tax <- DataFrame(tax)
+rownames(tax) <- tax$OTU
 
+# Pick microbiota abundances
 otu <- ngs[, 8:ncol(ngs)]
 
-# Only Cecum data was used in the paper; separate metadata and blood+other measurements
+# Only Cecum data was used in the paper;
+# separate metadata and blood+other measurements
 inds <- which(meta$Site == "Cecum") # Check matching.txt
 vars <- c("Sample", "Rat", "Site", "Diet", "Fat", "XOS")
 meta_cecum <- as.data.frame(meta[inds, vars])
+meta_cecum <- DataFrame(meta_cecum)
 rownames(meta_cecum) <- meta_cecum$Sample
+meta_cecum$Rat  <- as.factor(meta_cecum$Rat)
+meta_cecum$Diet <- as.factor(meta_cecum$Diet)
+meta_cecum$Fat  <- as.factor(meta_cecum$Fat)
+#meta_cecum$XOS <- as.factor(meta_cecum$XOS)
 
 # Manually checked that the sample order corresponds;
 # let us rename the samples so they have same names in the different tables
@@ -60,17 +70,43 @@ colnames(otu_cecum) <- meta_cecum$Sample
 # Manually checked that the sample order corresponds;
 # let us rename the samples so they have same names in the different tables
 bm <- t(meta[inds, -match(vars, colnames(meta))])
+bm <- as.matrix(bm)
 colnames(bm) <- meta_cecum$Sample
 
-# Convert to TSE object
+# NMR
 nmr$Rat <- NULL # Can be removed after matching
 nmr <- t(nmr) # features x samples
+nmr <- as.matrix(nmr)
 colnames(nmr) <- meta_cecum$Sample
+
+# Convert to MAE object
+# build SummarizedExperiment objects
+sem <- SummarizedExperiment(assays = list(counts=otu_cecum),
+			    rowData = tax)
+sen <- SummarizedExperiment(assays = list(nmr=nmr))
+seb <- SummarizedExperiment(assays = list(signals=bm))
+
+## Create a MultiAssayExperiment instance
+ExpList <- ExperimentList(list(microbiota=sem,
+                               metabolites=sen,
+			       biomarkers=seb))
+mae <- MultiAssayExperiment(experiments = ExpList,
+                            colData = meta_cecum)
+     
+# Fetch the data from MAE object in order to ensure compabitility
+# with ExperimentHub access
+tax     <- rowData(mae[["microbiota"]])
+counts  <- assay(mae[["microbiota"]], "counts")
+nmr     <- assay(mae[["metabolites"]], "nmr")
+bm      <- assay(mae[["biomarkers"]], "signals")
+coldata <- colData(mae)
 
 # Save the data components
 path <- "../extras/microbiomeDataSets/3.14/hintikka-xo/"
-saveRDS(meta_cecum, file = paste0(path, "coldata.rds"))
-saveRDS(tax, file = paste0(path, "microbiome_rowdata.rds"))
-saveRDS(otu_cecum, file = paste0(path, "microbiome_counts.rds"))
-saveRDS(nmr, file = paste0(path, "metabolites_abundances.rds"))
-saveRDS(bm, file = paste0(path, "biomarkers_signals.rds"))
+saveRDS(tax,       file = paste0(path, "microbiota_rowdata.rds"))
+saveRDS(counts,    file = paste0(path, "microbiota_counts.rds"))
+saveRDS(nmr,       file = paste0(path, "metabolites_nmr.rds"))
+saveRDS(bm,        file = paste0(path, "biomarkers_signals.rds"))
+saveRDS(coldata,   file = paste0(path, "coldata.rds"))
+
+

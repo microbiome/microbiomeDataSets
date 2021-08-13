@@ -82,11 +82,6 @@ HintikkaXOData <- function() {
                         biomarkers  = FALSE))
 
 
-    # Fix order in rowData
-    rowData(mae[["microbiome"]]) <- rowData(mae[["microbiome"]])[, c(2:7, 1)]
-    # Add sample names to rownames
-    rownames(mae[["microbiome"]]) <- rowData(mae[["microbiome"]])$OTU
-
     mae
     
 }
