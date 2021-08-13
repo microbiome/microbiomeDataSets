@@ -1,14 +1,7 @@
-library(tidyverse)
-library(remotes)
-library(mia)
-library(BiocManager)
 library(SummarizedExperiment)
-library(biomformat)
 library(TreeSummarizedExperiment)
 library(dplyr)
-library(utils)
-library(tidyr)
-library(readxl)
+library(phyloseq)
 
 #Sample phenotype data
 samples <- read.csv("git_metadata_and_community_phenotypes.csv")
@@ -28,10 +21,11 @@ tax_1 <- select(counts, domain, phylum, class, order, family, genus, asv_id)
 rownames(tax_1) <- counts$asv_id
 
 # In order to make sure that the samples match between the abundance and phenodata tables
-counts_trimmed <- counts[, samples$sample]
+counts_trimmed <- counts[, rownames(samples)]
 
 #Phylogenetic tree
-tree <- ape::read.tree("philr_tree_139_asv.nwk")
+pseq <- readRDS("asv_10prev_phyloseq_for_lahti.RDS")
+tree <- phy_tree(pseq)
 
 #converting csv file into rds file
 saveRDS(samples, "samples.rds")
@@ -81,13 +75,18 @@ rownames(counts) <- counts$asv_id
 counts[, c("asv_id", "asv_sequence", "domain", "phylum", "class", "order", "family", "genus")]  <- NULL
 
 #sequence information
-refSeq <- DNAStringSet(counts$asv_sequence, start=NA, end=NA, width=NA, use.names=TRUE)
+refSeq <- DNAStringSet(ASV_Sequence, start=NA, end=NA, width=NA, use.names=TRUE)
 
 tse <- TreeSummarizedExperiment(assays = list(counts = counts_trimmed),
                                 colData = samples_1,
                                 rowData = tax,
-                                rowTree = tree)
-referenceSeq(tse) <- refSeq
+                                referenceSeq = refSeq)
+
+#Subsetting
+tse <- tse[tree$tip.label, ]
+
+rowTree(tse) <- tree
+tse 
 
 data <- "/MicrobiomeDataSets/3.14/"
 
