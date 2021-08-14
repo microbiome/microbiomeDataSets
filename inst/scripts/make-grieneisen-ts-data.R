@@ -7,6 +7,7 @@ library(ape)
 #Sample phenotype data
 samples <- read.csv("git_metadata_and_community_phenotypes.csv")
 rownames(samples) <- samples$sample
+samples$X <- NULL
 samples[,c("baboon_id", "sex", "social_group", "season" ,"plate")] <- lapply(samples[,c("baboon_id", "sex", "social_group", "season" ,"plate")],as.factor)
 samples$collection_date <- as.Date(samples$collection_date, format="%Y-%m-%d")
 
