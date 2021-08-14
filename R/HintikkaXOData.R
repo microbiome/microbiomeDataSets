@@ -46,6 +46,7 @@
 #'
 #' @examples
 #' # Retrieve the MAE data
+#' \dontrun{
 #' mae <- HintikkaXOData()
 #'
 #' # List the experiments in this MultiAssayExperiment object
@@ -65,7 +66,7 @@
 #'
 #' # microbiota rowData
 #' taxtab <- rowData(mae[["microbiota"]])
-#' 
+#' } 
 HintikkaXOData <- function() {
 
     mae <- .create_mae("3.14/hintikka-xo",
