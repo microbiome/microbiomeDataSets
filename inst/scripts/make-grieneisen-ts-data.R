@@ -3,6 +3,7 @@ library(TreeSummarizedExperiment)
 library(dplyr)
 library(phyloseq)
 library(ape)
+library(forcats)
 
 #Sample phenotype data
 samples <- read.csv("git_metadata_and_community_phenotypes.csv")
