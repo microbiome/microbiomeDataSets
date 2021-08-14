@@ -7,7 +7,7 @@ library(ape)
 #Sample phenotype data
 samples <- read.csv("git_metadata_and_community_phenotypes.csv")
 rownames(samples) <- samples$sample
-as.factor(c("baboon_id", "sex", "social_group", "season" ,"plate"))
+samples[,c("baboon_id", "sex", "social_group", "season" ,"plate")] <- lapply(samples[,c("baboon_id", "sex", "social_group", "season" ,"plate")],as.factor)
 samples$collection_date <- as.Date(samples$collection_date, format="%Y-%m-%d")
 
 #Abundance table
@@ -40,6 +40,8 @@ tax <- tax  %>% dplyr::rename(c(
   Genus = "genus",
   ASV = "asv_id"
   ))
+
+tax$ASV<- as.factor(tax$ASV)
 
 #Arranging counts
 rownames(counts) <- counts$asv_id
