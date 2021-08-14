@@ -28,43 +28,41 @@ df <- rbind(
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"counts.rds"),
                   Tags = "Microbiome" )),
-
-
   cbind(df_Base,
         data.frame(
                   Title = "Row data",
-                  Description = paste0("Row data for the bacteria microbiome dataset"),
+                  Description = paste0("Taxonomy table for the bacteria microbiome dataset"),
                   SourceType = "Rds",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"tax.rds"),
+                  RDataPath = paste0(path,"rowdata.rds"),
                   Tags = "Microbiome")),
   cbind(df_Base,
         data.frame(
                   Title = "Phylogenetic tree",
-                  Description = paste0("Bacteria microbiome phylogenetic tree dataset"),
+                  Description = paste0("Phylogenetic tree for bacteria microbiome dataset"),
                   SourceType = "Rds",
                   RDataClass = "Phylo",
-                  DispatchClass = "Rds",
-                  RDataPath = paste0(path,"tree.rds"),
+                  DispatchClass = "Tre.gz",
+                  RDataPath = paste0(path,"rowtree.tre.gz"),
                   Tags = "Microbiome")),
   cbind(df_Base,
         data.frame(
                   Title = "Sample data",
-                  Description = paste0("Bacteria microbiome sample dataset"),
+                  Description = paste0("Sample Matrix for bacteria microbiome dataset"),
                   SourceType = "Csv",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"samples.rds"),
+                  RDataPath = paste0(path,"coldata.rds"),
                   Tags = "Microbiome")),
   cbind(df_Base,
         data.frame(
                   Title = "Sequence data",
-                  Description = paste0("Bacteria microbiome sequence dataset"),
+                  Description = paste0("Sequence information for bacteria microbiome dataset"),
                   SourceType = "Rds",
                   RDataClass = "DFrame",
-                  DispatchClass = "Rds",
-                  RDataPath = paste0(path,"sequence.rds"),
+                  DispatchClass = "Fasta.gz",
+                  RDataPath = paste0(path,"refseq.fasta.gz"),
                   Tags = "Microbiome"))
 )
 
