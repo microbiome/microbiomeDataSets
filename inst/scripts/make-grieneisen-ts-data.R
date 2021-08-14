@@ -88,10 +88,24 @@ tse <- tse[tree$tip.label, ]
 rowTree(tse) <- tree
 tse 
 
+rowdata <- rowData(tse)
+coldata <- colData(tse)
+counts <- assay(tse, "counts")
+rowtree <- rowTree(tse)
+refseq <- referenceSeq(tse)
+
+unlink(c("samples.rds","tax.rds"))
+
 data <- "/MicrobiomeDataSets/3.14/"
 
-saveRDS(samples_1, file = paste0(data, "samples.rds"))
-saveRDS(counts, file = paste0(data, "counts.rds"))
-saveRDS(tree,  file = paste0(data,"tree.rds"))
-saveRDS(tax, file = paste0(data, "tax.rds"))
-saveRDS(ref_seq, file = paste0(data,"sequence.rds"))
+saveRDS(counts, file = paste0(data,"counts.rds"))
+saveRDS(coldata, file = paste0(data,"coldata.rds"))
+saveRDS(rowdata , file = paste0(data, "rowdata.rds"))
+
+ape::write.tree(rowtree, file= paste0(data,"rowtree.tre"))
+gz_tree<- gzfile("rowtree.tre.gz", "w")
+writeLines(readLines("rowtree.tre"), con=gz_tree)
+close(gz_tree)
+unlink("rowtree.tre")
+
+Biostrings::writeXStringSet(refseq, "refseq.fasta.gz", compress = TRUE)
