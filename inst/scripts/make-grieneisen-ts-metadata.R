@@ -40,7 +40,7 @@ df <- rbind(
   cbind(df_Base,
         data.frame(
                   Title = "Phylogenetic tree",
-                  Description = paste0("Phylogenetic tree for bacteria microbiome dataset"),
+                  Description = paste0("Phylogenetic tree for the bacteria microbiome dataset"),
                   SourceType = "Rds",
                   RDataClass = "Phylo",
                   DispatchClass = "Tre.gz",
@@ -49,7 +49,7 @@ df <- rbind(
   cbind(df_Base,
         data.frame(
                   Title = "Sample data",
-                  Description = paste0("Sample Matrix for bacteria microbiome dataset"),
+                  Description = paste0("Sample Matrix for the bacteria microbiome dataset"),
                   SourceType = "Csv",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
@@ -58,7 +58,7 @@ df <- rbind(
   cbind(df_Base,
         data.frame(
                   Title = "Sequence data",
-                  Description = paste0("Sequence information for bacteria microbiome dataset"),
+                  Description = paste0("Sequence information for the bacteria microbiome dataset"),
                   SourceType = "Rds",
                   RDataClass = "DFrame",
                   DispatchClass = "Fasta.gz",
