@@ -1,5 +1,7 @@
 ---
 title: "microbiomeDataSets"
+date: "`r Sys.Date()`"
+package: microbiomeDataSets
 output: 
   BiocStyle::html_document:
     fig_height: 7
@@ -11,6 +13,7 @@ vignette: >
   %\VignetteIndexEntry{microbiomeDataSets}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: references.bib  
 ---
 
 ```{r, include = FALSE}
@@ -41,6 +44,20 @@ The data is usually loaded as a `r Biocpkg("TreeSummarizedExperiment")` or a
 `r Biocpkg("MultiAssayExperiment")`, if microbiome associated data was used
 in the respective study. For more information on how to use these objects,
 please refer to the vignettes of the packages.
+
+All data are downloaded from ExperimentHub and cached for local re-use.
+
+## Hintikka XO data
+
+The Hintikka XO data contains microbiota, metabolite and biomarker
+data from [Hintikka et al. (2021)](https://doi.org/10.3390/ijerph18084049) [@hintikka2021], including high-throughput profiling
+data from 40 rat samples, including 39 biomarkers, 38 metabolites
+(NMR), and 12706 OTUs from 318 species, measured from Cecum. This is
+diet comparison study with High/Low fat diet and xylo-oligosaccaride
+supplementation.
+
+The data set is provided as a MultiAssayExperiment.
+
 
 ## HIT Chip Data
 
@@ -102,3 +119,4 @@ LahtiMLData()
 sessionInfo()
 ```
 
+# References
