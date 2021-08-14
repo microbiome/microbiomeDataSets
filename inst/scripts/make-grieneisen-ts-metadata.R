@@ -4,67 +4,69 @@ library(R.utils)
 library(stringr)
 
 BiocVersion <- "3.14"
-path <- paste0("MicrobiomeDataSets/",BiocVersion,"/")
+path <- paste0("microbiomeDataSets/",BiocVersion,"/")
 
 df_Base <- data.frame(
   BiocVersion = BiocVersion,
   SourceVersion = NA,
   Coordinate_1_based = TRUE,
-  Domain = "Bacteria",
-  TaxonomyId = "2",
+  Species = "Papio cynocephalus",
+  TaxonomyId = "9556",
   SourceVersion=Sys.time(),
   Genome = NA,
   SourceUrl = "https://science.sciencemag.org/content/373/6551/181",
-  DataProvider = NA
+  DataProvider = "University of Minnesota"
 )
 
 df <- rbind(
   cbind(df_Base,
        data.frame(
-                  Title = "Counts",
-                  Description = paste0("Count matrix for the bacteria microbiome dataset"),
+                  Title = "Grieneisen Baboon counts data set",
+                  Description = paste0("Count matrix for the Grieneisen Baboon dataset"),
+                  SourceType = "Rds",
+                  RDataClass = "matrix",
+                  DispatchClass = "Rds",
+                  RDataPath = paste0(path,"baboon-ts/counts.rds"),
+                  Tags = "NA")),
+  cbind(df_Base,
+        data.frame(
+                  Title = "Grieneisen Baboon row data set",
+                  Description = paste0("Taxonomy table for the Grieneisen Baboon dataset"),
                   SourceType = "Rds",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"counts.rds"),
-                  Tags = "Microbiome" )),
+                  RDataPath = paste0(path,"baboon-ts/rowdata.rds"),
+                  Tags = "NA")),
   cbind(df_Base,
         data.frame(
-                  Title = "Row data",
-                  Description = paste0("Taxonomy table for the bacteria microbiome dataset"),
-                  SourceType = "Rds",
-                  RDataClass = "DFrame",
-                  DispatchClass = "Rds",
-                  RDataPath = paste0(path,"rowdata.rds"),
-                  Tags = "Microbiome")),
-  cbind(df_Base,
-        data.frame(
-                  Title = "Phylogenetic tree",
-                  Description = paste0("Phylogenetic tree for the bacteria microbiome dataset"),
-                  SourceType = "Rds",
+                  Title = "Grieneisen Baboon phylogenetic tree data set",
+                  Description = paste0("Phylogenetic tree for the Grieneisen Baboon dataset"),
+                  SourceType = "TXT",
                   RDataClass = "Phylo",
-                  DispatchClass = "Tre.gz",
-                  RDataPath = paste0(path,"rowtree.tre.gz"),
-                  Tags = "Microbiome")),
+                  DispatchClass = "FilePath",
+                  RDataPath = paste0(path,"baboon-ts/rowtree.tre.gz"),
+                  Tags = "NA")),
   cbind(df_Base,
         data.frame(
-                  Title = "Sample data",
-                  Description = paste0("Sample Matrix for the bacteria microbiome dataset"),
-                  SourceType = "Csv",
-                  RDataClass = "DFrame",
+                  Title = "Grieneisen Baboon sample data set",
+                  Description = paste0("Sample information for the Grieneisen Baboon dataset"),
+                  SourceType = "CSV",
+                  RDataClass = "character",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"coldata.rds"),
-                  Tags = "Microbiome")),
+                  RDataPath = paste0(path,"baboon-ts/coldata.rds"),
+                  Tags = "NA")),
   cbind(df_Base,
         data.frame(
-                  Title = "Sequence data",
-                  Description = paste0("Sequence information for the bacteria microbiome dataset"),
-                  SourceType = "Rds",
-                  RDataClass = "DFrame",
-                  DispatchClass = "Fasta.gz",
-                  RDataPath = paste0(path,"refseq.fasta.gz"),
-                  Tags = "Microbiome"))
+                  Title = "Grieneisen Baboon sequence data set",
+                  Description = paste0("Sequence data for the Grieneisen Baboon dataset"),
+                  SourceType = "TXT",
+                  RDataClass = "character",
+                  DispatchClass = "FilePath",
+                  RDataPath = paste0(path,"baboon-ts/refseq.fasta.gz"),
+                  Tags = "NA"))
 )
+
+df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="") 
 
 write.csv(df, file = paste0("../extdata/",BiocVersion,"/metadata-grieneisen-ts.csv"),
           row.names = FALSE)
