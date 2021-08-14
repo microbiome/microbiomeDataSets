@@ -42,6 +42,7 @@ All data are downloaded from ExperimentHub and cached for local re-use.
 }
 \examples{
 # Retrieve the MAE data
+\dontrun{
 mae <- HintikkaXOData()
 
 # List the experiments in this MultiAssayExperiment object
@@ -60,7 +61,7 @@ counts <- assays(mae[["microbiota"]])$counts
 
 # microbiota rowData
 taxtab <- rowData(mae[["microbiota"]])
-
+} 
 }
 \references{
 Hintikka L et al. (2021): Xylo-oligosaccharides in prevention of hepatic
