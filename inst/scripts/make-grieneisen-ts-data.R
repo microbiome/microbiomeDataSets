@@ -48,7 +48,6 @@ tax$ASV<- as.factor(tax$ASV)
 #Arranging counts
 rownames(counts) <- counts$asv_id
 counts[, c("asv_id", "asv_sequence", "domain", "phylum", "class", "order", "family", "genus")]  <- NULL
-counts <- as.matrix(counts)
 
 #sequence information
 refSeq <- DNAStringSet(ASV_Sequence, start=NA, end=NA, width=NA, use.names=TRUE)
@@ -72,13 +71,15 @@ counts <- assay(tse, "counts")
 rowtree <- rowTree(tse)
 refseq <- referenceSeq(tse)
 
+counts <- as.matrix(counts)
+
 data <- "/microbiomeDataSets/3.14/"
 
 saveRDS(counts, file = paste0(data,"counts.rds"))
 saveRDS(coldata, file = paste0(data,"coldata.rds"))
 saveRDS(rowdata , file = paste0(data, "rowdata.rds"))
 
-ape::write.tree(rowtree, file= paste0(data,"rowtree.tre"))
+write.tree(rowtree, file= paste0(data,"rowtree.tre"))
 gz_tree<- gzfile("rowtree.tre.gz", "w")
 writeLines(readLines("rowtree.tre"), con=gz_tree)
 close(gz_tree)
