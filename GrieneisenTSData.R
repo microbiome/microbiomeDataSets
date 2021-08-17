@@ -29,7 +29,6 @@
 #' @importFrom TreeSummarizedExperiment  TreeSummarizedExperiment<-
 #' @export
 #'
-#'
 #' @example
 #' # tse <- GrieneisenTSData()
 #'
@@ -45,5 +44,3 @@ GrieneisenTSData <- function() {
   tse
   
 }
-
-
