@@ -14,6 +14,10 @@
 #' Row metadata of the microbiome data contains taxonomic information on the
 #' Domain, Phylum, Class, Order, Family, Genus, and ASV levels.
 #'
+#' The row tree consists of a phylogenetic tree build using sequence information of 613 taxa. 
+#'    
+#' As reference sequences the ASV are provided.
+#'
 #' @return for  \code{GrieneisenTS} a \linkS4class{TreeSummarizedExperiment}
 #'   is provided with the TreeSummarizedExperiment object.
 #'
@@ -23,27 +27,22 @@
 #' Grieneisen et al. (2021) : Gut microbiome heritability is nearly universal but
 #' environmentally contingent 
 #' \emph{Science}
-#' 5483 \url{https://science.sciencemag.org/content/373/6551/181.full}
+#' 373:6551 \url{https://science.sciencemag.org/content/373/6551/181.full}
 #'
 #' @name GrieneisenTSData
 #' @importFrom TreeSummarizedExperiment  TreeSummarizedExperiment<-
 #' @export
 #'
-#'
 #' @example
 #' # tse <- GrieneisenTSData()
-#'
 GrieneisenTSData <- function() {
-  
-  tse <- SummarizedExperiment(assays = list(counts = counts_trimmed),
-                              colData = samples,
-                              rowData = tax,
-                              referenceSeq = refSeq)
-  
-  tse <- tse[tree$tip.label, ]
-  rowTree(tse) <- tree
+  dataset <- "3.13/grienesen-ts"
+  tse <- .create_tse(dataset,
+                     assays = "counts",
+                     has.rowdata = TRUE,
+                     has.coldata = TRUE,
+                     has.rowtree = TRUE,
+                     has.refseq = TRUE,
+                     prefix = NULL)
   tse
-  
 }
-
-
