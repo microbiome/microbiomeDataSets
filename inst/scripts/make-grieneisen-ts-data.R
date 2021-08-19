@@ -58,12 +58,46 @@ tse <- TreeSummarizedExperiment(assays = list(counts = counts_trimmed),
                                 referenceSeq = refSeq)
 
 #Subsetting
-tse <- tse[tree$tip.label, ]
+subsetByLeaf <- function(tse, rowLeaf) {
+  # if rowLeaf is provided as node labels, convert them to node numbers
+  if (is.character(rowLeaf)) {
+    rowLeaf <- convertNode(tree = rowTree(tse), node = rowLeaf)
+  }
+  # subset data by leaves
+  sse <- subsetByNode(tse, rowNode = rowLeaf)
+  # update the row tree
+  ## -------------- new tree: drop leaves ----------
+  oldTree <- rowTree(sse)
+  newTree <- ape::keep.tip(phy = oldTree, tip = rowLeaf)
+  ## -------------- update the row link ----------
+  # track the tree
+  track <- trackNode(oldTree)
+  track <- ape::keep.tip(phy = track, tip = rowLeaf)
+  # row links
+  rowL <- rowLinks(sse)
+  rowL <- DataFrame(rowL)
+  # update the row links:
+  #   1. use the alias label to track and updates the nodeNum
+  #   2. the nodeLab should be updated based on the new tree using the new
+  #      nodeNum
+  #   3. lastly, update the nodeLab_alias
+  rowL$nodeNum <- convertNode(tree = track, node = rowL$nodeLab_alias,
+                              message = FALSE)
+  rowL$nodeLab <- convertNode(tree = newTree, node = rowL$nodeNum,
+                              use.alias = FALSE, message = FALSE)
+  rowL$nodeLab_alias <- convertNode(tree = newTree, node = rowL$nodeNum,
+                                    use.alias = TRUE, message = FALSE)
+  rowL$isLeaf <- isLeaf(tree = newTree, node = rowL$nodeNum)
+  rowNL <- new("LinkDataFrame", rowL)
+  ## update the row tree and links
+  BiocGenerics:::replaceSlots(sse,
+                              rowLinks = rowNL,
+                              rowTree = list(phylo = newTree))
+}
 
-rowTree(tse) <- tree
-
-# Collapse the tree
-tree <- ape::keep.tip(phy = rowTree(tse), tip = rowLinks(tse)$nodeNum)
+# Choose leaves
+leaves <- tree$tip.label[1:613]
+subsetByLeaf(tse = tse, rowLeaf = leaves )
 
 rowdata <- rowData(tse)
 coldata <- colData(tse)
