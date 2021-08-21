@@ -7,17 +7,21 @@
 #' sequencing-based microbiome profiles from 585 baboon samples
 #' collected over 14 years to determine the heritability of the 
 #' gut microbiome on various environmental factors such as 
-#' diet(high/low diversity),age, season(wet/dry).
+#' diet(high/low diversity), age, season(wet/dry).
 #' Each baboon had an average of 28 samples collected over 4.5 years.
 #' The data set can be used to investigate significance 
 #' of longitudinal sampling at large sample sizes.
 #'
+#' This data set contains the 613 most prevalent taxa, including the
+#' phylogenetic tree.
+#' 
 #' Column metadata includes the samples, baboon ID, collection date of 
 #' the samples, sex(F/M), age, social group, social group size, 
 #' rain per month(mm), season(wet/dry), hydro year, month of the year,  
 #' readcount information, plate information, post PCR DNA(ng) information,  
-#' diets, ASV Shannon's H index, Dietary Shannon's H, Amplicon sequence variant (ASV)
-#' richness, the five first principal coordinates(PCs) ofa Bray-Curtis dissimilarity matrix.
+#' diets, ASV Shannon's H index, Dietary Shannon's H, Amplicon sequence
+#' variant (ASV) richness, the five first principal coordinates(PCs) of a
+#' Bray-Curtis dissimilarity matrix.
 #' 
 #' Row metadata of the microbiome data contains taxonomic information on the
 #' Domain, Phylum, Class, Order, Family, Genus, and ASV levels.
