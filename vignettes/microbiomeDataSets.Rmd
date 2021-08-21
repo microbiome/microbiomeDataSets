@@ -40,9 +40,15 @@ function.
 availableDataSets()
 ```
 
-All data are downloaded from ExperimentHub and cached for local re-use. Check the [man pages of each function](https://microbiome.github.io/microbiomeDataSets/reference/index.html) for a detailed documentation of the data contents and original source.
+All data are downloaded from ExperimentHub and cached for local
+re-use. Check the [man pages of each
+function](https://microbiome.github.io/microbiomeDataSets/reference/index.html)
+for a detailed documentation of the data contents and original source.
 
-The microbiome data is usually loaded as a `r Biocpkg("TreeSummarizedExperiment")`. If other associated data tables (metabolomic, biomarker..) are provided, the integrated data collection is provided as `r Biocpkg("MultiAssayExperiment")`. 
+The microbiome data is usually loaded as a `r
+Biocpkg("TreeSummarizedExperiment")`. If other associated data tables
+(metabolomic, biomarker..) are provided, the integrated data
+collection is provided as `r Biocpkg("MultiAssayExperiment")`.
 
 For more information on how to use these objects, please refer to the
 vignettes of those packages.

@@ -46,7 +46,7 @@
 #'
 #' @examples
 #' # Retrieve the MAE data
-#' \dontrun{
+#' \donttest{
 #' mae <- HintikkaXOData()
 #'
 #' # List the experiments in this MultiAssayExperiment object
@@ -75,18 +75,14 @@ HintikkaXOData <- function() {
                     metabolites = list("SE"  = "nmr"),
                     biomarkers  = list("SE"  = "signals")
                 ),
- 
         coldata = TRUE,
         samplemap = FALSE,
-
         has.rowdata = list(microbiota = TRUE,
                         metabolites = FALSE,
                         biomarkers  = FALSE),
-
         has.coldata = list(microbiota = FALSE,
                         metabolites = FALSE,
                         biomarkers  = FALSE))
-
     mae
     
 }

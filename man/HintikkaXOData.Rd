@@ -42,7 +42,7 @@ All data are downloaded from ExperimentHub and cached for local re-use.
 }
 \examples{
 # Retrieve the MAE data
-\dontrun{
+\donttest{
 mae <- HintikkaXOData()
 
 # List the experiments in this MultiAssayExperiment object
