@@ -1,11 +1,13 @@
+library(microbiomeDataSets)
 library(readxl)
 library(dplyr)
 library(tidyr)
 library(stringr)
 
-temp_data <- "../extras/temp_data/"
+temp_data <- "../extras/temp_data/hintikka-xo-original"
 
 # Read metabolite data
+rename <- dplyr::rename
 nmr <- read_excel(paste0(temp_data, "NMR_Quantification.xlsx")) %>%
          rename(Rat = "RAT ID") %>%
          rename(Group = "Group ID") %>%
@@ -65,6 +67,38 @@ meta_cecum$Fat  <- as.factor(meta_cecum$Fat)
 otu_cecum <- as.matrix(otu[, inds])
 rownames(otu_cecum) <- rownames(tax)
 colnames(otu_cecum) <- meta_cecum$Sample
+
+skip <- TRUE
+if (!skip) {
+# Add tree data
+seqdata <- read_excel(paste0(temp_data, "OTU97_lopetus_cecum_proxcolon_Leolle.xlsx"))
+# OTU names match ok
+all(rownames(otu) == seqdata$Name)
+#seqs <- dada2::getSequences(x[["Start of sequence"]])
+seqs <- seqdata[["Start of sequence"]]
+names(seqs) <- seqs
+sum(duplicated(names(seqs)))
+
+alignment <- DECIPHER::AlignSeqs(DNAStringSet(seqs), anchor=NA)
+# First construct a neighbor-joining tree, and then fit a GTR+G+I
+#  (Generalized time-reversible with Gamma rate variation) maximum
+#  likelihood tree using the neighbor-joining tree as a starting point.
+library(phangorn)
+phang.align <- phangorn::phyDat(as(alignment, "matrix"), type="DNA")
+dm <- phangorn::dist.ml(phang.align)
+treeNJ <- NJ(dm) # Note: tip order != sequence order
+fitNJ <- pml(treeNJ, data=phang.align)
+fitGTR <- update(fitNJ, k=4, inv=0.2)
+fitGTR <- optim.pml(fitGTR, model="GTR", optInv=TRUE, optGamma=TRUE,
+                   rearrangement = "stochastic", control = pml.control(trace = 0))
+# if you want to root but don’t have an obvious outgroup
+fitGTR_rooted <- phangorn::midpoint(fitGTR)
+is.rooted(fitGTR) # Is the tree Rooted?
+is.binary.tree(fitGTR) # All multichotomies resolved?
+TODO Add the three
+}
+
+
 
 # Biomarkers
 # Manually checked that the sample order corresponds;

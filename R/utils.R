@@ -50,9 +50,9 @@ availableDataSets <- function(){
                         samplemap = TRUE,
                         has.rowdata = list(),
                         has.coldata = list()){
-    
+
     el <- .get_experiment_list(dataset, hub, types, has.rowdata, has.coldata)
-    
+
     args <- .get_col_row_map_data(dataset, hub,
                                   has.rowdata = FALSE,
                                   has.coldata = coldata,
