@@ -52,7 +52,6 @@ availableDataSets <- function(){
                         has.coldata = list()){
 
     el <- .get_experiment_list(dataset, hub, types, has.rowdata, has.coldata)
-
     args <- .get_col_row_map_data(dataset, hub,
                                   has.rowdata = FALSE,
                                   has.coldata = coldata,
@@ -150,10 +149,12 @@ availableDataSets <- function(){
     prefix <- .norm_prefix(prefix)
     assay_list <- list()
     for (a in assays) {
+        # assay_list[[a]] <- readRDS(file.path(base, sprintf("%s%s.rds",
+    #  prefix, a)))
         path <- file.path(base, sprintf("%s%s.rds", prefix, a))
-        assay_list[[a]] <- .get_res_by_path(hub, path)    
+        assay_list[[a]] <- .get_res_by_path(hub, path)
     }
-    names(assay_list) <- assays        
+    names(assay_list) <- assays
     assay_list
 }
 
@@ -170,13 +171,13 @@ availableDataSets <- function(){
     args <- list()
     if (has.coldata) {
         # args$colData <- readRDS(file.path(base, sprintf("%scoldata.rds",
-        #   prefix)))
+    #   prefix)))
         path <- file.path(base, sprintf("%scoldata.rds", prefix))
         args$colData <- .get_res_by_path(hub, path)
     }
     if (has.rowdata) {
         # args$rowData <- readRDS(file.path(base, sprintf("%srowdata.rds",
-        #   prefix)))
+    #   prefix)))
         path <- file.path(base, sprintf("%srowdata.rds", prefix))
         args$rowData <- .get_res_by_path(hub, path)
     }
@@ -269,7 +270,7 @@ availableDataSets <- function(){
         base <- .get_base_path(dataset)
         prefix <- .norm_prefix(prefix)
         # refSeq <- readDNAStringSet(file.path(base,
-        # sprintf("%srefseq.fasta.gz", prefix)))
+    #   sprintf("%srefseq.fasta.gz", prefix)))
         refSeq <- file.path(base, sprintf("%srefseq.fasta.gz", prefix))
         refSeq <- .get_res_by_path(hub,refSeq)
         refSeq <- readDNAStringSet(refSeq)
