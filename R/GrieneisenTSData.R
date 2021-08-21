@@ -47,11 +47,11 @@
 #'  \item{diet_shannon_h: } {Dietary Shannon's H index (numeric)}
 #'  \item{asv_richness: } {ASV richness (integer)}
 #'  \item{asv_shannon_h: } {ASV Shannon's H index (numeric)}
-#'  \item{pc1_bc: } {PC1 of Bray-Curtis dissimilarity matrix (numeric)}
-#'  \item{pc2_bc: } {PC2 of Bray-Curtis dissimilarity matrix (numeric)}
-#'  \item{pc3_bc: } {PC3 of Bray-Curtis dissimilarity matrix (numeric)}
-#'  \item{pc4_bc: } {PC4 of Bray-Curtis dissimilarity matrix (numeric)}
-#'  \item{pc5_bc: } {PC5 of Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc1_bc: } {PC1 BC (numeric)}
+#'  \item{pc2_bc: } {PC2 BC (numeric)}
+#'  \item{pc3_bc: } {PC3 BC (numeric)}
+#'  \item{pc4_bc: } {PC4 BC (numeric)}
+#'  \item{pc5_bc: } {PC5 BC (numeric)}
 #'}
 #'
 #' Row metadata of the microbiome data contains taxonomic information on the
