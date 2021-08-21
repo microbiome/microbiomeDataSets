@@ -40,12 +40,12 @@ Imports:
     BiocGenerics,
     ExperimentHub,
     Biostrings,
-    ape
+    ape,
+    SingleCellExperiment    
 Suggests: 
     knitr,
     rmarkdown,
     BiocStyle,
-    SingleCellExperiment,    
     testthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
