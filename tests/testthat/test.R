@@ -1,3 +1,8 @@
+context("Loading of GrieneisenTSData data")
+test_that("Loading of GrieneisenTSData data", {
+  tse <- GrieneisenTSData()
+  expect_s4_class(tse, "TreeSummarizedExperiment")
+})
 
 context("Loading of LahtiMData data")
 test_that("Loading of LahtiMData data", {
