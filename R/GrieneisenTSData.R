@@ -7,21 +7,52 @@
 #' sequencing-based microbiome profiles from 585 baboon samples
 #' collected over 14 years to determine the heritability of the
 #' gut microbiome on various environmental factors such as
-#' diet(high/low diversity), age, season(wet/dry).
-#' Each baboon had an average of 28 samples collected over 4.5 years.
-#' The data set can be used to investigate significance
-#' of longitudinal sampling at large sample sizes.
+#' diet, age, season.Each baboon had an average of 28 samples
+#' collected over 4.5 years.The data set can be used to
+#' investigate significance of longitudinal sampling at large
+#' sample sizes.
 #'
 #' This data set contains the 613 most prevalent taxa, including the
 #' phylogenetic tree.
 #'
-#' Column metadata includes the Sample ID, Baboon ID, Sample collection
-#' date(YYYY-MM-DD),Sex(F/M), Age(0-27),Social group ID, Social group size,
-#' Rain/month(mm) measurement, Season(wet/dry), Hydro year, Month of the year,
-#' Total read count, Plate measurement, Post PCR DNA(ng) count,
-#' Diet groups, ASV Shannon's H index, Dietary Shannon's H, Amplicon sequence
-#' variant (ASV) richness, Principal coordinates(PCs) of a
-#' Bray-Curtis dissimilarity matrix.
+#' Column metadata includes the following fields:
+#'\itemize{
+#'  \item{sample: } {Sample ID (character)}
+#'  \item{baboon_id: } {Baboon ID (factor)}
+#'  \item{collection_date: } {Sample collection date (date ; YYYY-MM-DD)}
+#'  \item{sex: } {Sex (factor; F/M)}
+#'  \item{age: } {Age (numeric)}
+#'  \item{social_group: } {Social group ID (factor)}
+#'  \item{group_size: } {Social group size (integer)}
+#'  \item{rain_month_mm: } {Rain per month(mm) (numeric)}
+#'  \item{season: } {Season (factor; dry/wet)}
+#'  \item{hydro_year: } {Hydro year (integer)}
+#'  \item{month: } {Month (integer)}
+#'  \item{readcount: } {Read count (numeric)}
+#'  \item{plate: } {Plate (factor)}
+#'  \item{post_pcr_dna_ng: } {Post PCR DNA(ng) (numeric)}
+#'  \item{diet_PC1: } {Diet PC1 (numeric)}
+#'  \item{diet_PC2: } {Diet PC2 (numeric)}
+#'  \item{diet_PC3: } {Diet PC3 (numeric)}
+#'  \item{diet_PC4: } {Diet PC4 (numeric)}
+#'  \item{diet_PC5: } {Diet PC5 (numeric)}
+#'  \item{diet_PC6: } {Diet PC6 (numeric)}
+#'  \item{diet_PC7: } {Diet PC7 (numeric)}
+#'  \item{diet_PC8: } {Diet PC8 (numeric)}
+#'  \item{diet_PC9: } {Diet PC9 (numeric)}
+#'  \item{diet_PC10: } {Diet PC10 (numeric)}
+#'  \item{diet_PC11: } {Diet PC11 (numeric)}
+#'  \item{diet_PC12: } {Diet PC12 (numeric)}
+#'  \item{diet_PC13: } {Diet PC13 (numeric)}
+#'  \item{diet_shannon_h: } {Dietary Shannon's H index (numeric)}
+#'  \item{asv_richness: } {ASV richness (integer)}
+#'  \item{asv_shannon_h: } {ASV Shannon's H index (numeric)}
+#'  \item{pc1_bc: } {PC1 of Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc2_bc: } {PC2 of Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc3_bc: } {PC3 of Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc4_bc: } {PC4 of Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc5_bc: } {PC5 of Bray-Curtis dissimilarity matrix (numeric)}
+#'}
 #'
 #' Row metadata of the microbiome data contains taxonomic information on the
 #' Domain, Phylum, Class, Order, Family, Genus, and ASV levels.
