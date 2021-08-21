@@ -1,6 +1,6 @@
 #' Retrieve HintikkaXO data
 #'
-#' Obtain microbiota, metabolite and biomarker data from Hintikka et al. (2021).
+#' Obtain microbiome and lipid data from Hintikka et al. (2021).
 #'
 #' @details
 #' The HintikkaXO dataset contains high-throughput profiling data from 40 rat
@@ -8,86 +8,69 @@
 #' 318 species, measured from Cecum. This is diet comparison study with
 #' High/Low fat diet and xylo-oligosaccaride supplementation.
 #'
-#' Column metadata is common for all experiments (microbiota, metabolites,
-#' biomarkers) and includes the following fields:
-#'
-#' \itemize{
-#'   \item{Sample: } {Sample ID (character)}
-#'   \item{Rat: } {Rat ID (factor)}
-#'   \item{Site: } {Site of measurement ("Cecum"); single value}
-#'   \item{Diet: } {Diet group (factor; combination of the Fat and XOS fields)}
-#'   \item{Fat: } {Fat in Diet (factor; Low/High)}
-#'   \item{XOS: } {XOS Diet Supplement (numeric; 0/1)}
-#' }
+#' Column metadata includes the SampleID, RatID, Measurement site, Diet group,
+#' Diet Fat (Low/High),  Diet Supplement (XOS 0/1)
 #' 
-#' Row metadata of the microbiota data contains taxonomic information on the
+#' Row metadata of the microbiome data contains taxonomic information on the
 #' Phylum, Class, Order, Family, Genus, Species, and OTU levels.
 #'
+#' Biomarker and NMR metabolite data are provided as altExp (alternative
+#' Experiments).
+#' 
 #' Biomarker data contains 39 biomarkers.
 #'
-#' Metabolite data contains 38 NMR metabolites.
+#' NMR data contains 38 metabolites.
 #' 
 #' All data are downloaded from ExperimentHub and cached for local re-use.
 #'
-#' @return for  \code{HintikkaXOData} a \linkS4class{MultiAssayExperiment}
-#' is provided.
+#' @return for  \code{HintikkaXOData} a \linkS4class{SummarizedExperiment}
+#'   is provided with the altExp objects.
 #'
 #' @author Leo Lahti
 #'
 #' @references
 #' Hintikka L et al. (2021): Xylo-oligosaccharides in prevention of hepatic
 #' steatosis and adipose tissue inflammation: associating taxonomic and
-#' metabolomic patterns in fecal microbiotas with biclustering.  
+#' metabolomic patterns in fecal microbiomes with biclustering.  
 #' \emph{International Journal of Environmental Research and Public Health}
 #' 18(8):4049 \url{https://doi.org/10.3390/ijerph18084049}
-#' 
+#'
 #' @name HintikkaXOData
+#' @importFrom SingleCellExperiment altExp
+#' @importFrom SingleCellExperiment altExp<-
 #' @export
 #'
 #' @examples
-#' # Retrieve the MAE data
-#' \dontrun{
-#' mae <- HintikkaXOData()
+#' # tse <- HintikkaXOData()
 #'
-#' # List the experiments in this MultiAssayExperiment object
-#' print(experiments(mae))
-#'
-#' # colData for this MAE data object (print first few rows)
-#' print(head(colData(mae)))
-#'
-#' # metabolite assay data
-#' nmr <- assays(mae[["metabolites"]])$nmr
-#'
-#' # biomarker assay data
-#' bm <- assays(mae[["biomarkers"]])$signals
-# '
-#' # microbiota assay counts
-#' counts <- assays(mae[["microbiota"]])$counts
-#'
-#' # microbiota rowData
-#' taxtab <- rowData(mae[["microbiota"]])
-#' } 
 HintikkaXOData <- function() {
 
-    mae <- .create_mae("3.14/hintikka-xo",
-    
-        types = list(microbiota  = list("SE" = c("counts")),
-                    metabolites = list("SE"  = "nmr"),
-                    biomarkers  = list("SE"  = "signals")
-                ),
- 
-        coldata = TRUE,
-        samplemap = FALSE,
+    # Circumvent warnings
+    meta_cecum <- otu_cecum <- tax <- NULL
 
-        has.rowdata = list(microbiota = TRUE,
-                        metabolites = FALSE,
-                        biomarkers  = FALSE),
+    dataset <- "3.14/hintikka-xo"
+    se <- .create_se(dataset,
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE)
 
-        has.coldata = list(microbiota = FALSE,
-                        metabolites = FALSE,
-                        biomarkers  = FALSE))
+    tse <- SummarizedExperiment(assays = list(counts = otu_cecum),
+                        colData = meta_cecum,
+                        rowData = tax)
 
-    mae
-    
+    # Create SE objects
+    bm  <- SummarizedExperiment(bm)
+    nmr <- SummarizedExperiment(nmr)
+
+    # Add Biomarkers as "alternative experiment":
+    altExp(se, "Biomarkers") <- bm
+
+    # Add NMR metabolite abundances as "alternative experiment":
+    altExp(se, "NMR") <- nmr
+
+    se
+
 }
+
+
 

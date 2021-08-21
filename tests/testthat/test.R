@@ -31,14 +31,10 @@ test_that("Loading of SongQAData data", {
   expect_s4_class(tse, "TreeSummarizedExperiment")
 })
 
-# TODO: will test after data update is in ExperimentHub
 #context("Loading of HintikkaXO data")
 #test_that("Loading of a HintikkaXO data", {
-#  mae <- HintikkaXOData()
-#  expect_s4_class(mae, "MultiAssayExperiment")
-#  expect_s4_class(mae[["microbiota"]],  "SummarizedExperiment")
-#  expect_s4_class(mae[["metabolites"]], "SummarizedExperiment")
-#  expect_s4_class(mae[["biomarkers"]],  "SummarizedExperiment")      
+#  se <- HintikkaXOData()
+#  expect_s4_class(se, "SummarizedExperiment")
 #})
 
 context("Loading of SprockettTHData data")
