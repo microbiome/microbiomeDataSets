@@ -78,7 +78,7 @@
 #' @aliases baboongut
 #' @export
 #'
-#' @example
+#' @examples
 #' tse <- GrieneisenTSData()
 #'
 GrieneisenTSData <- function() {
