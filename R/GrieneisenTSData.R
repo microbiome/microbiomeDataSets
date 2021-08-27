@@ -32,27 +32,27 @@
 #'  \item{readcount: } {Read count (numeric)}
 #'  \item{plate: } {Plate (factor)}
 #'  \item{post_pcr_dna_ng: } {Post PCR DNA(ng) (numeric)}
-#'  \item{diet_PC1: } {Diet PC1 (numeric)}
-#'  \item{diet_PC2: } {Diet PC2 (numeric)}
-#'  \item{diet_PC3: } {Diet PC3 (numeric)}
-#'  \item{diet_PC4: } {Diet PC4 (numeric)}
-#'  \item{diet_PC5: } {Diet PC5 (numeric)}
-#'  \item{diet_PC6: } {Diet PC6 (numeric)}
-#'  \item{diet_PC7: } {Diet PC7 (numeric)}
-#'  \item{diet_PC8: } {Diet PC8 (numeric)}
-#'  \item{diet_PC9: } {Diet PC9 (numeric)}
-#'  \item{diet_PC10: } {Diet PC10 (numeric)}
-#'  \item{diet_PC11: } {Diet PC11 (numeric)}
-#'  \item{diet_PC12: } {Diet PC12 (numeric)}
-#'  \item{diet_PC13: } {Diet PC13 (numeric)}
+#'  \item{diet_PC1: } {Diet Principal coordinate 1 (numeric)}
+#'  \item{diet_PC2: } {Diet Principal coordinate 2 (numeric)}
+#'  \item{diet_PC3: } {Diet Principal coordinate 3 (numeric)}
+#'  \item{diet_PC4: } {Diet Principal coordinate 4 (numeric)}
+#'  \item{diet_PC5: } {Diet Principal coordinate 5 (numeric)}
+#'  \item{diet_PC6: } {Diet Principal coordinate 6 (numeric)}
+#'  \item{diet_PC7: } {Diet Principal coordinate 7 (numeric)}
+#'  \item{diet_PC8: } {Diet Principal coordinate 8 (numeric)}
+#'  \item{diet_PC9: } {Diet Principal coordinate 9 (numeric)}
+#'  \item{diet_PC10: } {Diet Principal coordinate 10 (numeric)}
+#'  \item{diet_PC11: } {Diet Principal coordinate 11 (numeric)}
+#'  \item{diet_PC12: } {Diet Principal coordinate 12 (numeric)}
+#'  \item{diet_PC13: } {Diet Principal coordinate 13 (numeric)}
 #'  \item{diet_shannon_h: } {Dietary Shannon's H index (numeric)}
-#'  \item{asv_richness: } {ASV richness (integer)}
+#'  \item{asv_richness: } {Amplicon sequence variant (ASV) richness (integer)}
 #'  \item{asv_shannon_h: } {ASV Shannon's H index (numeric)}
-#'  \item{pc1_bc: } {PC1 BC (numeric)}
-#'  \item{pc2_bc: } {PC2 BC (numeric)}
-#'  \item{pc3_bc: } {PC3 BC (numeric)}
-#'  \item{pc4_bc: } {PC4 BC (numeric)}
-#'  \item{pc5_bc: } {PC5 BC (numeric)}
+#'  \item{pc1_bc: } {Principal coordinate 1 Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc2_bc: } {Principal coordinate 2 Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc3_bc: } {Principal coordinate 3 Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc4_bc: } {Principal coordinate 4 Bray-Curtis dissimilarity matrix (numeric)}
+#'  \item{pc5_bc: } {Principal coordinate 5 Bray-Curtis dissimilarity matrix (numeric)}
 #'}
 #'
 #' Row metadata of the microbiome data contains taxonomic information on the
