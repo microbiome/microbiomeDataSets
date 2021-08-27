@@ -26,7 +26,7 @@ df <- rbind(
                   SourceType = "Rds",
                   RDataClass = "matrix",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"baboon-ts/counts.rds"),
+                  RDataPath = paste0(path,"grieneisen-ts/counts.rds"),
                   Tags = "NA")),
   cbind(df_Base,
         data.frame(
@@ -35,7 +35,7 @@ df <- rbind(
                   SourceType = "Rds",
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"baboon-ts/rowdata.rds"),
+                  RDataPath = paste0(path,"grieneisen-ts/rowdata.rds"),
                   Tags = "NA")),
   cbind(df_Base,
         data.frame(
@@ -44,7 +44,7 @@ df <- rbind(
                   SourceType = "TXT",
                   RDataClass = "character",
                   DispatchClass = "FilePath",
-                  RDataPath = paste0(path,"baboon-ts/rowtree.tre.gz"),
+                  RDataPath = paste0(path,"grieneisen-ts/rowtree.tre.gz"),
                   Tags = "NA")),
   cbind(df_Base,
         data.frame(
@@ -53,7 +53,7 @@ df <- rbind(
                   SourceType = "CSV",
                   RDataClass = "Dframe",
                   DispatchClass = "Rds",
-                  RDataPath = paste0(path,"baboon-ts/coldata.rds"),
+                  RDataPath = paste0(path,"grieneisen-ts/coldata.rds"),
                   Tags = "NA")),
   cbind(df_Base,
         data.frame(
@@ -62,7 +62,7 @@ df <- rbind(
                   SourceType = "TXT",
                   RDataClass = "character",
                   DispatchClass = "FilePath",
-                  RDataPath = paste0(path,"baboon-ts/refseq.fasta.gz"),
+                  RDataPath = paste0(path,"grieneisen-ts/refseq.fasta.gz"),
                   Tags = "NA"))
 )
 
