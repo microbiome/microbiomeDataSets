@@ -1,4 +1,3 @@
-
 library(dplyr)
 library(R.utils)
 library(stringr)
@@ -15,7 +14,8 @@ df_Base <- data.frame(
   SourceVersion=Sys.time(),
   Genome = NA,
   SourceUrl = "https://science.sciencemag.org/content/373/6551/181",
-  DataProvider = "University of Minnesota"
+  DataProvider = "University of Minnesota",
+  Maintainer = "Leo Lahti <leo.lahti@iki.fi>"  
 )
 
 df <- rbind(
