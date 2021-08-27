@@ -76,6 +76,7 @@
 #' 373:6551 \url{https://science.sciencemag.org/content/373/6551/181.full}
 #'
 #' @name GrieneisenTSData
+#' @aliases baboongut
 #' @export
 #'
 #' @example
