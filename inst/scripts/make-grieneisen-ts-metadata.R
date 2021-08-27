@@ -27,7 +27,7 @@ df <- rbind(
                   RDataClass = "matrix",
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"grieneisen-ts/counts.rds"),
-                  Tags = "NA")),
+                  Tags = NA)),
   cbind(df_Base,
         data.frame(
                   Title = "Grieneisen Baboon row data set",
@@ -36,7 +36,7 @@ df <- rbind(
                   RDataClass = "DFrame",
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"grieneisen-ts/rowdata.rds"),
-                  Tags = "NA")),
+                  Tags = NA)),
   cbind(df_Base,
         data.frame(
                   Title = "Grieneisen Baboon phylogenetic tree data set",
@@ -45,7 +45,7 @@ df <- rbind(
                   RDataClass = "character",
                   DispatchClass = "FilePath",
                   RDataPath = paste0(path,"grieneisen-ts/rowtree.tre.gz"),
-                  Tags = "NA")),
+                  Tags = NA)),
   cbind(df_Base,
         data.frame(
                   Title = "Grieneisen Baboon sample data set",
@@ -54,7 +54,7 @@ df <- rbind(
                   RDataClass = "Dframe",
                   DispatchClass = "Rds",
                   RDataPath = paste0(path,"grieneisen-ts/coldata.rds"),
-                  Tags = "NA")),
+                  Tags = NA)),
   cbind(df_Base,
         data.frame(
                   Title = "Grieneisen Baboon sequence data set",
@@ -63,7 +63,7 @@ df <- rbind(
                   RDataClass = "character",
                   DispatchClass = "FilePath",
                   RDataPath = paste0(path,"grieneisen-ts/refseq.fasta.gz"),
-                  Tags = "NA"))
+                  Tags = NA))
 )
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="") 
