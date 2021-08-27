@@ -1,6 +1,7 @@
 #' Retrieve GrieneisenTS data
 #'
-#' Obtain gut microbiome in Papio cynocephalus from Grieneisen et al. (2021).
+#' Obtain longitudinal gut microbiome data in wild baboons from
+#' Grieneisen et al. (2021).
 #'
 #' @details
 #' The GrieneisenTS dataset contains 16,234 16S rRNA gene
@@ -78,11 +79,10 @@
 #' @export
 #'
 #' @example
-#' \donttest{
-#'   tse <- GrieneisenTSData()
-#' }
+#' tse <- GrieneisenTSData()
+#'
 GrieneisenTSData <- function() {
-    dataset <- "3.14/grienesen-ts"
+    dataset <- "3.14/grieneisen-ts"
     tse <- .create_tse(dataset,
                     assays = "counts",
                     has.rowdata = TRUE,
@@ -92,3 +92,7 @@ GrieneisenTSData <- function() {
                     prefix = NULL)
     tse
 }
+
+#' @rdname GrieneisenTSData
+#' @export
+baboongut <- GrieneisenTSData

@@ -16,16 +16,54 @@ Obtain gut microbiome in Papio cynocephalus from Grieneisen et al. (2021).
 \details{
 The GrieneisenTS dataset contains 16,234 16S rRNA gene
 sequencing-based microbiome profiles from 585 baboon samples
-collected over 14 years. Each baboon had an average of 28 samples
-collected over 4.5 years to determine whether the heritability of
-the gut microbiome was dependent on various environmental factors
-such as diet, age, season.
+collected over 14 years to determine the heritability of the
+gut microbiome on various environmental factors such as
+diet, age, season.Each baboon had an average of 28 samples
+collected over 4.5 years.The data set can be used to
+investigate significance of longitudinal sampling at large
+sample sizes.
 
-Column metadata includes the sample ID, baboon ID, collection date,
-sex, age, social group, group size, rain per month(mm),
-season(wet/dry), hydro year, month, readcount, plate, post PCR
-DNA(ng), diets, ASV shannon H, diet shannon h, ASV richness,
-principal coordinates(PC).
+This data set contains the 613 most prevalent taxa, including the
+phylogenetic tree.
+
+Column metadata includes the following fields:
+\itemize{
+\item{sample: } {Sample ID (character)}
+\item{baboon_id: } {Baboon ID (factor)}
+\item{collection_date: } {Sample collection date (date ; YYYY-MM-DD)}
+\item{sex: } {Sex (factor; F/M)}
+\item{age: } {Age (numeric)}
+\item{social_group: } {Social group ID (factor)}
+\item{group_size: } {Social group size (integer)}
+\item{rain_month_mm: } {Rain per month(mm) (numeric)}
+\item{season: } {Season (factor; dry/wet)}
+\item{hydro_year: } {Hydro year (integer)}
+\item{month: } {Month (integer)}
+\item{readcount: } {Read count (numeric)}
+\item{plate: } {Plate (factor)}
+\item{post_pcr_dna_ng: } {Post PCR DNA(ng) (numeric)}
+\item{diet_PC1: } {Diet PC1 (numeric)}
+\item{diet_PC2: } {Diet PC2 (numeric)}
+\item{diet_PC3: } {Diet PC3 (numeric)}
+\item{diet_PC4: } {Diet PC4 (numeric)}
+\item{diet_PC5: } {Diet PC5 (numeric)}
+\item{diet_PC6: } {Diet PC6 (numeric)}
+\item{diet_PC7: } {Diet PC7 (numeric)}
+\item{diet_PC8: } {Diet PC8 (numeric)}
+\item{diet_PC9: } {Diet PC9 (numeric)}
+\item{diet_PC10: } {Diet PC10 (numeric)}
+\item{diet_PC11: } {Diet PC11 (numeric)}
+\item{diet_PC12: } {Diet PC12 (numeric)}
+\item{diet_PC13: } {Diet PC13 (numeric)}
+\item{diet_shannon_h: } {Dietary Shannon's H index (numeric)}
+\item{asv_richness: } {ASV richness (integer)}
+\item{asv_shannon_h: } {ASV Shannon's H index (numeric)}
+\item{pc1_bc: } {PC1 BC (numeric)}
+\item{pc2_bc: } {PC2 BC (numeric)}
+\item{pc3_bc: } {PC3 BC (numeric)}
+\item{pc4_bc: } {PC4 BC (numeric)}
+\item{pc5_bc: } {PC5 BC (numeric)}
+}
 
 Row metadata of the microbiome data contains taxonomic information on the
 Domain, Phylum, Class, Order, Family, Genus, and ASV levels.
@@ -43,5 +81,5 @@ environmentally contingent
 373:6551 \url{https://science.sciencemag.org/content/373/6551/181.full}
 }
 \author{
-Yagmur Simsekk and Leo Lahti
+Yagmur Simsek and Leo Lahti
 }
