@@ -14,7 +14,7 @@ df_Base <- DataFrame(
     Genome = NA,
     SourceUrl = "https://ndownloader.figshare.com/files/",
     DataProvider = "University of Jyvaskyla",
-    Maintainer = "Leo Lahti <leo.lahti@utu.fi>"
+    Maintainer = "Leo Lahti <leo.lahti@iki.fi>"
 )
 
 
