@@ -29,12 +29,12 @@ df <- rbind(
                     Tags = NA)),
 		    
     cbind(df_Base,
-          DataFrame(Title = "Hintikka XO microbiome row data",
-                    Description = paste0("Row data for the HintikkaXO microbiome dataset"),
+          DataFrame(Title = "Hintikka XO microbiota row data",
+                    Description = paste0("Row data for the HintikkaXO microbiota dataset"),
                     SourceType = "XLS/XLSX",
                     RDataClass = "DFrame",
                     DispatchClass = "Rds",
-                    RDataPath = paste0(path,"hintikka-xo/microbiome_rowdata.rds"),
+                    RDataPath = paste0(path,"hintikka-xo/microbiota_rowdata.rds"),
                     Tags = NA)),
 
     cbind(df_Base,
