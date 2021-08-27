@@ -2,16 +2,20 @@
 % Please edit documentation in R/GrieneisenTSData.R
 \name{GrieneisenTSData}
 \alias{GrieneisenTSData}
+\alias{baboongut}
 \title{Retrieve GrieneisenTS data}
 \usage{
 GrieneisenTSData()
+
+baboongut()
 }
 \value{
 for  \code{GrieneisenTS} a \linkS4class{TreeSummarizedExperiment}
 is provided with the TreeSummarizedExperiment object.
 }
 \description{
-Obtain gut microbiome in Papio cynocephalus from Grieneisen et al. (2021).
+Obtain longitudinal gut microbiome data in wild baboons from
+Grieneisen et al. (2021).
 }
 \details{
 The GrieneisenTS dataset contains 16,234 16S rRNA gene

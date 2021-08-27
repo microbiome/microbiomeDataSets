@@ -8,12 +8,12 @@
 #' sequencing-based microbiome profiles from 585 baboon samples
 #' collected over 14 years to determine the heritability of the
 #' gut microbiome on various environmental factors such as
-#' diet, age, season.Each baboon had an average of 28 samples
-#' collected over 4.5 years.The data set can be used to
+#' diet, age, season. Each baboon had an average of 28 samples
+#' collected over 4.5 years. The data set can be used to
 #' investigate significance of longitudinal sampling at large
 #' sample sizes.
 #'
-#' This data set contains the 613 most prevalent taxa, including the
+#' This data set contains the 613 most prevalent taxa with a 
 #' phylogenetic tree.
 #'
 #' Column metadata includes the following fields:
@@ -63,8 +63,7 @@
 #'
 #' As reference sequences the ASV are provided.
 #'
-#' @return for  \code{GrieneisenTS} a \linkS4class{TreeSummarizedExperiment}
-#'   is provided with the TreeSummarizedExperiment object.
+#' @return A \linkS4class{TreeSummarizedExperiment} object.
 #'
 #' @author Yagmur Simsek and Leo Lahti
 #'
