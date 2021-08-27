@@ -1,3 +1,8 @@
+context("Loading of GrieneisenTSData data")
+test_that("Loading of GrieneisenTSData data", {
+  tse <- GrieneisenTSData()
+  expect_s4_class(tse, "TreeSummarizedExperiment")
+})
 
 context("Loading of LahtiMData data")
 test_that("Loading of LahtiMData data", {
@@ -31,11 +36,21 @@ test_that("Loading of SongQAData data", {
   expect_s4_class(tse, "TreeSummarizedExperiment")
 })
 
+# TODO: will test after data update is in ExperimentHub
 #context("Loading of HintikkaXO data")
 #test_that("Loading of a HintikkaXO data", {
-#  se <- HintikkaXOData()
-#  expect_s4_class(se, "SummarizedExperiment")
+#  mae <- HintikkaXOData()
+#  expect_s4_class(mae, "MultiAssayExperiment")
+#  expect_s4_class(mae[["microbiota"]],  "SummarizedExperiment")
+#  expect_s4_class(mae[["metabolites"]], "SummarizedExperiment")
+#  expect_s4_class(mae[["biomarkers"]],  "SummarizedExperiment")      
 #})
+
+context("Loading of GrieneisenTS data")
+test_that("Loading of a GrieneisenTS data", {
+  tse <- GrieneisenTSData()
+  expect_s4_class(tse, "TreeSummarizedExperiment")
+})
 
 context("Loading of SprockettTHData data")
 test_that("Loading of SprockettTHData data", {

@@ -126,9 +126,6 @@ availableDataSets <- function(){
 # path utils
 
 .get_base_path <- function(dataset){
-    # paste0(file.path(system.file(package = "microbiomeDataSets",
-    #     mustWork = FALSE),
-    #                  "extdata","hub",dataset))
     file.path("microbiomeDataSets", dataset)
 }
 
@@ -149,8 +146,6 @@ availableDataSets <- function(){
     prefix <- .norm_prefix(prefix)
     assay_list <- list()
     for (a in assays) {
-        # assay_list[[a]] <- readRDS(file.path(base, sprintf("%s%s.rds",
-    #  prefix, a)))
         path <- file.path(base, sprintf("%s%s.rds", prefix, a))
         assay_list[[a]] <- .get_res_by_path(hub, path)
     }
@@ -162,28 +157,22 @@ availableDataSets <- function(){
 # row, column and sample map data
 
 .get_col_row_map_data <- function(dataset, hub,
-                                  prefix = NULL,
-                                  has.rowdata = TRUE,
-                                  has.coldata = TRUE,
-                                  has.samplemap = FALSE){
+                                prefix = NULL,
+                                has.rowdata = TRUE,
+                                has.coldata = TRUE,
+                                has.samplemap = FALSE){
     base <- .get_base_path(dataset)
     prefix <- .norm_prefix(prefix)
     args <- list()
     if (has.coldata) {
-        # args$colData <- readRDS(file.path(base, sprintf("%scoldata.rds",
-    #   prefix)))
         path <- file.path(base, sprintf("%scoldata.rds", prefix))
         args$colData <- .get_res_by_path(hub, path)
     }
     if (has.rowdata) {
-        # args$rowData <- readRDS(file.path(base, sprintf("%srowdata.rds",
-    #   prefix)))
         path <- file.path(base, sprintf("%srowdata.rds", prefix))
         args$rowData <- .get_res_by_path(hub, path)
     }
     if (has.samplemap) {
-        # args$sampleMap <- readRDS(file.path(base, sprintf("%ssamplemap.rds",
-    #  prefix)))
         path <- file.path(base, sprintf("%ssamplemap.rds", prefix))
         args$sampleMap <- .get_res_by_path(hub, path)
     }
@@ -204,19 +193,13 @@ availableDataSets <- function(){
     name <- switch(type,
                    row = "rowtree",
                    column = "coltree")
-    # tree <- read.tree(file.path(base, sprintf("%s%s.tre.gz", prefix, name)))
-    # links <- list()
-    # if(file.exists(file.path(base, sprintf("%s%s_links.rds", prefix, name)))){
-    # links <- readRDS(file.path(base, sprintf("%s%s_links.rds", prefix, name)))
-    # }
     tree <- file.path(base, sprintf("%s%s.tre.gz", prefix, name))
     links <- file.path(base, sprintf("%s%s_links.rds", prefix, name))
     tree <- read.tree(.get_res_by_path(hub, tree))
     links <- .get_res_by_path(hub, links, failOnError = FALSE)
     if(!is.null(links)){
         links <- as(links,"LinkDataFrame")
-    }
-    
+    }    
     list(tree = tree, links = links)
 }
 
@@ -269,8 +252,6 @@ availableDataSets <- function(){
     if(has.refseq){
         base <- .get_base_path(dataset)
         prefix <- .norm_prefix(prefix)
-        # refSeq <- readDNAStringSet(file.path(base,
-    #   sprintf("%srefseq.fasta.gz", prefix)))
         refSeq <- file.path(base, sprintf("%srefseq.fasta.gz", prefix))
         refSeq <- .get_res_by_path(hub,refSeq)
         refSeq <- readDNAStringSet(refSeq)

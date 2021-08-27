@@ -4,3 +4,8 @@ inst/extras/
 .RData
 .Ruserdata
 inst/doc
+inst/scripts/*-original
+inst/scripts/microbiomeDataSets
+inst/scripts/*.gz
+*~
+

@@ -1,5 +1,7 @@
 ---
 title: "microbiomeDataSets"
+date: "`r Sys.Date()`"
+package: microbiomeDataSets
 output: 
   BiocStyle::html_document:
     fig_height: 7
@@ -11,6 +13,7 @@ vignette: >
   %\VignetteIndexEntry{microbiomeDataSets}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: references.bib  
 ---
 
 ```{r, include = FALSE}
@@ -37,68 +40,22 @@ function.
 availableDataSets()
 ```
 
-The data is usually loaded as a `r Biocpkg("TreeSummarizedExperiment")` or a
-`r Biocpkg("MultiAssayExperiment")`, if microbiome associated data was used
-in the respective study. For more information on how to use these objects,
-please refer to the vignettes of the packages.
+All data are downloaded from ExperimentHub and cached for local
+re-use. Check the [man pages of each
+function](https://microbiome.github.io/microbiomeDataSets/reference/index.html)
+for a detailed documentation of the data contents and original source.
 
-## HIT Chip Data
+The microbiome data is usually loaded as a `r
+Biocpkg("TreeSummarizedExperiment")`. If other associated data tables
+(metabolomic, biomarker..) are provided, the integrated data
+collection is provided as `r Biocpkg("MultiAssayExperiment")`.
 
-The following data sets are based on the Human Intestinal Tract (HIT)Chip
-phylogenetic 16S microarray [(Rajilić-Stojanović _et al._
-2009)](https://doi.org/10.1111/j.1462-2920.2009.01900.x). This profiling
-technology differs from the more widely used 16S rRNA amplicon sequencing.
-
-Since the data is also available in phyloseq format through the microbiome R
-package and are referenced usually via aliases, they are described in more
-detail.
-
-### Intestinal microbiota profiling of 1006 Western adults
-
-This data set from
-[Lahti et al. Nat. Comm. 5:4344, 2014](http://www.nature.com/ncomms/2014/140708/ncomms5344/full/ncomms5344.html)
-comes with 130 genus-like taxonomic groups across 1006 western adults with no
-reported health complications. Some subjects have also short time series.
-
-```{r atlasdata, warning=FALSE, message=FALSE}
-LahtiWAData()
-
-# Alias
-# atlas1006()
-```
-
-### Diet swap between Rural and Western populations
-
-A two-week diet swap study between western (USA) and traditional (rural Africa)
-diets, reported in
-[O'Keefe et al. Nat. Comm. 6:6342, 2015](http://dx.doi.org/10.1038/ncomms7342).
-
-```{r dietswap}
-OKeefeDSData()
-
-# Alias
-# dietswap()
-```
-
-### Intestinal microbiota versus blood metabolites
-
-Data set from [Lahti et al. PeerJ 1:e32, 2013](https://doi.org/10.7717/peerj.32)
-characterizes associations between human intestinal microbiota and blood serum
-lipids. Note that this data set contains an additional assay of lipid species,
-and is therefore provided as `MultiAssayExperiment` object.
-
-```{r peerj}
-LahtiMLData()
-
-# Alias
-# peerj32()
-```
-
-
-### Version info
+For more information on how to use these objects, please refer to the
+vignettes of those packages.
 
 
 ```{r}
 sessionInfo()
 ```
+
 
