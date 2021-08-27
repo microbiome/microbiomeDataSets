@@ -5,14 +5,15 @@
 #'
 #' @details
 #' The GrieneisenTS dataset contains 16,234 16S rRNA gene
-#' sequencing-based microbiome profiles from 585 baboon samples
-#' collected over 14 years to determine the heritability of the
-#' gut microbiome on various environmental factors such as
-#' diet, age, season. Each baboon had an average of 28 samples
-#' collected over 4.5 years. The data set can be used to
-#' investigate significance of longitudinal sampling at large
-#' sample sizes.
-#'
+#' sequencing-based microbiome profiles from 585 baboon (Papio
+#' cynocephalus, the yellow baboon, with some admixture from 
+#' anubis baboons, Papio anubis) samples collected over 14 years to
+#' determine the heritability of the gut microbiome on various 
+#' environmental factors such as diet, age, season.Each baboon had
+#' an average of 28 samples collected over 4.5 years.The data set
+#' can be used to investigate significance of longitudinal sampling
+#' at large sample sizes.
+#' 
 #' This data set contains the 613 most prevalent taxa with a 
 #' phylogenetic tree.
 #'
@@ -61,7 +62,7 @@
 #' The row tree consists of a phylogenetic tree build using sequence
 #' information of 613 taxa.
 #'
-#' As reference sequences the ASV are provided.
+#' ASV reference sequences are provided.
 #'
 #' @return A \linkS4class{TreeSummarizedExperiment} object.
 #'
