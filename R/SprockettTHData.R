@@ -19,7 +19,7 @@
 #' lowest taxonomic rank.  
 #' 
 #' The row tree consists of a phylogenetic tree build using sequence 
-#' information of 2319 taxa.    
+#' information of 2319 taxa.
 #' 
 #' 
 #' As reference sequences the ASV are provided.
@@ -50,12 +50,12 @@
 #' @examples
 #' tse <- SprockettTHData()
 SprockettTHData <- function() {
-  dataset <- "3.13/sprockett-th"
-  tse <- .create_tse(dataset,
-                     assays = c("counts"),
-                     has.rowdata = TRUE,
-                     has.coldata = TRUE,
-                     has.rowtree = TRUE,
-                     has.refseq = TRUE)
-  tse
+    dataset <- "3.13/sprockett-th"
+    tse <- .create_tse(dataset,
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE,
+                    has.rowtree = TRUE,
+                    has.refseq = TRUE)
+    tse
 }
