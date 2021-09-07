@@ -61,11 +61,11 @@ Column metadata includes the following fields:
 \item{diet_shannon_h: } {Dietary Shannon's H index (numeric)}
 \item{asv_richness: } {Amplicon sequence variant (ASV) richness (integer)}
 \item{asv_shannon_h: } {ASV Shannon's H index (numeric)}
-\item{pc1_bc: } {Principal coordinate 1 Bray-Curtis dissimilarity matrix (numeric)}
-\item{pc2_bc: } {Principal coordinate 2 Bray-Curtis dissimilarity matrix (numeric)}
-\item{pc3_bc: } {Principal coordinate 3 Bray-Curtis dissimilarity matrix (numeric)}
-\item{pc4_bc: } {Principal coordinate 4 Bray-Curtis dissimilarity matrix (numeric)}
-\item{pc5_bc: } {Principal coordinate 5 Bray-Curtis dissimilarity matrix (numeric)}
+\item{pc1_bc: } {Principal coordinate 1 Bray-Curtis dissimilarity (numeric)}
+\item{pc2_bc: } {Principal coordinate 2 Bray-Curtis dissimilarity (numeric)}
+\item{pc3_bc: } {Principal coordinate 3 Bray-Curtis dissimilarity (numeric)}
+\item{pc4_bc: } {Principal coordinate 4 Bray-Curtis dissimilarity (numeric)}
+\item{pc5_bc: } {Principal coordinate 5 Bray-Curtis dissimilarity (numeric)}
 }
 
 Row metadata of the microbiome data contains taxonomic information on the

@@ -40,10 +40,10 @@
 SongQAData <- function() {
     dataset <- "3.13/song-qa"
     tse <- .create_tse(dataset,
-                       assays = c("counts"),
-                       has.rowdata = TRUE,
-                       has.coldata = TRUE,
-                       has.rowtree = TRUE)
+                    assays = c("counts"),
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE,
+                    has.rowtree = TRUE)
     tse
 }
 

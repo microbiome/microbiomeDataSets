@@ -3,23 +3,23 @@ title: "microbiomeDataSets"
 date: "`r Sys.Date()`"
 package: microbiomeDataSets
 output: 
-  BiocStyle::html_document:
-    fig_height: 7
-    fig_width: 10
-    toc: yes
-    toc_depth: 2
-    number_sections: true
+    BiocStyle::html_document:
+        fig_height: 7
+        fig_width: 10
+        toc: yes
+        toc_depth: 2
+        number_sections: true
 vignette: >
-  %\VignetteIndexEntry{microbiomeDataSets}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+    %\VignetteIndexEntry{microbiomeDataSets}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
 bibliography: references.bib  
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+    collapse = TRUE,
+    comment = "#>"
 )
 ```
 

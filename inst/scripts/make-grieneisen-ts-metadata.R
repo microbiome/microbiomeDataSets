@@ -23,18 +23,18 @@ df <- rbind(
        data.frame(
                   Title = "Grieneisen Baboon counts data set",
                   Description = paste0("Count matrix for the Grieneisen Baboon dataset"),
-                  SourceType = "Rds",
+                  SourceType = "RDS",
                   RDataClass = "matrix",
-                  DispatchClass = "Rds",
+                  DispatchClass = "RDS",
                   RDataPath = paste0(path,"grieneisen-ts/counts.rds"),
                   Tags = NA)),
   cbind(df_Base,
         data.frame(
                   Title = "Grieneisen Baboon row data set",
                   Description = paste0("Taxonomy table for the Grieneisen Baboon dataset"),
-                  SourceType = "Rds",
+                  SourceType = "RDS",
                   RDataClass = "DFrame",
-                  DispatchClass = "Rds",
+                  DispatchClass = "RDS",
                   RDataPath = paste0(path,"grieneisen-ts/rowdata.rds"),
                   Tags = NA)),
   cbind(df_Base,
@@ -52,7 +52,7 @@ df <- rbind(
                   Description = paste0("Sample information for the Grieneisen Baboon dataset"),
                   SourceType = "CSV",
                   RDataClass = "Dframe",
-                  DispatchClass = "Rds",
+                  DispatchClass = "RDS",
                   RDataPath = paste0(path,"grieneisen-ts/coldata.rds"),
                   Tags = NA)),
   cbind(df_Base,
@@ -67,6 +67,7 @@ df <- rbind(
 )
 
 df$Tags <- paste(df$Tags[!is.na(df$Tags)],"Microbiome",collapse = ":",sep="") 
+
 
 write.csv(df, file = paste0("../extdata/",BiocVersion,"/metadata-grieneisen-ts.csv"),
           row.names = FALSE)

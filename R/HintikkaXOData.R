@@ -45,8 +45,8 @@
 #' @export
 #'
 #' @examples
-#' # Retrieve the MAE data
 #'
+#' # Retrieve the MAE data
 #' mae <- HintikkaXOData()
 #'
 #' # List the experiments in this MultiAssayExperiment object

@@ -27,6 +27,7 @@ availableDataSets <- function(){
 
 .get_res_by_path <- function(hub, path, failOnError = TRUE){
     res <- hub[hub$rdatapath==path]
+
     if(length(res) > 1L){
         stop("Multiple resources found.")
     }
@@ -53,29 +54,29 @@ availableDataSets <- function(){
 
     el <- .get_experiment_list(dataset, hub, types, has.rowdata, has.coldata)
     args <- .get_col_row_map_data(dataset, hub,
-                                  has.rowdata = FALSE,
-                                  has.coldata = coldata,
-                                  has.samplemap = samplemap)
+                                has.rowdata = FALSE,
+                                has.coldata = coldata,
+                                has.samplemap = samplemap)
     do.call(MultiAssayExperiment, c(list(el), args))
 }
 
 #' @importFrom MultiAssayExperiment ExperimentList
 .get_experiment_list <- function(dataset, hub,
-                                 types = list(),
-                                 has.rowdata = list(),
-                                 has.coldata = list()){
+                                types = list(),
+                                has.rowdata = list(),
+                                has.coldata = list()){
     experiments <- mapply(
         function(prefix, se, hr, hc){
             stopifnot(length(se) == 1L)
             FUN <- switch(names(se),
-                          TSE = .create_tse,
-                          SE = .create_se)
+                        TSE = .create_tse,
+                        SE = .create_se)
             do.call(FUN, list(dataset = dataset,
-                              hub = hub,
-                              assays = se[[1L]],
-                              has.rowdata = hr,
-                              has.coldata = hc,
-                              prefix = prefix))
+                            hub = hub,
+                            assays = se[[1L]],
+                            has.rowdata = hr,
+                            has.coldata = hc,
+                            prefix = prefix))
         },
         names(types),
         types,
@@ -98,27 +99,27 @@ availableDataSets <- function(){
                         prefix = NULL) {
     assays <- .get_assays(dataset, hub, assays, prefix)
     args <- .get_col_row_map_data(dataset, hub, prefix,
-                                  has.rowdata = has.rowdata,
-                                  has.coldata = has.coldata)
+                                has.rowdata = has.rowdata,
+                                has.coldata = has.coldata)
     tse <- do.call(TreeSummarizedExperiment, c(list(assays=assays), args))
     tse <- .add_refseq(dataset, hub, prefix = prefix,
-                       tse, has.refseq)
+                    tse, has.refseq)
     tse <- .add_trees(dataset, hub, prefix = prefix,
-                      tse, has.rowtree, has.coltree)
+                    tse, has.rowtree, has.coltree)
     tse
 }
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom SummarizedExperiment SummarizedExperiment
 .create_se <- function(dataset,
-                       hub = ExperimentHub(),
-                       assays = "counts",
-                       has.rowdata = TRUE,
-                       has.coldata = TRUE,
-                       prefix = NULL) {
+                    hub = ExperimentHub(),
+                    assays = "counts",
+                    has.rowdata = TRUE,
+                    has.coldata = TRUE,
+                    prefix = NULL) {
     assays <- .get_assays(dataset, hub, assays, prefix)
     args <- .get_col_row_map_data(dataset, hub, prefix,
-                                  has.rowdata = has.rowdata,
-                                  has.coldata = has.coldata)
+                                has.rowdata = has.rowdata,
+                                has.coldata = has.coldata)
     do.call(SummarizedExperiment, c(list(assays=assays), args))
 }
 
@@ -186,20 +187,20 @@ availableDataSets <- function(){
 #' @importFrom TreeSummarizedExperiment LinkDataFrame
 #' @importClassesFrom TreeSummarizedExperiment LinkDataFrame
 .get_tree_data <- function(dataset, hub,
-                           prefix = NULL,
-                           type = c("row","column")){
+                        prefix = NULL,
+                        type = c("row","column")){
     base <- .get_base_path(dataset)
     prefix <- .norm_prefix(prefix)
     name <- switch(type,
-                   row = "rowtree",
-                   column = "coltree")
+                row = "rowtree",
+                column = "coltree")
     tree <- file.path(base, sprintf("%s%s.tre.gz", prefix, name))
     links <- file.path(base, sprintf("%s%s_links.rds", prefix, name))
     tree <- read.tree(.get_res_by_path(hub, tree))
     links <- .get_res_by_path(hub, links, failOnError = FALSE)
     if(!is.null(links)){
         links <- as(links,"LinkDataFrame")
-    }    
+    }
     list(tree = tree, links = links)
 }
 
@@ -224,10 +225,10 @@ availableDataSets <- function(){
 }
 
 .add_trees <- function(dataset, hub,
-                       prefix = NULL,
-                       tse,
-                       has.rowtree = FALSE,
-                       has.coltree = FALSE){
+                    prefix = NULL,
+                    tse,
+                    has.rowtree = FALSE,
+                    has.coltree = FALSE){
     
     if(has.rowtree){
         tree_data <- .get_tree_data(dataset, hub, prefix = prefix, type = "row")
