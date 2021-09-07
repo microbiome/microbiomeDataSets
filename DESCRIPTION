@@ -1,6 +1,6 @@
 Package: microbiomeDataSets
 Title: Experiment Hub based microbiome datasets
-Version: 1.1.4
+Version: 1.1.5
 Authors@R: 
     c(
       person("Leo", "Lahti", role = c("cre", "aut"),
