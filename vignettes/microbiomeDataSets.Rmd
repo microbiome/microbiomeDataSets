@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, message=FALSE}
 library(microbiomeDataSets)
 ```
 
@@ -55,7 +55,7 @@ vignettes of those packages.
 
 
 ```{r}
-sessionInfo()
+prettySessionInfo()
 ```
 
 
