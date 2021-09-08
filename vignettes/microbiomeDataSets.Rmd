@@ -55,7 +55,8 @@ vignettes of those packages.
 
 
 ```{r}
-prettySessionInfo()
+#rebook::prettySessionInfo()
+sessionInfo()
 ```
 
 
