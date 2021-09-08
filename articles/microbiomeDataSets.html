@@ -60,12 +60,12 @@
 
       
 
-      </header><script src="microbiomeDataSets_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><script src="microbiomeDataSets_files/header-attrs-2.10/header-attrs.js"></script><script src="microbiomeDataSets_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>microbiomeDataSets</h1>
             
-            <h4 class="date">2021-09-07</h4>
+            <h4 class="date">2021-09-08</h4>
       
       
       <div class="hidden name"><code>microbiomeDataSets.Rmd</code></div>
@@ -154,15 +154,14 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/availableDataSets.html">availableDataSets</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;             Dataset</span>
-<span class="co">#&gt; 1  GrieneisenTSData</span>
-<span class="co">#&gt; 2    HintikkaXOData</span>
-<span class="co">#&gt; 3       LahtiMLData</span>
-<span class="co">#&gt; 4        LahtiMData</span>
-<span class="co">#&gt; 5       LahtiWAData</span>
-<span class="co">#&gt; 6      OKeefeDSData</span>
-<span class="co">#&gt; 7 SilvermanAGutData</span>
-<span class="co">#&gt; 8        SongQAData</span>
-<span class="co">#&gt; 9   SprockettTHData</span></code></pre></div>
+<span class="co">#&gt; 1    HintikkaXOData</span>
+<span class="co">#&gt; 2       LahtiMLData</span>
+<span class="co">#&gt; 3        LahtiMData</span>
+<span class="co">#&gt; 4       LahtiWAData</span>
+<span class="co">#&gt; 5      OKeefeDSData</span>
+<span class="co">#&gt; 6 SilvermanAGutData</span>
+<span class="co">#&gt; 7        SongQAData</span>
+<span class="co">#&gt; 8   SprockettTHData</span></code></pre></div>
 <p>All data are downloaded from ExperimentHub and cached for local re-use. Check the <a href="https://microbiome.github.io/microbiomeDataSets/reference/index.html">man pages of each function</a> for a detailed documentation of the data contents and original source.</p>
 <p>The microbiome data is usually loaded as a <code>r Biocpkg("TreeSummarizedExperiment")</code>. If other associated data tables (metabolomic, biomarker..) are provided, the integrated data collection is provided as <em><a href="https://bioconductor.org/packages/3.14/MultiAssayExperiment">MultiAssayExperiment</a></em>.</p>
 <p>For more information on how to use these objects, please refer to the vignettes of those packages.</p>
@@ -170,15 +169,16 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; R version 4.1.0 (2021-05-18)</span>
 <span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
-<span class="co">#&gt; Running under: Ubuntu 20.04.2 LTS</span>
+<span class="co">#&gt; Running under: Ubuntu 21.04</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so</span>
+<span class="co">#&gt; BLAS:   /home/lemila/bin/R-4.1.0/lib/libRblas.so</span>
+<span class="co">#&gt; LAPACK: /home/lemila/bin/R-4.1.0/lib/libRlapack.so</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; locale:</span>
 <span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span>
 <span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span>
-<span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             </span>
+<span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span>
 <span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span>
 <span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span>
 <span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span>
@@ -188,7 +188,7 @@
 <span class="co">#&gt; [8] base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt;  [1] microbiomeDataSets_1.1.5       MultiAssayExperiment_1.19.10  </span>
+<span class="co">#&gt;  [1] microbiomeDataSets_1.1.2       MultiAssayExperiment_1.19.10  </span>
 <span class="co">#&gt;  [3] TreeSummarizedExperiment_2.1.4 Biostrings_2.61.2             </span>
 <span class="co">#&gt;  [5] XVector_0.33.0                 SingleCellExperiment_1.15.2   </span>
 <span class="co">#&gt;  [7] SummarizedExperiment_1.23.4    Biobase_2.53.0                </span>
@@ -198,31 +198,31 @@
 <span class="co">#&gt; [15] matrixStats_0.60.1             BiocStyle_2.21.3              </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] nlme_3.1-152                  bitops_1.0-7                 </span>
+<span class="co">#&gt;  [1] nlme_3.1-153                  bitops_1.0-7                 </span>
 <span class="co">#&gt;  [3] fs_1.5.0                      bit64_4.0.5                  </span>
 <span class="co">#&gt;  [5] filelock_1.0.2                httr_1.4.2                   </span>
 <span class="co">#&gt;  [7] rprojroot_2.0.2               tools_4.1.0                  </span>
-<span class="co">#&gt;  [9] bslib_0.2.5.1                 utf8_1.2.2                   </span>
-<span class="co">#&gt; [11] R6_2.5.0                      DBI_1.1.1                    </span>
+<span class="co">#&gt;  [9] bslib_0.3.0                   utf8_1.2.2                   </span>
+<span class="co">#&gt; [11] R6_2.5.1                      DBI_1.1.1                    </span>
 <span class="co">#&gt; [13] lazyeval_0.2.2                tidyselect_1.1.1             </span>
 <span class="co">#&gt; [15] bit_4.0.4                     curl_4.3.2                   </span>
-<span class="co">#&gt; [17] compiler_4.1.0                textshaping_0.3.5            </span>
+<span class="co">#&gt; [17] compiler_4.1.0                textshaping_0.3.4            </span>
 <span class="co">#&gt; [19] desc_1.3.0                    DelayedArray_0.19.2          </span>
-<span class="co">#&gt; [21] bookdown_0.22                 sass_0.4.0                   </span>
+<span class="co">#&gt; [21] bookdown_0.24                 sass_0.4.0                   </span>
 <span class="co">#&gt; [23] rappdirs_0.3.3                pkgdown_1.6.1                </span>
 <span class="co">#&gt; [25] systemfonts_1.0.2             stringr_1.4.0                </span>
 <span class="co">#&gt; [27] digest_0.6.27                 rmarkdown_2.10               </span>
-<span class="co">#&gt; [29] pkgconfig_2.0.3               htmltools_0.5.1.1            </span>
+<span class="co">#&gt; [29] pkgconfig_2.0.3               htmltools_0.5.2              </span>
 <span class="co">#&gt; [31] dbplyr_2.1.1                  fastmap_1.1.0                </span>
-<span class="co">#&gt; [33] rlang_0.4.11                  RSQLite_2.2.7                </span>
+<span class="co">#&gt; [33] rlang_0.4.11                  RSQLite_2.2.8                </span>
 <span class="co">#&gt; [35] shiny_1.6.0                   jquerylib_0.1.4              </span>
 <span class="co">#&gt; [37] generics_0.1.0                jsonlite_1.7.2               </span>
 <span class="co">#&gt; [39] BiocParallel_1.27.5           dplyr_1.0.7                  </span>
-<span class="co">#&gt; [41] RCurl_1.98-1.3                magrittr_2.0.1               </span>
+<span class="co">#&gt; [41] RCurl_1.98-1.4                magrittr_2.0.1               </span>
 <span class="co">#&gt; [43] GenomeInfoDbData_1.2.6        Matrix_1.3-4                 </span>
 <span class="co">#&gt; [45] Rcpp_1.0.7                    fansi_0.5.0                  </span>
 <span class="co">#&gt; [47] ape_5.5                       lifecycle_1.0.0              </span>
-<span class="co">#&gt; [49] stringi_1.7.3                 yaml_2.2.1                   </span>
+<span class="co">#&gt; [49] stringi_1.7.4                 yaml_2.2.1                   </span>
 <span class="co">#&gt; [51] zlibbioc_1.39.0               BiocFileCache_2.1.1          </span>
 <span class="co">#&gt; [53] AnnotationHub_3.1.5           grid_4.1.0                   </span>
 <span class="co">#&gt; [55] blob_1.2.2                    promises_1.2.0.1             </span>
@@ -232,15 +232,15 @@
 <span class="co">#&gt; [63] pillar_1.6.2                  glue_1.4.2                   </span>
 <span class="co">#&gt; [65] BiocVersion_3.14.0            evaluate_0.14                </span>
 <span class="co">#&gt; [67] BiocManager_1.30.16           png_0.1-7                    </span>
-<span class="co">#&gt; [69] httpuv_1.6.1                  vctrs_0.3.8                  </span>
+<span class="co">#&gt; [69] httpuv_1.6.2                  vctrs_0.3.8                  </span>
 <span class="co">#&gt; [71] treeio_1.17.2                 purrr_0.3.4                  </span>
-<span class="co">#&gt; [73] assertthat_0.2.1              cachem_1.0.5                 </span>
-<span class="co">#&gt; [75] xfun_0.25                     mime_0.11                    </span>
-<span class="co">#&gt; [77] xtable_1.8-4                  tidytree_0.3.4               </span>
-<span class="co">#&gt; [79] later_1.2.0                   ragg_1.1.3                   </span>
-<span class="co">#&gt; [81] tibble_3.1.3                  AnnotationDbi_1.55.1         </span>
-<span class="co">#&gt; [83] memoise_2.0.0                 ellipsis_0.3.2               </span>
-<span class="co">#&gt; [85] interactiveDisplayBase_1.31.2</span></code></pre></div>
+<span class="co">#&gt; [73] tidyr_1.1.3                   assertthat_0.2.1             </span>
+<span class="co">#&gt; [75] cachem_1.0.6                  xfun_0.25                    </span>
+<span class="co">#&gt; [77] mime_0.11                     xtable_1.8-4                 </span>
+<span class="co">#&gt; [79] tidytree_0.3.5                later_1.3.0                  </span>
+<span class="co">#&gt; [81] ragg_1.1.2                    tibble_3.1.4                 </span>
+<span class="co">#&gt; [83] AnnotationDbi_1.55.1          memoise_2.0.0                </span>
+<span class="co">#&gt; [85] interactiveDisplayBase_1.31.2 ellipsis_0.3.2</span></code></pre></div>
 </div>
   </div>
 
