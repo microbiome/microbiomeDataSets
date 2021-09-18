@@ -11,7 +11,7 @@ df_Base <- DataFrame(
     BiocVersion = "3.14",
     SourceVersion = NA,
     Coordinate_1_based = TRUE,
-    Species = "Equus sp.",
+    Species = "Equus",
     TaxonomyId = "9789",
     SourceVersion = Sys.time(),
     Genome = NA,
