@@ -50,9 +50,16 @@ availableDataSets <- function(){
                         coldata = TRUE,
                         samplemap = TRUE,
                         has.rowdata = list(),
-                        has.coldata = list()){
+                        has.coldata = list(),
+                        has.rowtree = list(),
+                        has.refseq = list()){
 
-    el <- .get_experiment_list(dataset, hub, types, has.rowdata, has.coldata)
+    el <- .get_experiment_list(dataset, hub, 
+                               types, 
+                               has.rowdata, 
+                               has.coldata,
+                               has.rowtree,
+                               has.refseq)
     args <- .get_col_row_map_data(dataset, hub,
                                 has.rowdata = FALSE,
                                 has.coldata = coldata,
@@ -64,9 +71,11 @@ availableDataSets <- function(){
 .get_experiment_list <- function(dataset, hub,
                                 types = list(),
                                 has.rowdata = list(),
-                                has.coldata = list()){
+                                has.coldata = list(),
+                                has.rowtree = list(),
+                                has.refseq = list()){
     experiments <- mapply(
-        function(prefix, se, hr, hc){
+        function(prefix, se, hr, hc,hrtree,hrefseq){
             stopifnot(length(se) == 1L)
             FUN <- switch(names(se),
                         TSE = .create_tse,
@@ -76,6 +85,8 @@ availableDataSets <- function(){
                             assays = se[[1L]],
                             has.rowdata = hr,
                             has.coldata = hc,
+                            has.rowtree = hrtree,
+                            has.refseq = hrefseq,    
                             prefix = prefix))
         },
         names(types),

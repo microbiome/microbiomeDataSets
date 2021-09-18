@@ -8,4 +8,5 @@ inst/scripts/*-original
 inst/scripts/microbiomeDataSets
 inst/scripts/*.gz
 *~
-
+inst/extdata/3.14/edwards-equine
+*.Rproj
