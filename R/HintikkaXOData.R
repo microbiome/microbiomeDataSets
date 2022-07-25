@@ -69,6 +69,8 @@
 #'
 HintikkaXOData <- function() {
 
+    .Deprecated(msg=paste("HintikkaXOData has been moved to the mia package."))
+
     mae <- .create_mae("3.14/hintikka-xo",
     
         types = list(microbiota  = list("SE" = c("counts")),

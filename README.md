@@ -4,17 +4,11 @@
 
 <!-- badges: end -->
 
-This R package is a collection of microbiome datasets published initially 
-elsewhere. The data is available as 
-[`TreeSummarizedExperiment`](https://doi.org/doi:10.18129/B9.bioc.TreeSummarizedExperiment)
-or 
-[`MultiAssayExperiment`](https://doi.org/doi:10.18129/B9.bioc.MultiAssayExperiment)
-and a list of available dataset can be retrieved via the `availableDataSets()`
-function.
+This R package is a collection of microbiome datasets published initially elsewhere. The data is available as [`TreeSummarizedExperiment`](https://doi.org/doi:10.18129/B9.bioc.TreeSummarizedExperiment) or [`MultiAssayExperiment`](https://doi.org/doi:10.18129/B9.bioc.MultiAssayExperiment) and a list of available dataset can be retrieved via the `availableDataSets()` function.
 
-The aim is to provide datasets for teaching, example workflows or comparative
-efforts. If you have a dataset, which you like to see in this package, please
-let us know and/or provide a PR for the datasets.
+The microbiomeDataSets package focuses mainly on non-human studies. The independent [curatedMetagenomicData](https://waldronlab.io/curatedMetagenomicData/index.html) package provides access to a large collection of standardized human microbiome studies in the same format. 
+
+The aim is to provide datasets for teaching, example workflows or comparative efforts. If you have a dataset, which you like to see in this package, please let us know and/or provide a PR for the datasets.
 
 
 # Contribution
@@ -29,11 +23,7 @@ Let's use a gitflow approach. Development version should be
 done against the `master` branch and then merged to `master` for the
 next release.  (https://guides.github.com/introduction/flow/)
 
-Resources on how data is added to Bioconductor's ExperimentHub backend
-and accessed are available from Bioconductor [ExperimentHub
-documentation](https://bioconductor.org/packages/release/bioc/vignettes/ExperimentHub/inst/doc/ExperimentHub.html)
-and in [Creating ExperimentHub
-Package](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/CreateAHubPackage.html).
+Resources on how data is added to Bioconductor's ExperimentHub backend and accessed are available from Bioconductor [ExperimentHub documentation](https://bioconductor.org/packages/release/bioc/vignettes/ExperimentHub/inst/doc/ExperimentHub.html) and in [Creating ExperimentHub Package](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/CreateAHubPackage.html).
 
 Basic steps:
 

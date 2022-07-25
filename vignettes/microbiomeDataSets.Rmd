@@ -45,8 +45,8 @@ re-use. Check the [man pages of each
 function](https://microbiome.github.io/microbiomeDataSets/reference/index.html)
 for a detailed documentation of the data contents and original source.
 
-The microbiome data is usually loaded as a `r
-Biocpkg("TreeSummarizedExperiment")`. If other associated data tables
+The microbiome data is usually loaded as a
+`r Biocpkg("TreeSummarizedExperiment")`. If other associated data tables
 (metabolomic, biomarker..) are provided, the integrated data
 collection is provided as `r Biocpkg("MultiAssayExperiment")`.
 
