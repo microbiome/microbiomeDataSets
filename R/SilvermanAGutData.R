@@ -38,6 +38,12 @@
 #' @examples
 #' tse <- SilvermanAGutData()
 SilvermanAGutData <- function() {
+
+    .Deprecated(
+        msg=paste("SilvermanAGutData has been moved to the miaTime package.",
+                    "The microbiomeDataSets::SilvermanAGutData",
+                    "will be deprecated soon."))
+
     dataset <- "3.13/silverman-ag"
     tse <- .create_tse(dataset,
                     assays = c("counts"),
