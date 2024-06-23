@@ -8,7 +8,6 @@
 #' object or a \code{MultiAssayExperiment} objects.
 #' 
 #' @name microbiomeDataSets-package
-#' @docType package
 NULL
 
 #' @importFrom BiocGenerics updateObject

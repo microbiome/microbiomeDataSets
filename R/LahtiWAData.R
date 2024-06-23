@@ -1,7 +1,5 @@
 #' Obtain the Lahti Western Adult microbiome data
 #'
-#' Obtain the microbiome data from Lahti et al. (2014).
-#'
 #' @details
 #' The LahtiWA dataset contains high-throughput genus-level microbiota profiling
 #' with HITChip for 1006 western adults with no reported health complications,
