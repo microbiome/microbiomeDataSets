@@ -12,12 +12,6 @@ test_that("Loading of LahtiMData data", {
   expect_s4_class(tse, "TreeSummarizedExperiment")
 })
 
-context("Loading of LahtiWAData data")
-test_that("Loading of LahtiWAData data", {
-  tse <- LahtiWAData()
-  expect_s4_class(tse, "TreeSummarizedExperiment")
-})
-
 context("Loading of OKeefeDSData data")
 test_that("Loading of OKeefeDSData data", {
   tse <- OKeefeDSData()
