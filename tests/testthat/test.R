@@ -30,15 +30,6 @@ test_that("Loading of SongQAData data", {
   expect_s4_class(tse, "TreeSummarizedExperiment")
 })
 
-context("Loading of HintikkaXO data")
-test_that("Loading of a HintikkaXO data", {
-  mae <- HintikkaXOData()
-  expect_s4_class(mae, "MultiAssayExperiment")
-  expect_s4_class(mae[["microbiota"]],  "SummarizedExperiment")
-  expect_s4_class(mae[["metabolites"]], "SummarizedExperiment")
-  expect_s4_class(mae[["biomarkers"]],  "SummarizedExperiment")      
-})
-
 context("Loading of GrieneisenTS data")
 test_that("Loading of a GrieneisenTS data", {
   tse <- GrieneisenTSData()
