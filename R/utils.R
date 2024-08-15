@@ -7,13 +7,14 @@
 #' 
 #' @return 
 #' A \code{data.frame} containing the following columns:
-#' \itemize{
-#'   \item{Dataset:} {the name of the function to load a dataset}
+#' \describe{
+#'   \item{Dataset}{The name of the function to load a dataset}
 #' }
 #' 
 #' @export
 #' 
 #' @importFrom utils read.csv
+#' @importFrom utils data
 #' 
 #' @examples
 #' availableDataSets()
