@@ -12,3 +12,15 @@ The data is made available through the ExperimentHub resources of the
 Bioconductor project. It is loaded as \code{TreeSummarizedExperiment}
 object or a \code{MultiAssayExperiment} objects.
 }
+\section{Deprecated functions}{
+
+The following functions are deprecated and will be removed in a future
+release:
+\itemize{
+\item \code{LahtiWAdata}: Please use the \code{data()} function from the
+\code{mia} package to load this dataset.
+\item \code{HintikkaXOData}: Please use the \code{data()} function from
+the \code{miaViz} package to load this dataset.
+}
+}
+
